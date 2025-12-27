@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public RunManager runManager;
- 
+    [SerializeField] private RunManager runManager;
+    [SerializeField] private BattleManager battleManager;
+
     public void Awake()
     {
         if (Instance != null)
@@ -16,7 +17,14 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        runManager = new RunManager();
         runManager.StartBattle();
+    }
+    public Player GetPlayer()
+    {
+        return runManager.player;
+    }
+    public Enemy GetEnemy()
+    {
+        return battleManager.enemy;
     }
 }

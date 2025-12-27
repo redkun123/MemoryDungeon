@@ -5,15 +5,15 @@ using UnityEngine;
 public class RunManager : MonoBehaviour
 {
     public Player player;
-    PlayerConfig playerConfig;
-    public BattleManager battleManager;
+    [SerializeField] PlayerConfig playerConfig;
+    [SerializeField] BattleManager battleManager;
+    public BattleSceneController battleSceneController;
     public void CreatePLayer()
     {
         this.player = PlayerFactory.Create(playerConfig);
     }
     public void StartBattle()
     {
-        battleManager = new BattleManager();
         CreatePLayer();
         battleManager.StartBattle(this.player);
     }

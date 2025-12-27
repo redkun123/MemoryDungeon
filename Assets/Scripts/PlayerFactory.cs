@@ -10,6 +10,7 @@ public static class PlayerFactory
 
         player.MaxHP = config.maxHP;
         player.CurrentHP = config.maxHP;
+        player.maxEnergy = 3;
         player.gold = config.startGold;
         player.deck = new List<Card>(config.startingDeck);
 

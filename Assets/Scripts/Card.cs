@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Card/Card")]
 public class Card : ScriptableObject
 {
-    public string cardName;
-    public int energyCost;
-    public List<CardEffect> cardEffect;
+    public string CardName;
+    public int EnergyCost;
+    public List<CardEffect> CardEffect;
 }
 

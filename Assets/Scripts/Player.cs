@@ -25,7 +25,7 @@ public class Player : Character
 
     public void UseCard(Card card, CardContext context)
     {
-        foreach (var effect in card.cardEffect)
+        foreach (var effect in card.CardEffect)
         {
             effect.Execute(context);
         }

@@ -15,9 +15,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private EnemyView enemyViewPrefab;
 
     Player player;
-    Enemy enemy;
+    public Enemy enemy;
     BattleLogic battleLogic;
-    EnemyConfig enemyConfig;
+    [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
     public bool isBattleEnd;
 
@@ -27,12 +27,12 @@ public class BattleManager : MonoBehaviour
         if (isBattleEnd) return;
         CheckGameResult();
     }
-    public void StartBattle(Player player)
+    public Enemy StartBattle(Player player)
     {
         isPlayerTurn = true;
         isBattleEnd = false;
         this.player = player;
-        enemy = EnemyFactory.Create(enemyConfig);
+        return enemy = EnemyFactory.Create(enemyConfig);
     }
     public void EndPlayerTurn()
     {
