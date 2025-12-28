@@ -8,10 +8,12 @@ public class BattleSceneController : MonoBehaviour
     [Header("Spawn Slots")]
     [SerializeField] private Transform playerSlot;
     [SerializeField] private Transform enemySlot;
+    [SerializeField] private Transform energySlot;
 
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private EnemyView enemyViewPrefab;
+    [SerializeField] private EnemyView energyViewPrefab;
 
     private void Start()
     {
@@ -25,5 +27,8 @@ public class BattleSceneController : MonoBehaviour
         // Spawn Enemy
         EnemyView enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);
         enemyView.Bind(enemy);
+
+        EnemyView energyView = Instantiate(energyViewPrefab, energySlot.position, Quaternion.identity, energySlot);
+        energyView.Bind(energy);
     }
 }

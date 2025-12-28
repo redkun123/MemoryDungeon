@@ -7,7 +7,7 @@ public class PlayerView : MonoBehaviour
     private Player player;
 
     [SerializeField] private HPBar hpBar;
-    [SerializeField] private HPShow hpCount;
+    [SerializeField] private HPCount hpCount;
 
     public void Bind(Player player)
     {
