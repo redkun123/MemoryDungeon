@@ -21,7 +21,6 @@ public class BattleSceneController : MonoBehaviour
         // Spawn Player
         PlayerView playerView = Instantiate(playerViewPrefab,playerSlot.position,Quaternion.identity,playerSlot);
         playerView.Bind(player);
-        Debug.Log($"Player's HP: {player.CurrentHP}/{player.MaxHP}");
 
         // Spawn Enemy
         EnemyView enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);

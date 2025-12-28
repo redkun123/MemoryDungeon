@@ -7,6 +7,7 @@ public class PlayerView : MonoBehaviour
     private Player player;
 
     [SerializeField] private HPBar hpBar;
+    [SerializeField] private HPShow hpCount;
 
     public void Bind(Player player)
     {
@@ -17,7 +18,9 @@ public class PlayerView : MonoBehaviour
     void UpdateHP()
     {
         player.OnHPChanged += hpBar.Set;
-        hpBar.Set(player.CurrentHP, player.MaxHP);
+        player.OnHPChanged += hpCount.Set;
+        hpBar.InitSet(player.CurrentHP, player.MaxHP);
+        hpCount.Set(player.CurrentHP, player.MaxHP);
     }
 }
 
