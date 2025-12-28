@@ -13,7 +13,10 @@ public class HPBar : MonoBehaviour
         hpBar.maxValue = maxHP;
         hpBar.minValue = 0;
         if (maxHP <= 0) return;
-        hpBar.value = (float)currentHP / maxHP;
-        fill.localScale = new Vector3(hpBar.value, 1f, 1f);
+        //hpBar.value = currentHP;
+        hpBar.value = Mathf.Clamp(currentHP, 0, maxHP);
+        Debug.Log($"HPBar.max = {hpBar.maxValue}");
+        Debug.Log($"HPBar.min = {hpBar.minValue}");
+        Debug.Log($"HPBar.value = {hpBar.value}");
     }    
 }
