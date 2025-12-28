@@ -7,7 +7,7 @@ public static class EnemyFactory
     public static Enemy Create(EnemyConfig config)
     {
         Enemy enemy = new Enemy();
-
+        enemy.IsAlive = true;
         enemy.MaxHP = config.maxHP;
         enemy.CurrentHP = config.maxHP;
         enemy.moveSet = new List<Card>(config.moveSet);

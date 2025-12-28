@@ -7,7 +7,7 @@ public static class PlayerFactory
     public static Player Create(PlayerConfig config)
     {
         Player player = new Player();
-
+        player.IsAlive = true;
         player.MaxHP = config.maxHP;
         player.CurrentHP = config.maxHP;
         player.maxEnergy = 3;
