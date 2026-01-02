@@ -7,18 +7,18 @@ using UnityEngine;
 public class Character
 {
     public string Name;
-    public int MaxHP;
-    public int CurrentHP;
-    public bool IsAlive;
+    public int maxHP;
+    public int currentHP;
+    public bool isAlive;
     public event Action<int, int> OnHPChanged;
     public void TakeDamage(int damage)
     {
-        int oldHP = CurrentHP;
-        CurrentHP -= damage;
-        CurrentHP = Math.Max(CurrentHP, 0);
-        if (CurrentHP != oldHP)
+        int oldHP = currentHP;
+        currentHP -= damage;
+        currentHP = Math.Max(currentHP, 0);
+        if (currentHP != oldHP)
         {
-            OnHPChanged?.Invoke(CurrentHP, MaxHP);
+            OnHPChanged?.Invoke(currentHP, maxHP);
         }
     }
 }

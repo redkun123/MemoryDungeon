@@ -13,6 +13,7 @@ public class BattleManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private EnemyView enemyViewPrefab;
+    [SerializeField] public EnergyView energyView;
 
     Player player;
     public Enemy enemy;
@@ -26,6 +27,10 @@ public class BattleManager : MonoBehaviour
     {
         if (isBattleEnd) return;
         CheckGameResult();
+    }
+    public EnergyView SetupEnergy()
+    {
+        return energyView;
     }
     public Enemy StartBattle(Player player)
     {
@@ -64,7 +69,7 @@ public class BattleManager : MonoBehaviour
     }
     public void CheckGameResult()
     {
-        if (!player.IsAlive || !enemy.IsAlive)
+        if (!player.isAlive || !enemy.isAlive)
         {
             isBattleEnd = true;
             EndLevel();
@@ -73,11 +78,11 @@ public class BattleManager : MonoBehaviour
 
     public void EndLevel()
     {
-        if (!player.IsAlive)
+        if (!player.isAlive)
         {
             Lose();
         }
-        else if (!enemy.IsAlive)
+        else if (!enemy.isAlive)
         {
             Win();
         }

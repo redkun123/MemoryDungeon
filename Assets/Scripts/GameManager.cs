@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
     {
         return battleManager.enemy;
     }
+    public EnergyView GetEnergy()
+    {
+        battleManager.SetupEnergy();
+        return battleManager.energyView;
+    }
 }

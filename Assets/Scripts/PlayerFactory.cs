@@ -7,10 +7,11 @@ public static class PlayerFactory
     public static Player Create(PlayerConfig config)
     {
         Player player = new Player();
-        player.IsAlive = true;
-        player.MaxHP = config.maxHP;
-        player.CurrentHP = config.maxHP;
+        player.isAlive = true;
+        player.maxHP = config.maxHP;
+        player.currentHP = config.maxHP;
         player.maxEnergy = 3;
+        player.currentEnergy = player.maxEnergy;
         player.gold = config.startGold;
         player.deck = new List<Card>(config.startingDeck);
         

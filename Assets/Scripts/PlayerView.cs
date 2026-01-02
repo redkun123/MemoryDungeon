@@ -19,8 +19,8 @@ public class PlayerView : MonoBehaviour
     {
         player.OnHPChanged += hpBar.Set;
         player.OnHPChanged += hpCount.Set;
-        hpBar.InitSet(player.CurrentHP, player.MaxHP);
-        hpCount.Set(player.CurrentHP, player.MaxHP);
+        hpBar.InitSet(player.currentHP, player.maxHP);
+        hpCount.Set(player.currentHP, player.maxHP);
     }
 }
 

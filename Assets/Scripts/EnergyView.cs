@@ -12,15 +12,15 @@ public class EnergyView : MonoBehaviour
     public void Bind(Player player)
     {
         this.player = player;
-        UpdateHP();
+        UpdateEnergy();
     }
 
-    void UpdateHP()
+    void UpdateEnergy()
     {
-        player.OnHPChanged += energyBar.Set;
-        player.OnHPChanged += energyCount.Set;
-        energyBar.InitSet(player.CurrentHP, player.MaxHP);
-        energyCount.Set(player.CurrentHP, player.MaxHP);
+        player.OnEnergyChanged += energyBar.Set;
+        player.OnEnergyChanged += energyCount.Set;
+        energyBar.InitSet(player.currentEnergy, player.maxEnergy);
+        energyCount.Set(player.currentEnergy, player.maxEnergy);
     }
 }
 

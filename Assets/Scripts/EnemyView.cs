@@ -17,7 +17,7 @@ public class EnemyView : MonoBehaviour
     void UpdateHP()
     {
         enemy.OnHPChanged += hpBar.Set;
-        hpBar.Set(enemy.CurrentHP, enemy.MaxHP);
+        hpBar.Set(enemy.currentHP, enemy.maxHP);
     }
 }
 

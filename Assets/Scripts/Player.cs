@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +11,16 @@ public class Player : Character
     public List<Card> deck;
     public List<Card> hand;
     public List<Card> discard;
-    //public Player()
-    //{
-    //    name = "Rocky";
-    //    maxHealth = 100;
-    //    currentHealth = maxHealth;
-    //    maxEnergy = 3;
-    //    IsAlive = true;
-    //}
+    public event Action<int, int> OnEnergyChanged;
+
     public void SpendEnergy(int amount)
     {
+        int oldEn = currentEnergy;
         currentEnergy -= amount;
+        if (currentEnergy != oldEn)
+        {
+            OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
+        }
     }
 
     public void UseCard(Card card, CardContext context)

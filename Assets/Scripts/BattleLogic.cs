@@ -9,14 +9,14 @@ public class BattleLogic
     public Player player;
     public Enemy enemy;
     public int maxHandSize = 6;
-    public CardContext CreateContext(Card card,Character target)
+    public CardContext CreateContext(Card card, Character target)
     {
-        return new CardContext(player, target, card); 
+        return new CardContext(player, target, card);
     }
     public void RefillHand()
     {
         int need = maxHandSize - player.hand.Count;
-        for (int i = 0; i < need; i++)  
+        for (int i = 0; i < need; i++)
         {
             player.DrawOne();
         }
@@ -29,7 +29,7 @@ public class BattleLogic
             Debug.Log("Not enough Energy!");
             return false;
         }
-            return true;
+        return true;
     }
 
     public void PlayCard(Card card, Character target)
