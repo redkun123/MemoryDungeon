@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private RunManager runManager;
     [SerializeField] private BattleManager battleManager;
+    //public event 
     public void Awake()
     {
         if (Instance != null)
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         runManager.StartBattle();
+    }
+    private void Start()
+    {
+        battleManager.StartPlayerTurn();
     }
     public Player GetPlayer()
     {

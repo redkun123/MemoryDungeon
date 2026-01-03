@@ -6,9 +6,13 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+    [Header("Battle Managers")]
+    [SerializeField] private HandManager handManager;
+
     [Header("Slots")]
     [SerializeField] private Transform playerSlot;
     [SerializeField] private Transform enemySlots;
+    [SerializeField] private Transform handArea;
 
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
@@ -17,7 +21,7 @@ public class BattleManager : MonoBehaviour
 
     Player player;
     public Enemy enemy;
-    BattleLogic battleLogic;
+    BattleLogic battleLogic = new();
     [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
     public bool isBattleEnd;
@@ -32,11 +36,16 @@ public class BattleManager : MonoBehaviour
     {
         return energyView;
     }
-    public Enemy StartBattle(Player player)
+    public void StartBattle(Player player)
     {
         isPlayerTurn = true;
         isBattleEnd = false;
         this.player = player;
+        player.hand = new List<Card>();
+        enemy = EnemyFactory.Create(enemyConfig);
+    }
+    public Enemy CreateEnemy()
+    {
         return enemy = EnemyFactory.Create(enemyConfig);
     }
     public void EndPlayerTurn()
@@ -61,11 +70,15 @@ public class BattleManager : MonoBehaviour
             StartPlayerTurn();
         }
     }
-    private void StartPlayerTurn()
+    public void StartPlayerTurn()
     {
+        Debug.Log("Player turn started");
         isPlayerTurn = true;
         player.RestoreEnergy();
-        battleLogic.RefillHand();
+        Debug.Log("Energy refilled");
+        Debug.Log($"handManager = {handManager}");
+        Debug.Log($"battleLogic = {battleLogic}");
+        battleLogic.RefillHand(handManager, player);
     }
     public void CheckGameResult()
     {
