@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     [SerializeField] private RunManager runManager;
     [SerializeField] private BattleManager battleManager;
-
     public void Awake()
     {
         if (Instance != null)

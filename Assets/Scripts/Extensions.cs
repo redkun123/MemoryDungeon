@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class Extensions
@@ -13,5 +14,10 @@ public static class Extensions
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+    }
+    public static string Concatenate(this List<string> list)
+    {
+        if (list.Count == 0) return string.Empty;
+        return string.Join("\n", list.Select(x => $"{x}."));
     }
 }

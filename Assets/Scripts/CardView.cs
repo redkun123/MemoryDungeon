@@ -16,14 +16,14 @@ public class CardView : MonoBehaviour, IPointerClickHandler
     public void Bind(Card card)
     {
         this.card = card;
-        nameText.text = card.CardName;
-        costText.text = card.EnergyCost.ToString();
+        nameText.text = card.cardName;
+        costText.text = card.energyCost.ToString();
         //descText.text = card.Description;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Card clicked: " + card.CardName);
+        Debug.Log("Card clicked: " + card.cardName);
         // gửi event cho BattleLogic / HandController
     }
 }

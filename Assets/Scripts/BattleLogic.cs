@@ -24,7 +24,7 @@ public class BattleLogic
     public bool CanPlayCard(Card card)
     {
         if (!player.hand.Contains(card)) return false;
-        if (player.currentEnergy < card.EnergyCost)
+        if (player.currentEnergy < card.energyCost)
         {
             Debug.Log("Not enough Energy!");
             return false;
@@ -35,7 +35,7 @@ public class BattleLogic
     public void PlayCard(Card card, Character target)
     {
         if (!CanPlayCard(card)) return;
-        player.SpendEnergy(card.EnergyCost);
+        player.SpendEnergy(card.energyCost);
         player.UseCard(card, CreateContext(card, target));
         player.Discard(card);
     }

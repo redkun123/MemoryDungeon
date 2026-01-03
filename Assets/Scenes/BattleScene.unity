@@ -205,6 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runManager: {fileID: 441175598}
   battleManager: {fileID: 1531720434}
+  handManager: {fileID: 1243430693}
+  cardData: {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
 --- !u!1 &138210042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1008,7 @@ MonoBehaviour:
   gameManager: {fileID: 118024155}
   playerSlot: {fileID: 764074764}
   enemySlot: {fileID: 1779533979}
+  handArea: {fileID: 0}
   playerViewPrefab: {fileID: 7097680653862599339, guid: 8f33499244b02084fa5ba528eb721c22, type: 3}
   enemyViewPrefab: {fileID: 205523635956432438, guid: 2cc095750e9d11f4f936354c6af2a28f, type: 3}
   energyView: {fileID: 2040171239}
@@ -1276,6 +1279,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1156866013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156866014}
+  m_Layer: 5
+  m_Name: HandArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1156866014
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156866013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1243430692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -29.6782, y: -353.85535}
+  m_SizeDelta: {x: 1385.7927, y: 372.2893}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1232300083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,8 +1429,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1243430692}
+  - component: {fileID: 1243430693}
   m_Layer: 5
-  m_Name: HandArea
+  m_Name: HandManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1409,14 +1448,29 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1156866014}
   m_Father: {fileID: 1308980661}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1243430693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243430691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fc9dc3d25ca614d97b353c4bd7b40d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardDefaultPrefab: {fileID: 3802254148638860812, guid: 88e88264adf2e0949b4d3ad04103423f, type: 3}
+  handContainer: {fileID: 1156866014}
 --- !u!1 &1308980657
 GameObject:
   m_ObjectHideFlags: 0

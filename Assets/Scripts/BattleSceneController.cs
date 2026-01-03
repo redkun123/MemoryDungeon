@@ -8,6 +8,7 @@ public class BattleSceneController : MonoBehaviour
     [Header("Spawn Slots")]
     [SerializeField] private Transform playerSlot;
     [SerializeField] private Transform enemySlot;
+    [SerializeField] private Transform handArea;
 
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
@@ -29,5 +30,6 @@ public class BattleSceneController : MonoBehaviour
 
         EnergyView energyView = gameManager.GetEnergy();
         energyView.Bind(player);
+
     }
 }
