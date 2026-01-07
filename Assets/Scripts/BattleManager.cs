@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
 
     Player player;
     public Enemy enemy;
-    BattleLogic battleLogic = new();
+    public BattleLogic battleLogic = new();
     [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
     public bool isBattleEnd;

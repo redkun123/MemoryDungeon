@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7086301958826276829}
   - component: {fileID: 4976644927060586248}
   - component: {fileID: 4966222866403853949}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 3671829606339254135}
   - component: {fileID: 4718357667999491807}
   - component: {fileID: 4689515651368947801}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: DescriptionBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 3865730920335468857}
   - component: {fileID: 7651754982467416027}
   - component: {fileID: 4421186134171491566}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -322,7 +322,8 @@ GameObject:
   - component: {fileID: 2583576440500946540}
   - component: {fileID: 2355932000609551015}
   - component: {fileID: 7875299068062160613}
-  m_Layer: 5
+  - component: {fileID: 6392415941567203240}
+  m_Layer: 6
   m_Name: CardBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,6 +392,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6392415941567203240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359981696772178300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c2fcc3308de5f4693054d13d5b7a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardUI: {fileID: 3802254148638860812}
 --- !u!1 &5247736340173451743
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,9 +415,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4089729324302073983}
   - component: {fileID: 3802254148638860812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CardDefault
-  m_TagString: Untagged
+  m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,7 +440,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 260.9375, y: 351.1719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3802254148638860812
 MonoBehaviour:
@@ -443,6 +457,7 @@ MonoBehaviour:
   cardName: {fileID: 3350491740798910425}
   cardDescription: {fileID: 4966222866403853949}
   energyCost: {fileID: 3248527454159866475}
+  cardData: {fileID: 0}
 --- !u!1 &5325750819220825859
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +469,7 @@ GameObject:
   - component: {fileID: 8754813462308564148}
   - component: {fileID: 8116432672846820011}
   - component: {fileID: 7446687291668771569}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: EnergyBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -530,7 +545,7 @@ GameObject:
   - component: {fileID: 143824917006642852}
   - component: {fileID: 3732773711421868930}
   - component: {fileID: 3350491740798910425}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +679,7 @@ GameObject:
   - component: {fileID: 2755653970883014691}
   - component: {fileID: 2610526634055841322}
   - component: {fileID: 3248527454159866475}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: EnergyCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -798,7 +813,7 @@ GameObject:
   - component: {fileID: 6635693446087606067}
   - component: {fileID: 5585785116629302070}
   - component: {fileID: 7882800513229202997}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

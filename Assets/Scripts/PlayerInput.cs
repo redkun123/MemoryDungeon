@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public BattleManager battleManager;
+    //public event Action<Vector2> OnClick;
+    //public event Action OnConfirm;
 
     void Update()
     {

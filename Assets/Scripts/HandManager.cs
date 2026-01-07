@@ -8,7 +8,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] private Transform handArea;
     [SerializeField] public float spacing = 200f;
     List<Card> hand;
-    List<CardDisplay> cardInHand = new ();
+    List<CardDisplay> cardInHand = new();
 
     private void Update()
     {
@@ -27,12 +27,19 @@ public class HandManager : MonoBehaviour
         }
     }
 
+    public void RemoveCardFromHand(Card card)
+    {
+        hand.Remove(card);
+        Debug.Log($"Card {card.cardName} go to discard pile");
+        UpdateHandVisual();
+    }
+
     public void UpdateHandVisual()
     {
         int cardCount = cardInHand.Count;
         for (int i = 0; i < cardCount; i++)
         {
-            float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f)+50f);
+            float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f) + 50f);
             //float horizontalOffset = spacing * i;
             cardInHand[i].transform.localPosition = new Vector3(horizontalOffset, 0, 0);
         }

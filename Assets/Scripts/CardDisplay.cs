@@ -10,15 +10,21 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI cardName;
     [SerializeField] TextMeshProUGUI cardDescription;
     [SerializeField] TextMeshProUGUI energyCost;
+    public Card cardData;
     //[SerializeField] Sprite cardImage;
     //[SerializeField] TextMeshProUGUI cardType;
 
     public void SetupCard(Card card)
     {
-        cardName.text = card.cardName;
-        energyCost.text = card.energyCost.ToString();
+        cardData = card;
+        cardName.text = cardData.cardName;
+        energyCost.text = cardData.energyCost.ToString();
         //cardImage = card.cardImage;
-        cardDescription.text = card.GetFullDescription();
+        cardDescription.text = cardData.GetFullDescription();
+    }
+    public void CardHighlight(bool selectCard)
+    {
+        Debug.Log($"Card clicked: {cardName.text}");
     }
     //public void OnPointerClick(PointerEventData eventData)
     //{

@@ -45,6 +45,7 @@ public class BattleLogic
         player.SpendEnergy(card.energyCost);
         player.UseCard(card, CreateContext(card, target));
         player.Discard(card);
+        handManager.RemoveCardFromHand(card);
     }
 }
 
