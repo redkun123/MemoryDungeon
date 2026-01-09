@@ -9,5 +9,6 @@ public class AttackEffect : CardEffect
     public override void Execute(CardContext ctx)
     {
         ctx.target.TakeDamage(damage);
+        Debug.Log($"{ctx.target} took {damage} dmg");
     }
 }

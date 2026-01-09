@@ -42,6 +42,7 @@ public class BattleManager : MonoBehaviour
         isBattleEnd = false;
         this.player = player;
         player.hand = new List<Card>();
+        player.discard = new List<Card>();
         enemy = EnemyFactory.Create(enemyConfig);
     }
     public Enemy CreateEnemy()
@@ -57,7 +58,8 @@ public class BattleManager : MonoBehaviour
             return;
 
         isPlayerTurn = false;
-
+        player.DiscardAll();
+        handManager.RemoveAll();
         StartEnemyTurn();
     }
     private void StartEnemyTurn()

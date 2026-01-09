@@ -29,12 +29,23 @@ public class Player : Character
         {
             effect.Execute(context);
         }
+        Debug.Log($"Card {card.name} played");
     }
 
     public void Discard(Card card)
     {
         hand.Remove(card);
         discard.Add(card);
+        Debug.Log("Card discarded");
+    }
+    public void DiscardAll()
+    {
+        foreach (var card in hand)
+        {
+            hand.Remove(card);
+            discard.Add(card);
+            Debug.Log("Card discarded");
+        }
     }
     public void RestoreEnergy()
     {

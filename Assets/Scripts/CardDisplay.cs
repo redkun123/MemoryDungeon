@@ -7,9 +7,9 @@ using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI cardName;
-    [SerializeField] TextMeshProUGUI cardDescription;
-    [SerializeField] TextMeshProUGUI energyCost;
+    [SerializeField] public TextMeshProUGUI cardName;
+    [SerializeField] public TextMeshProUGUI cardDescription;
+    [SerializeField] public TextMeshProUGUI energyCost;
     public Card cardData;
     //[SerializeField] Sprite cardImage;
     //[SerializeField] TextMeshProUGUI cardType;
@@ -26,10 +26,5 @@ public class CardDisplay : MonoBehaviour
     {
         Debug.Log($"Card clicked: {cardName.text}");
     }
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    Debug.Log("Card clicked: " + card.cardName);
-    //    // gửi event cho BattleLogic / HandController
-    //}
 }
 

@@ -20,5 +20,6 @@ public class Character
         {
             OnHPChanged?.Invoke(currentHP, maxHP);
         }
+        Debug.Log($"{Name} lost {damage} HP");
     }
 }

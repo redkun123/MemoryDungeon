@@ -10,9 +10,10 @@ public class BattleLogic
     public Enemy enemy;
     public HandManager handManager;
     public int maxHandSize = 6;
-    public CardContext CreateContext(Card card, Character target)
+    public CardContext CreateContext(Card card, Enemy enemy)
     {
-        return new CardContext(player, target, card);
+        Debug.Log("Context created");
+        return new CardContext(player, enemy, card);
     }
     public void RefillHand(HandManager handManager, Player player)
     {
@@ -39,13 +40,15 @@ public class BattleLogic
         return true;
     }
 
-    public void PlayCard(Card card, Character target)
+    public void PlayCard(Card card, Enemy enemy)
     {
         if (!CanPlayCard(card)) return;
+        Debug.Log("Card validated");
+        CardContext ctx = CreateContext(card, enemy);
         player.SpendEnergy(card.energyCost);
-        player.UseCard(card, CreateContext(card, target));
+        Debug.Log("Energy spent");
+        player.UseCard(card, ctx);
         player.Discard(card);
-        handManager.RemoveCardFromHand(card);
     }
 }
 

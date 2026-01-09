@@ -35,8 +35,9 @@ public class CardController : MonoBehaviour
     public void CardConfirm()
     {
         if (selectedCardUI == null) return;
-        battleLogic.PlayCard(selectedCardData, battleManager.enemy);
         Debug.Log("Card confirmed");
+        battleLogic.PlayCard(selectedCardData, battleManager.enemy);
+        handManager.RemoveCardFromHand(selectedCardUI);
         ClearSelection();
     }
 
@@ -54,5 +55,6 @@ public class CardController : MonoBehaviour
         selectedCardUI.CardHighlight(false);
         selectedCardUI = null;
         selectedCardData = null;
+        Debug.Log("Card deselected");
     }
 }

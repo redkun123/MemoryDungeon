@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class HandManager : MonoBehaviour
 {
-    [SerializeField] private CardDisplay cardDefaultPrefab;
+    [SerializeField] private CardDisplay cardUI;
     [SerializeField] private Transform handArea;
     [SerializeField] public float spacing = 200f;
     List<Card> hand;
     List<CardDisplay> cardInHand = new();
-
-    private void Update()
-    {
-        //Delete when finish this feature
-        UpdateHandVisual();
-    }
 
     public void AddCardToHand(Player player)
     {
@@ -27,11 +21,23 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public void RemoveCardFromHand(Card card)
+    public void RemoveCardFromHand(CardDisplay cardUI)
     {
-        hand.Remove(card);
-        Debug.Log($"Card {card.cardName} go to discard pile");
+        Debug.Log("Trying to remove card");
+        cardInHand.Remove(cardUI);
+        Debug.Log($"Card {cardUI.cardName} go to discard pile");
         UpdateHandVisual();
+    }
+
+    public void RemoveAll()
+    {
+        Debug.Log("Trying to remove all card");
+        foreach (CardDisplay cardUI in cardInHand)
+        {
+            cardInHand.Remove(cardUI);
+            Debug.Log($"Card {cardUI.cardName} go to discard pile");
+            UpdateHandVisual();
+        }
     }
 
     public void UpdateHandVisual()
@@ -47,7 +53,7 @@ public class HandManager : MonoBehaviour
 
     public CardDisplay CreateCard(Card cardData)
     {
-        CardDisplay cardPrefab = Instantiate(cardDefaultPrefab, handArea);
+        CardDisplay cardPrefab = Instantiate(cardUI, handArea);
         cardPrefab.SetupCard(cardData);
         return cardPrefab;
     }
