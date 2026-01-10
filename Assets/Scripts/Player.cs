@@ -12,7 +12,8 @@ public class Player : Character
     public List<Card> hand;
     public List<Card> discard;
     public event Action<int, int> OnEnergyChanged;
-
+    public event Action<int> OnDeckChanged;
+    public event Action<int> OnDiscardChanged;
     public void SpendEnergy(int amount)
     {
         int oldEn = currentEnergy;
@@ -36,20 +37,24 @@ public class Player : Character
     {
         hand.Remove(card);
         discard.Add(card);
+        OnDiscardChanged?.Invoke(discard.Count);
         Debug.Log("Card discarded");
     }
     public void DiscardAll()
     {
-        foreach (var card in hand)
+        for (int i = hand.Count-1; i >= 0; i--)
         {
-            hand.Remove(card);
+            Card card = hand[i];
+            hand.RemoveAt(i);
             discard.Add(card);
+            OnDiscardChanged?.Invoke(discard.Count);
             Debug.Log("Card discarded");
         }
     }
-    public void RestoreEnergy()
+    public void RestoreEnergy(int maxEnergy)
     {
         this.currentEnergy = maxEnergy;
+        OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
     }
 
     public void DrawOne()
@@ -58,12 +63,15 @@ public class Player : Character
         if (deck.Count == 0) return;
         Card card = deck[0];
         deck.RemoveAt(0);
+        OnDeckChanged?.Invoke(deck.Count);
         hand.Add(card);
     }
     private void RefillDeck()
     {
         deck.AddRange(discard);
         discard.Clear();
+        OnDiscardChanged?.Invoke(discard.Count);
         deck.Shuffle();
+        OnDeckChanged?.Invoke(deck.Count);
     }
 }

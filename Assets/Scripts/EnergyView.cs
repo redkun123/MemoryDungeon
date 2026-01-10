@@ -21,6 +21,7 @@ public class EnergyView : MonoBehaviour
         player.OnEnergyChanged += energyCount.Set;
         energyBar.InitSet(player.currentEnergy, player.maxEnergy);
         energyCount.Set(player.currentEnergy, player.maxEnergy);
+        Debug.Log($"Energy view: {player.currentEnergy} / {player.maxEnergy}");
     }
 }
 

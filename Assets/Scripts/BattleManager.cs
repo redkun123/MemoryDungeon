@@ -17,7 +17,6 @@ public class BattleManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private EnemyView enemyViewPrefab;
-    [SerializeField] public EnergyView energyView;
 
     Player player;
     public Enemy enemy;
@@ -32,18 +31,16 @@ public class BattleManager : MonoBehaviour
         if (isBattleEnd) return;
         CheckGameResult();
     }
-    public EnergyView SetupEnergy()
-    {
-        return energyView;
-    }
+
     public void StartBattle(Player player)
     {
         isPlayerTurn = true;
         isBattleEnd = false;
         this.player = player;
+        Extensions.Shuffle(player.deck);
         player.hand = new List<Card>();
         player.discard = new List<Card>();
-        enemy = EnemyFactory.Create(enemyConfig);
+        enemy = CreateEnemy();
     }
     public Enemy CreateEnemy()
     {
@@ -76,8 +73,8 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Player turn started");
         isPlayerTurn = true;
-        player.RestoreEnergy();
-        Debug.Log("Energy refilled");
+        player.RestoreEnergy(player.maxEnergy);
+        Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         Debug.Log($"handManager = {handManager}");
         Debug.Log($"battleLogic = {battleLogic}");
         battleLogic.RefillHand(handManager, player);

@@ -14,6 +14,8 @@ public class BattleSceneController : MonoBehaviour
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private EnemyView enemyViewPrefab;
     [SerializeField] private EnergyView energyView;
+    [SerializeField] private DeckManager deckManager;
+    //[SerializeField] private DeckBattleUI deckBattleUI;
 
     private void Start()
     {
@@ -28,8 +30,9 @@ public class BattleSceneController : MonoBehaviour
         EnemyView enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);
         enemyView.Bind(enemy);
 
-        EnergyView energyView = gameManager.GetEnergy();
+
         energyView.Bind(player);
+        deckManager.Bind(player);
 
     }
 }

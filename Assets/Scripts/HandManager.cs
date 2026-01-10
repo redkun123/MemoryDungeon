@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HandManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class HandManager : MonoBehaviour
     {
         Debug.Log("Trying to remove card");
         cardInHand.Remove(cardUI);
+        Destroy(cardUI.gameObject);
         Debug.Log($"Card {cardUI.cardName} go to discard pile");
         UpdateHandVisual();
     }
@@ -32,12 +34,15 @@ public class HandManager : MonoBehaviour
     public void RemoveAll()
     {
         Debug.Log("Trying to remove all card");
-        foreach (CardDisplay cardUI in cardInHand)
+        for (int i = cardInHand.Count - 1; i >= 0; i--)
         {
-            cardInHand.Remove(cardUI);
+            CardDisplay cardUI = cardInHand[i];
+            cardInHand.RemoveAt(i);
             Debug.Log($"Card {cardUI.cardName} go to discard pile");
-            UpdateHandVisual();
+            Destroy(cardUI.gameObject);
         }
+        UpdateHandVisual();
+        Debug.Log("All card removed");
     }
 
     public void UpdateHandVisual()

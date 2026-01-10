@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed687ff37d1fdbf449c4f88362188d4a, type: 3}
   m_Name: Drago
   m_EditorClassIdentifier: 
-  maxHP: 200
-  moveSet: []
+  maxHP: 50
+  moveSet:
+  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
