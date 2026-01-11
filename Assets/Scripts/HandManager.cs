@@ -50,7 +50,7 @@ public class HandManager : MonoBehaviour
         int cardCount = cardInHand.Count;
         for (int i = 0; i < cardCount; i++)
         {
-            float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f) + 50f);
+            float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f));
             //float horizontalOffset = spacing * i;
             cardInHand[i].transform.localPosition = new Vector3(horizontalOffset, 0, 0);
         }

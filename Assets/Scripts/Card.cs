@@ -8,7 +8,7 @@ public class Card : ScriptableObject
 {
     public string cardName;
     public int energyCost;
-    public Sprite cardImage;
+    public Sprite cardSprite;
     public List<CardEffect> cardEffect;
     public CardType cardType;
     public enum CardType
