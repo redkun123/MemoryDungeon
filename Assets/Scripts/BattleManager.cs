@@ -17,30 +17,25 @@ public class BattleManager : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private PlayerView playerViewPrefab;
     [SerializeField] private EnemyView enemyViewPrefab;
+    [SerializeField] private WinLosePopup winLosePopup;
 
     Player player;
     public Enemy enemy;
     public BattleLogic battleLogic = new();
     [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
-    public bool isBattleEnd;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (isBattleEnd) return;
-        CheckGameResult();
-    }
 
     public void StartBattle(Player player)
     {
-        isPlayerTurn = true;
-        isBattleEnd = false;
         this.player = player;
         Extensions.Shuffle(player.deck);
         player.hand = new List<Card>();
         player.discard = new List<Card>();
         enemy = CreateEnemy();
+        player.Dies += CheckGameResult;
+        enemy.Dies += CheckGameResult;
+        isPlayerTurn = true;
     }
     public Enemy CreateEnemy()
     {
@@ -48,12 +43,7 @@ public class BattleManager : MonoBehaviour
     }
     public void EndPlayerTurn()
     {
-        if (isBattleEnd)
-            return;
-
-        if (!isPlayerTurn)
-            return;
-
+        if (!isPlayerTurn) return;
         isPlayerTurn = false;
         player.DiscardAll();
         handManager.RemoveAll();
@@ -61,13 +51,8 @@ public class BattleManager : MonoBehaviour
     }
     private void StartEnemyTurn()
     {
-        if (isBattleEnd) return;
         enemy.Attack(player);
-        CheckGameResult();
-        if (!isBattleEnd)
-        {
-            StartPlayerTurn();
-        }
+        StartPlayerTurn();
     }
     public void StartPlayerTurn()
     {
@@ -75,40 +60,30 @@ public class BattleManager : MonoBehaviour
         isPlayerTurn = true;
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
-        Debug.Log($"handManager = {handManager}");
-        Debug.Log($"battleLogic = {battleLogic}");
         battleLogic.RefillHand(handManager, player);
     }
-    public void CheckGameResult()
-    {
-        if (!player.isAlive || !enemy.isAlive)
-        {
-            isBattleEnd = true;
-            EndLevel();
-        }
-    }
 
-    public void EndLevel()
+    public void CheckGameResult()
     {
         if (!player.isAlive)
         {
             Lose();
         }
-        else if (!enemy.isAlive)
-        {
-            Win();
-        }
         else
         {
-            return;
+            Win();
         }
     }
     public void Lose()
     {
+        WinLosePopup popup = Instantiate(winLosePopup,new Vector3(0, 0, 0), Quaternion.identity);
+        popup.result.text = "GAME OVER";
         Debug.Log("You lost.");
     }
     public void Win()
     {
+        WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
+        popup.result.text = "YOU WIN!!!";
         Debug.Log("You win!");
     }
 }

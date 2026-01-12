@@ -10,6 +10,7 @@ public class Character
     public int maxHP;
     public int currentHP;
     public bool isAlive;
+    public event Action Dies;
     public event Action<int, int> OnHPChanged;
     public void TakeDamage(int damage)
     {
@@ -19,6 +20,11 @@ public class Character
         if (currentHP != oldHP)
         {
             OnHPChanged?.Invoke(currentHP, maxHP);
+        }
+        if (currentHP <= 0)
+        {
+            isAlive = false;
+            Dies?.Invoke();
         }
         Debug.Log($"{Name} lost {damage} HP");
     }
