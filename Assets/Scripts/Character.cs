@@ -28,4 +28,8 @@ public class Character
         }
         Debug.Log($"{Name} lost {damage} HP");
     }
+    public void GainGuard(int guard)
+    {
+        
+    }
 }

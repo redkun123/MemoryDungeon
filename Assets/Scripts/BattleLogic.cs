@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 using static UnityEngine.GraphicsBuffer;
 
 public class BattleLogic
@@ -10,11 +11,7 @@ public class BattleLogic
     public Enemy enemy;
     public HandManager handManager;
     public int maxHandSize = 6;
-    public CardContext CreateContext(Card card, Enemy enemy)
-    {
-        Debug.Log("Context created");
-        return new CardContext(player, enemy, card);
-    }
+
     public void RefillHand(HandManager handManager, Player player)
     {
         Debug.Log("Refill hand started");
@@ -43,11 +40,11 @@ public class BattleLogic
     public void PlayCard(Card card, Enemy enemy)
     {
         if (!CanPlayCard(card)) return;
-        Debug.Log("Card validated");
-        CardContext ctx = CreateContext(card, enemy);
+        Debug.Log("Card validated");     
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
-        player.UseCard(card, ctx);
+        CardManager cardManager = new CardManager(player, enemy, card);
+        cardManager.UseCard(card);
         player.Discard(card);
     }
 }

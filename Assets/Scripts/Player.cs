@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
+using static UnityEngine.EventSystems.EventTrigger;
+using static UnityEngine.GraphicsBuffer;
 
 public class Player : Character
 {
@@ -22,15 +25,6 @@ public class Player : Character
         {
             OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
         }
-    }
-
-    public void UseCard(Card card, CardContext context)
-    {
-        foreach (var effect in card.cardEffect)
-        {
-            effect.Execute(context);
-        }
-        Debug.Log($"Card {card.name} played");
     }
 
     public void Discard(Card card)

@@ -18,6 +18,7 @@ public class Card : ScriptableObject
         Setup,
         Feint
     }
+
     public string GetFullDescription()
     {
         List<string> listEffect = new List<string>();
