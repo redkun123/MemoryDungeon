@@ -51,7 +51,7 @@ public class BattleManager : MonoBehaviour
     }
     private void StartEnemyTurn()
     {
-        enemy.Attack(player);
+        battleLogic.EnemyActionPerTurn(enemy, player);
         StartPlayerTurn();
     }
     public void StartPlayerTurn()

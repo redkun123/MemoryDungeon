@@ -11,7 +11,7 @@ public static class EnemyFactory
         enemy.maxHP = config.maxHP;
         enemy.currentHP = config.maxHP;
         enemy.moveSet = new List<Card>(config.moveSet);
-
+        enemy.turnCount = 0;
         return enemy;
     }
 }

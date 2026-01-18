@@ -47,5 +47,20 @@ public class BattleLogic
         cardManager.UseCard(card);
         player.Discard(card);
     }
+    public void EnemyActionPerTurn(Enemy enemy, Player player)
+    {
+        Card card = enemy.moveSet[enemy.turnCount];
+        Debug.Log($"Enemy used {enemy.moveSet[enemy.turnCount]}");
+        CardManager cardManager = new CardManager(enemy, player, card);
+        cardManager.UseCard(card);
+        enemy.turnCount = EnemyConfigTurnCount(enemy);
+    }
+
+    public int EnemyConfigTurnCount(Enemy enemy)
+    {
+        enemy.turnCount++;
+        if (enemy.turnCount >= enemy.moveSet.Count) enemy.turnCount = 0;
+        return enemy.turnCount;
+    }
 }
 
