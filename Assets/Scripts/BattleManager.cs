@@ -24,6 +24,7 @@ public class BattleManager : MonoBehaviour
     public BattleLogic battleLogic = new();
     [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
+    public event Action OnPlayerTurn;
 
 
     public void StartBattle(Player player)
@@ -58,6 +59,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Player turn started");
         isPlayerTurn = true;
+        OnPlayerTurn?.Invoke();
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         battleLogic.RefillHand(handManager, player);

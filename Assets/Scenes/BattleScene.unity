@@ -1308,6 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 118024155}
+  battleManager: {fileID: 1531720434}
   playerSlot: {fileID: 764074764}
   enemySlot: {fileID: 1779533979}
   handArea: {fileID: 1156866014}

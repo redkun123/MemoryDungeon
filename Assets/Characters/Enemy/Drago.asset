@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 200
   moveSet:
-  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
+  - {fileID: 11400000, guid: 3382ef29ed54072478b9fae7934974f3, type: 2}
   - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
   - {fileID: 11400000, guid: cc123c88e1aa5ea4f88a52056540c799, type: 2}
+  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}

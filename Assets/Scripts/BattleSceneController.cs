@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BattleSceneController : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;    
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private BattleManager battleManager;
     [Header("Spawn Slots")]
     [SerializeField] private Transform playerSlot;
     [SerializeField] private Transform enemySlot;
@@ -28,7 +29,7 @@ public class BattleSceneController : MonoBehaviour
 
         // Spawn Enemy
         EnemyView enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);
-        enemyView.Bind(enemy);
+        enemyView.Bind(enemy, battleManager);
 
 
         energyView.Bind(player);
