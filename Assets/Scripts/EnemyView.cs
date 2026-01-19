@@ -9,6 +9,7 @@ public class EnemyView : MonoBehaviour
     [SerializeField] public EnemyIntention intention;
     [SerializeField] public HPBar hpBar;
     [SerializeField] private HPCount hpCount;
+    [SerializeField] private GameObject intentionPanel;
     //[SerializeField] public TextMeshProUGUI intentionText;
 
     public void Bind(Enemy enemy, BattleManager battleManager)
@@ -27,6 +28,7 @@ public class EnemyView : MonoBehaviour
         enemy.OnHPChanged += hpBar.Set;
         enemy.OnHPChanged += hpCount.Set;
         battleManager.OnPlayerTurn += OnPlayerTurnStarted;
+        battleManager.OnEnemyTurn += OnEnemyTurnStarted;
         UpdateUI();
     }
     void UpdateUI()
@@ -37,7 +39,12 @@ public class EnemyView : MonoBehaviour
     }
     private void OnPlayerTurnStarted()
     {
+        intentionPanel.SetActive(true);
         intention.ShowIntention(enemy);
-    }   
+    }
+    private void OnEnemyTurnStarted()
+    {
+        intentionPanel.SetActive(false);
+    }
 }
 

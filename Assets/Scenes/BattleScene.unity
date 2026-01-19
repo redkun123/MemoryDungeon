@@ -2346,6 +2346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handManager: {fileID: 1243430693}
+  battleSceneController: {fileID: 766343871}
   playerSlot: {fileID: 764074764}
   enemySlots: {fileID: 1779533979}
   handArea: {fileID: 1156866014}

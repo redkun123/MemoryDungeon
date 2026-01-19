@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
 {
     [Header("Battle Managers")]
     [SerializeField] private HandManager handManager;
+    [SerializeField] private BattleSceneController battleSceneController;
 
     [Header("Slots")]
     [SerializeField] private Transform playerSlot;
@@ -25,6 +26,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] EnemyConfig enemyConfig;
     public bool isPlayerTurn;
     public event Action OnPlayerTurn;
+    public event Action OnEnemyTurn;
 
 
     public void StartBattle(Player player)
@@ -36,7 +38,8 @@ public class BattleManager : MonoBehaviour
         enemy = CreateEnemy();
         player.Dies += CheckGameResult;
         enemy.Dies += CheckGameResult;
-        isPlayerTurn = true;
+        battleSceneController.BattleSceneStart();
+        StartPlayerTurn();
     }
     public Enemy CreateEnemy()
     {
@@ -52,6 +55,7 @@ public class BattleManager : MonoBehaviour
     }
     private void StartEnemyTurn()
     {
+        OnEnemyTurn.Invoke();
         battleLogic.EnemyActionPerTurn(enemy, player);
         StartPlayerTurn();
     }

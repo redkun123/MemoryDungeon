@@ -18,7 +18,7 @@ public class BattleSceneController : MonoBehaviour
     [SerializeField] private DeckManager deckManager;
     //[SerializeField] private DeckBattleUI deckBattleUI;
 
-    private void Start()
+    public void BattleSceneStart()
     {
         Player player = gameManager.GetPlayer();
         Enemy enemy = gameManager.GetEnemy();

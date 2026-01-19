@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        battleManager.StartPlayerTurn();
+        //battleManager.StartPlayerTurn();
     }
     public Player GetPlayer()
     {

@@ -486,6 +486,7 @@ MonoBehaviour:
   intention: {fileID: 6902639164668369339}
   hpBar: {fileID: 3108516747069044969}
   hpCount: {fileID: 6973952499809906473}
+  intentionPanel: {fileID: 9221891655562778613}
 --- !u!1 &6094104361722091557
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6195479873005320644
 RectTransform:
   m_ObjectHideFlags: 0
