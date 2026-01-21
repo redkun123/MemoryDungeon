@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,11 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         runManager.StartBattle();
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene("IntroScene");
     }
     private void Start()
     {
