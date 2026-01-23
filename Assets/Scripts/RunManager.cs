@@ -12,7 +12,7 @@ public class RunManager : MonoBehaviour
     {
         this.player = PlayerFactory.Create(playerConfig);
     }
-    public void StartBattle()
+    public void StartBattle(Enemy enemy)
     {
         CreatePLayer();
         battleManager.StartBattle(this.player);
