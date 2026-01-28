@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        runManager.StartBattle();
+        Enemy enemy = GetEnemy();
+        runManager.StartBattle(enemy);
     }
 
     public void NewGame()

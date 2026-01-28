@@ -20,4 +20,17 @@ public static class Extensions
         if (list.Count == 0) return string.Empty;
         return string.Join("\n", list.Select(x => $"{x}."));
     }
+    public static int PayGold(int currentGold, int requiredGold)
+    {
+        if (currentGold >= requiredGold)
+        {
+            currentGold = currentGold - requiredGold;
+            return currentGold;
+        }
+        else
+        {
+            Debug.Log("Not enough Gold");
+            return currentGold;
+        }
+    }
 }

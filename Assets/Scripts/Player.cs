@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +26,11 @@ public class Player : Character
             OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
         }
     }
+    public void RestoreHP(int amount) //Hồi máu
+    {
+        currentHP += amount;
+        currentHP = Math.Min(currentHP, maxHP);
+    }
 
     public void Discard(Card card)
     {
@@ -50,6 +55,7 @@ public class Player : Character
         this.currentEnergy = maxEnergy;
         OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
     }
+
 
     public void DrawOne()
     {

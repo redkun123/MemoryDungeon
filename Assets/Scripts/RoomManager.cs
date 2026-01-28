@@ -70,12 +70,12 @@ public class RoomManager
     {
         string sceneName = SceneMap.GetScene(chosenRoom.roomType);
         SceneManager.LoadScene(sceneName);
-        switch (chosenRoom.roomType)
-        {
-            case Room.RoomType.Battle:
-                LoadBattleRoom(chosenRoom);
-                break;
-        }
+        //switch (chosenRoom.roomType)
+        //{
+        //    case Room.RoomType.Battle:
+        //        LoadBattleRoom(chosenRoom);
+        //        break;
+        //}
     }
     public void LoadBattleRoom(RoomBattle chosenRoom)
     {
