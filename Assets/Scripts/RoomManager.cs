@@ -7,20 +7,21 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager
 {
-    [SerializeField] RunManager runManager;
-    [SerializeField] RoomDB roomDB;
-
+    RunManager runManager;
     public List<int> usedRoom = new();
     public event Action<Room> roomCompleted;
-    Room currentRoom;
-    public Room GetBattleRoom()
+    public RoomDB roomDB;
+    public Room currentRoom;
+    public RoomManager(RoomDB roomDB)
     {
-        Room room = null;
-        return room;
+        this.roomDB = roomDB;
+        Debug.Log("Room Manager created");
     }
     public Room ShowStartRoom()
     {
+        Debug.Log("ShowStartRoom CALLED");
         currentRoom = roomDB.startRoom;
+        Debug.Log("Start Room located");
         return currentRoom;
     }
     public Room ShowRestRoom()
@@ -73,7 +74,8 @@ public class RoomManager
         switch (chosenRoom.roomType)
         {
             case Room.RoomType.Battle:
-                LoadBattleRoom(chosenRoom);
+                RoomBattle roomBattle = (RoomBattle)chosenRoom;
+                LoadBattleRoom(roomBattle);
                 break;
         }
     }

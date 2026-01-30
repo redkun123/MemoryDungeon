@@ -6,10 +6,10 @@ public class Room : ScriptableObject
 {
     [SerializeField] public int roomID;
     [SerializeField] public string roomName;
-    public RoomType roomType;
-    public 
+    public virtual RoomType roomType => RoomType.None;
     public enum RoomType
     {
+        None,
         Rest,
         Shop,
         Story,
