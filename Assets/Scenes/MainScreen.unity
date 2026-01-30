@@ -735,6 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983936204}
+  - component: {fileID: 983936205}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -757,6 +758,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983936205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983936203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d2c021d7cd2664daeb5fd9cb8876a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runManagerPrefab: {fileID: 470335052913448723, guid: 01f2c7b4156fb8c46a7df16da3d67b48, type: 3}
+  playerConfig: {fileID: 11400000, guid: dbede78adca6ab143a7df95862e9a221, type: 2}
 --- !u!1 &984129775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1481,7 @@ GameObject:
   - component: {fileID: 1981178494}
   - component: {fileID: 1981178493}
   - component: {fileID: 1981178492}
+  - component: {fileID: 1981178495}
   m_Layer: 5
   m_Name: NewGameButton
   m_TagString: Untagged
@@ -1575,6 +1591,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981178490}
   m_CullTransparentMesh: 1
+--- !u!114 &1981178495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981178490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4aa722803f64d44b5145857204d387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _newGameButton: {fileID: 1981178492}
 --- !u!1 &1989865547
 GameObject:
   m_ObjectHideFlags: 0

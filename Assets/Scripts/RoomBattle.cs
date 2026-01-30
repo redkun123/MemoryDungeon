@@ -6,5 +6,5 @@ using UnityEngine;
 public class RoomBattle : Room
 {
     [SerializeField] public Enemy enemy;
-    public RoomType roomType = RoomType.Battle;
+    public override RoomType roomType => RoomType.Battle;
 }
