@@ -81,9 +81,10 @@ public class RunManager : MonoBehaviour
         enemy = battleManager.enemy;
     }
 
-    //public void UnregisterEnemy(Enemy e)
-    //{
-    //    if (enemy == e)
-    //        enemy = null;
-    //}
+    public void UnregisterEnemy(Enemy e, EnemyConfig ef)
+    {
+        if (enemy == e) enemy = null;
+        if (currentEnemy == ef) currentEnemy = null;
+        Debug.Log("Enemy unregistered");
+    }
 }

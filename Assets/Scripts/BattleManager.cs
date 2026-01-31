@@ -22,6 +22,7 @@ public class BattleManager : MonoBehaviour
 
     Player player;
     public Enemy enemy;
+    public EnemyConfig enemyConfig;
     public BattleLogic battleLogic = new();
 
     public bool isPlayerTurn;
@@ -31,10 +32,12 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         RunManager.Instance.RegisterBattleManager(this);
+        enemyConfig = RunManager.Instance.currentEnemy;
+        this.player = RunManager.Instance.player;
     }
     private void Start()
     {
-        StartBattle(RunManager.Instance.player, RunManager.Instance.currentEnemy);
+        StartBattle(player,enemyConfig);
     }
     private void OnDestroy()
     {
@@ -92,6 +95,9 @@ public class BattleManager : MonoBehaviour
         {
             Win();
         }
+        RunManager.Instance.UnregisterBattleScene(battleSceneController);
+        RunManager.Instance.UnregisterEnemy(enemy, enemyConfig);
+        RunManager.Instance.UnregisterBattleManager(this) ;
     }
     public void Lose()
     {
