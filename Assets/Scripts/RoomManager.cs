@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager
 {
-    RunManager runManager;
     public List<int> usedRoom = new();
     public event Action<Room> roomCompleted;
     public RoomDB roomDB;
@@ -69,6 +68,7 @@ public class RoomManager
     }
     public void EnterChosenRoom(Room chosenRoom)
     {
+        Debug.Log("Trying to enter chosen room");
         string sceneName = SceneMap.GetScene(chosenRoom.roomType);
         SceneManager.LoadScene(sceneName);
         switch (chosenRoom.roomType)
@@ -81,6 +81,9 @@ public class RoomManager
     }
     public void LoadBattleRoom(RoomBattle chosenRoom)
     {
-        runManager.StartBattle(chosenRoom.enemy);
+        Debug.Log("Loading battle");
+        //SceneManager.LoadScene("BattleScene");
+        //RunManager.Instance.RegisterBattleManager(bm);
+        RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
     }
 }

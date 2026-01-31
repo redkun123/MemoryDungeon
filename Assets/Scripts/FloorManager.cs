@@ -42,11 +42,6 @@ public class FloorManager
                 break;
         }
         floor++;
-        LoadCurrentRoom(currentRoom);
-    }
-    public void LoadCurrentRoom(Room chosenRoom)
-    {
-        SceneManager.LoadScene("BattleScene");
-
+        roomManager.EnterChosenRoom(currentRoom);
     }
 }

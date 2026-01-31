@@ -2,15 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class RunManager : MonoBehaviour
 {
+    public static RunManager Instance;
     public Player player;
+    public Enemy enemy;
+    public EnemyConfig currentEnemy;
     public RoomManager roomManager { get; private set; }
     [SerializeField] RoomDB roomDB;
-    public BattleSceneController battleSceneController;
+    public BattleSceneController battleSceneController { get; private set; }
+    public BattleManager battleManager { get; private set; }
     public RunData run { get; private set; }
     public RunManager runManager { get; private set; }
 
+    public void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     public void Init(GameData data)
     {
         run = new RunData(data);
@@ -20,10 +35,11 @@ public class RunManager : MonoBehaviour
     {
         this.player = PlayerFactory.Create(GameManager.Instance.playerConfig);
     }
-    public void StartBattle(Enemy enemy)
+    public void StartBattle(EnemyConfig enemycf)
     {
-        BattleManager battleManager = new BattleManager();
-        battleManager.StartBattle(player);
+        //Debug.Log("Trying to start battle");
+        //battleManager.StartBattle(player, enemycf);
+        currentEnemy = enemycf;
     }
     public void StartRun()
     {
@@ -38,4 +54,36 @@ public class RunManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void RegisterBattleScene(BattleSceneController controller)
+    {
+        battleSceneController = controller;
+        Debug.Log("Battle Scene Controller registered");
+    }
+
+    public void UnregisterBattleScene(BattleSceneController controller)     
+    {
+        if (battleSceneController == controller)
+            battleSceneController = null;
+    }
+    public void RegisterBattleManager(BattleManager bm)
+    {
+        battleManager = bm;
+        Debug.Log("Battle Manager registered");
+    }
+
+    public void UnregisterBattleManager(BattleManager bm)
+    {
+        if (battleManager == bm)
+            battleManager = null;
+    }
+    public void GetEnemy()
+    {
+        enemy = battleManager.enemy;
+    }
+
+    //public void UnregisterEnemy(Enemy e)
+    //{
+    //    if (enemy == e)
+    //        enemy = null;
+    //}
 }
