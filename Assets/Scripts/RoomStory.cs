@@ -5,6 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Room/Story Room")]
 public class RoomStory : Room
 {
-    [SerializeField] Enemy enemy;
-    public RoomType roomType = RoomType.Story;
+    public override RoomType roomType => RoomType.Story;
 }

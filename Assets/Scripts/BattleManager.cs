@@ -110,5 +110,6 @@ public class BattleManager : MonoBehaviour
         WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "YOU WIN!!!";
         Debug.Log("You win!");
+        RunManager.Instance.RoomComplete();
     }
 }

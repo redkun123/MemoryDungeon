@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -39,6 +39,9 @@ public class FloorManager
                 break;
             default:
                 //currentRoom = roomManager.ShowRandomRoom();
+                //Tạm
+                currentRoom = roomManager.ShowStartRoom();
+                Debug.Log("Start room located");
                 break;
         }
         floor++;

@@ -22,7 +22,6 @@ public class BattleSceneController : MonoBehaviour
     private void Awake()
     {
         RunManager.Instance.RegisterBattleScene(this);
-
     }
 
     private void OnDestroy()

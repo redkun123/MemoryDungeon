@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(1)]
 public class RunManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class RunManager : MonoBehaviour
     public Enemy enemy;
     public EnemyConfig currentEnemy;
     public RoomManager roomManager { get; private set; }
+    public FloorManager floorManager { get; private set; }
     [SerializeField] RoomDB roomDB;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
@@ -37,16 +39,16 @@ public class RunManager : MonoBehaviour
     }
     public void StartBattle(EnemyConfig enemycf)
     {
-        //Debug.Log("Trying to start battle");
-        //battleManager.StartBattle(player, enemycf);
+        Debug.Log("Trying to start battle");
         currentEnemy = enemycf;
     }
     public void StartRun()
     {
         CreatePLayer();
-        RoomManager roomManager = new RoomManager(roomDB);
-        FloorManager floorManager = new FloorManager();
+        roomManager = new RoomManager(roomDB);
+        floorManager = new FloorManager();
         Debug.Log("Floor Manager created");
+        //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager);
     }
@@ -86,5 +88,16 @@ public class RunManager : MonoBehaviour
         if (enemy == e) enemy = null;
         if (currentEnemy == ef) currentEnemy = null;
         Debug.Log("Enemy unregistered");
+    }
+    public void RoomComplete()
+    {
+        //roomManager.RoomComplete();
+        //roomManager.ShowLobby();
+        SceneManager.LoadScene("LobbyScene");
+    }
+    public void InitNextRoom()
+    {
+        Debug.Log("Loading next room");
+        floorManager.RoomOption();
     }
 }

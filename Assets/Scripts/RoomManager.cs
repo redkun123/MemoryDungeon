@@ -8,13 +8,23 @@ using UnityEngine.SceneManagement;
 public class RoomManager
 {
     public List<int> usedRoom = new();
-    public event Action<Room> roomCompleted;
+    public event Action<Room> RoomCompleted;
     public RoomDB roomDB;
     public Room currentRoom;
     public RoomManager(RoomDB roomDB)
     {
         this.roomDB = roomDB;
         Debug.Log("Room Manager created");
+    }
+    public void RoomComplete()
+    {
+        //ClearChosenRoom(currentRoom);
+        //RoomCompleted.Invoke(currentRoom);
+        ShowLobby();
+    }
+    public void ShowLobby()
+    {
+        SceneManager.LoadScene("LobbyScene");
     }
     public Room ShowStartRoom()
     {
@@ -48,7 +58,6 @@ public class RoomManager
         roomPool.AddRange(roomDB.normalRoom);
         roomPool.Add(roomDB.restRoom);
         roomPool.Add(roomDB.shopRoom);
-        //roomPool.RemoveRange(usedRoom);
         Extensions.Shuffle(roomPool);
         List<Room> temp = new();
         for (int i = 0; i <= 2; i++)
@@ -82,8 +91,21 @@ public class RoomManager
     public void LoadBattleRoom(RoomBattle chosenRoom)
     {
         Debug.Log("Loading battle");
-        //SceneManager.LoadScene("BattleScene");
-        //RunManager.Instance.RegisterBattleManager(bm);
         RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+    }
+    public void LoadShopRoom(RoomShop chosenRoom)
+    {
+        //Debug.Log("Loading battle");
+        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+    }
+    public void LoadRestRoom(RoomRest chosenRoom)
+    {
+        //Debug.Log("Loading battle");
+        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+    }
+    public void LoadStoryRoom(RoomStory chosenRoom)
+    {
+        //Debug.Log("Loading battle");
+        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
     }
 }
