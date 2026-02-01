@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,14 @@ using UnityEngine.SceneManagement;
 public class RunManager : MonoBehaviour
 {
     public static RunManager Instance;
+    public int temp;
     public Player player;
     public Enemy enemy;
     public EnemyConfig currentEnemy;
     public RoomManager roomManager { get; private set; }
     public FloorManager floorManager { get; private set; }
     [SerializeField] RoomDB roomDB;
+    [SerializeField] RoomRest roomRest;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
     public RunData run { get; private set; }
@@ -99,5 +102,19 @@ public class RunManager : MonoBehaviour
     {
         Debug.Log("Loading next room");
         floorManager.RoomOption();
+    }
+    public void Rest()
+    {
+        Extensions.PayGold(player.gold, roomRest.healCost);
+        int healHP = Convert.ToInt32(Math.Round((player.currentHP * roomRest.healAmount)));
+        player.RestoreHP(healHP);
+        //RoomCompleted?.Invoke(this);
+        RoomComplete();
+    }
+    public void BindRandomRoom(int roomTempID)
+    {
+        temp = roomTempID;
+        Debug.Log("Room Binded");
+        InitNextRoom();
     }
 }

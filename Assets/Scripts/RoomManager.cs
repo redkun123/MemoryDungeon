@@ -1,14 +1,15 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RoomManager
 {
     public List<int> usedRoom = new();
-    public event Action<Room> RoomCompleted;
+    public List<Room> randRoom;
     public RoomDB roomDB;
     public Room currentRoom;
     public RoomManager(RoomDB roomDB)
@@ -18,8 +19,7 @@ public class RoomManager
     }
     public void RoomComplete()
     {
-        //ClearChosenRoom(currentRoom);
-        //RoomCompleted.Invoke(currentRoom);
+        ClearChosenRoom(currentRoom);
         ShowLobby();
     }
     public void ShowLobby()
@@ -48,25 +48,43 @@ public class RoomManager
         currentRoom = roomDB.finalbossRoom;
         return currentRoom;
     }
-    public List<Room> ShowRandomRoom()
+    public Room ShowRandomRoom()
     {
+        currentRoom = randRoom[RunManager.Instance.temp];
+        ClearTempList();
+        return currentRoom;
+    }
+    public void SpawnRandomRoom()
+    {
+        Debug.Log("Spawning room");
         List<Room> roomPool = new();
-        for (int i = 0; i < usedRoom.Count; i++)
+        if (usedRoom != null)
         {
-            roomDB.normalRoom.RemoveAt(usedRoom[i]);
+            Debug.Log("Used rooms removed");
+            for (int i = 0; i < usedRoom.Count; i++)
+            {
+                roomDB.normalRoom.RemoveAt(usedRoom[i]);
+            }
+        }
+        for (int i = 0; i < roomDB.normalRoom.Count; i++)
+        {
+            Debug.Log($"All room: {roomDB.normalRoom[i].roomName}");
         }
         roomPool.AddRange(roomDB.normalRoom);
         roomPool.Add(roomDB.restRoom);
         roomPool.Add(roomDB.shopRoom);
+        Debug.Log("Room pool created");
+        for (int i = 0; i < roomPool.Count; i++)
+        {
+            Debug.Log($"Room pool: {roomPool[i].roomName}");
+        }
         Extensions.Shuffle(roomPool);
-        List<Room> temp = new();
         for (int i = 0; i <= 2; i++)
         {
-            temp.Add(roomPool[i]);
+            randRoom.Add(roomPool[i]);
         }
-        return temp;
+        Debug.Log("Room pool finished");
     }
-
     public void ClearChosenRoom(Room chosenRoom)
     {
         if (chosenRoom.roomType == Room.RoomType.Story || chosenRoom.roomType == Room.RoomType.Battle)
@@ -74,6 +92,10 @@ public class RoomManager
             usedRoom.Add(chosenRoom.roomID);
         }
         else return;
+    }
+    public void ClearTempList()
+    {
+        randRoom.Clear();
     }
     public void EnterChosenRoom(Room chosenRoom)
     {
@@ -86,6 +108,18 @@ public class RoomManager
                 RoomBattle roomBattle = (RoomBattle)chosenRoom;
                 LoadBattleRoom(roomBattle);
                 break;
+            case Room.RoomType.Story:
+                RoomStory roomStory = (RoomStory)chosenRoom;
+                LoadStoryRoom(roomStory);
+                break;
+            case Room.RoomType.Shop:
+                RoomShop roomShop = (RoomShop)chosenRoom;
+                LoadShopRoom(roomShop);
+                break;
+            case Room.RoomType.Rest:
+                RoomRest roomRest = (RoomRest)chosenRoom;
+                LoadRestRoom(roomRest);
+                break;
         }
     }
     public void LoadBattleRoom(RoomBattle chosenRoom)
@@ -95,17 +129,14 @@ public class RoomManager
     }
     public void LoadShopRoom(RoomShop chosenRoom)
     {
-        //Debug.Log("Loading battle");
-        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+        Debug.Log("Loading shop");
     }
     public void LoadRestRoom(RoomRest chosenRoom)
     {
-        //Debug.Log("Loading battle");
-        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+        Debug.Log("Loading hotel");
     }
     public void LoadStoryRoom(RoomStory chosenRoom)
     {
-        //Debug.Log("Loading battle");
-        //RunManager.Instance.StartBattle(chosenRoom.enemyConfig);
+        Debug.Log("Loading story");
     }
 }

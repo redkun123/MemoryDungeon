@@ -8,15 +8,13 @@ using static Room;
 public class RestButton : MonoBehaviour
 {
     public Button _restButton;
-    public Player player;
     public RoomRest roomRest;
-    [SerializeField] int healCost;
     public void Awake()
     {
         _restButton.onClick.AddListener(Rest);
     }
     public void Rest()
     {
-        //roomRest.
+        RunManager.Instance.Rest();
     }
 }

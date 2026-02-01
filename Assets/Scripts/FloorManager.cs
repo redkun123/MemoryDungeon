@@ -38,9 +38,8 @@ public class FloorManager
                 Debug.Log("Final room located");
                 break;
             default:
-                //currentRoom = roomManager.ShowRandomRoom();
-                //Tạm
-                currentRoom = roomManager.ShowStartRoom();
+                roomManager.SpawnRandomRoom();
+                currentRoom = roomManager.ShowRandomRoom();
                 Debug.Log("Start room located");
                 break;
         }
