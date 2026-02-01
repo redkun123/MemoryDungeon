@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(1)]
 public class BattleSceneController : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
@@ -18,10 +19,20 @@ public class BattleSceneController : MonoBehaviour
     [SerializeField] private DeckManager deckManager;
     //[SerializeField] private DeckBattleUI deckBattleUI;
 
+    private void Awake()
+    {
+        RunManager.Instance.RegisterBattleScene(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (RunManager.Instance != null)
+            RunManager.Instance.UnregisterBattleScene(this);
+    }
     public void BattleSceneStart()
     {
-        Player player = gameManager.GetPlayer();
-        Enemy enemy = gameManager.GetEnemy();
+        Player player = RunManager.Instance.player;
+        Enemy enemy = RunManager.Instance.enemy;
 
         // Spawn Player
         PlayerView playerView = Instantiate(playerViewPrefab,playerSlot.position,Quaternion.identity,playerSlot);

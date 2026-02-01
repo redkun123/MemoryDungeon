@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomID: 1
   roomName: Drago
-  roomType: 3
+  enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}

@@ -22,28 +22,44 @@ public class BattleManager : MonoBehaviour
 
     Player player;
     public Enemy enemy;
+    public EnemyConfig enemyConfig;
     public BattleLogic battleLogic = new();
-    [SerializeField] EnemyConfig enemyConfig;
+
     public bool isPlayerTurn;
     public event Action OnPlayerTurn;
     public event Action OnEnemyTurn;
 
-
-    public void StartBattle(Player player)
+    private void Awake()
+    {
+        RunManager.Instance.RegisterBattleManager(this);
+        enemyConfig = RunManager.Instance.currentEnemy;
+        this.player = RunManager.Instance.player;
+    }
+    private void Start()
+    {
+        StartBattle(player,enemyConfig);
+    }
+    private void OnDestroy()
+    {
+        if (RunManager.Instance != null)
+            RunManager.Instance.UnregisterBattleManager(this);
+    }
+    public void StartBattle(Player player, EnemyConfig enemycf)
     {
         this.player = player;
         Extensions.Shuffle(player.deck);
         player.hand = new List<Card>();
         player.discard = new List<Card>();
-        enemy = CreateEnemy();
+        enemy = CreateEnemy(enemycf);
+        RunManager.Instance.GetEnemy();
         player.Dies += CheckGameResult;
         enemy.Dies += CheckGameResult;
         battleSceneController.BattleSceneStart();
         StartPlayerTurn();
     }
-    public Enemy CreateEnemy()
+    public Enemy CreateEnemy(EnemyConfig enemycf)
     {
-        return enemy = EnemyFactory.Create(enemyConfig);
+        return enemy = EnemyFactory.Create(enemycf);
     }
     public void EndPlayerTurn()
     {
@@ -79,6 +95,9 @@ public class BattleManager : MonoBehaviour
         {
             Win();
         }
+        RunManager.Instance.UnregisterBattleScene(battleSceneController);
+        RunManager.Instance.UnregisterEnemy(enemy, enemyConfig);
+        RunManager.Instance.UnregisterBattleManager(this) ;
     }
     public void Lose()
     {
@@ -91,5 +110,6 @@ public class BattleManager : MonoBehaviour
         WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "YOU WIN!!!";
         Debug.Log("You win!");
+        RunManager.Instance.RoomComplete();
     }
 }
