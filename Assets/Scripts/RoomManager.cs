@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager
 {
-    public List<int> usedRoom = new();
-    public List<Room> randRoom;
+    public List<int> usedRoomID = new();
+    public List<Room> randRoom = new();
     public RoomDB roomDB;
     public Room currentRoom;
     public RoomManager(RoomDB roomDB)
@@ -58,38 +58,35 @@ public class RoomManager
     {
         Debug.Log("Spawning room");
         List<Room> roomPool = new();
-        if (usedRoom != null)
-        {
-            Debug.Log("Used rooms removed");
-            for (int i = 0; i < usedRoom.Count; i++)
-            {
-                roomDB.normalRoom.RemoveAt(usedRoom[i]);
-            }
-        }
-        for (int i = 0; i < roomDB.normalRoom.Count; i++)
-        {
-            Debug.Log($"All room: {roomDB.normalRoom[i].roomName}");
-        }
         roomPool.AddRange(roomDB.normalRoom);
+        if (usedRoomID != null)
+        {
+            roomPool.RemoveAll(room => usedRoomID.Contains(room.roomID));
+            Debug.Log("Used rooms removed");
+        }
         roomPool.Add(roomDB.restRoom);
         roomPool.Add(roomDB.shopRoom);
         Debug.Log("Room pool created");
-        for (int i = 0; i < roomPool.Count; i++)
-        {
-            Debug.Log($"Room pool: {roomPool[i].roomName}");
-        }
         Extensions.Shuffle(roomPool);
-        for (int i = 0; i <= 2; i++)
+        Debug.Log($"Số phòng trong pool: {roomPool.Count}");
+        if (roomPool.Count < 3)
         {
-            randRoom.Add(roomPool[i]);
+            Debug.LogError("Not enough rooms in pool");
+            return;
         }
+        for (int j = roomPool.Count - 1; j > 2; j--)
+        {
+            roomPool.RemoveAt(j);
+        }
+        Debug.Log($"Số phòng trong room pool còn: {roomPool.Count}");
+        randRoom.AddRange(roomPool);
         Debug.Log("Room pool finished");
     }
     public void ClearChosenRoom(Room chosenRoom)
     {
         if (chosenRoom.roomType == Room.RoomType.Story || chosenRoom.roomType == Room.RoomType.Battle)
         {
-            usedRoom.Add(chosenRoom.roomID);
+            usedRoomID.Add(chosenRoom.roomID);
         }
         else return;
     }

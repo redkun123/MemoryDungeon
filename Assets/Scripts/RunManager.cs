@@ -95,7 +95,7 @@ public class RunManager : MonoBehaviour
     public void RoomComplete()
     {
         //roomManager.RoomComplete();
-        //roomManager.ShowLobby();
+        roomManager.SpawnRandomRoom();
         SceneManager.LoadScene("LobbyScene");
     }
     public void InitNextRoom()
@@ -116,5 +116,9 @@ public class RunManager : MonoBehaviour
         temp = roomTempID;
         Debug.Log("Room Binded");
         InitNextRoom();
+    }
+    public string DisplayRoomName(int roomTempID)
+    {
+        return roomManager.randRoom[roomTempID].roomName;
     }
 }

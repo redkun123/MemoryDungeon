@@ -14,6 +14,7 @@ public static class Extensions
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
+        Debug.Log("Shuffling");
     }
     public static string Concatenate(this List<string> list)
     {

@@ -23,9 +23,10 @@ public class BattleManager : MonoBehaviour
     Player player;
     public Enemy enemy;
     public EnemyConfig enemyConfig;
-    public BattleLogic battleLogic = new();
+    public BattleLogic battleLogic;
 
     public bool isPlayerTurn;
+    public bool battleEnded;
     public event Action OnPlayerTurn;
     public event Action OnEnemyTurn;
 
@@ -46,14 +47,17 @@ public class BattleManager : MonoBehaviour
     }
     public void StartBattle(Player player, EnemyConfig enemycf)
     {
+        battleEnded = false;
+        battleLogic = new();
+        battleLogic.Register(this);
         this.player = player;
         Extensions.Shuffle(player.deck);
         player.hand = new List<Card>();
         player.discard = new List<Card>();
         enemy = CreateEnemy(enemycf);
         RunManager.Instance.GetEnemy();
-        player.Dies += CheckGameResult;
-        enemy.Dies += CheckGameResult;
+        player.Dies += EndBattle;
+        enemy.Dies += EndBattle;
         battleSceneController.BattleSceneStart();
         StartPlayerTurn();
     }
@@ -72,7 +76,15 @@ public class BattleManager : MonoBehaviour
     private void StartEnemyTurn()
     {
         OnEnemyTurn.Invoke();
+        if (battleEnded)
+        {
+            CheckGameResult();
+        }
         battleLogic.EnemyActionPerTurn(enemy, player);
+        if (battleEnded)
+        {
+            CheckGameResult();
+        }
         StartPlayerTurn();
     }
     public void StartPlayerTurn()
@@ -80,6 +92,10 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Player turn started");
         isPlayerTurn = true;
         OnPlayerTurn?.Invoke();
+        if (battleEnded)
+        {
+            CheckGameResult();
+        }
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         battleLogic.RefillHand(handManager, player);
@@ -98,6 +114,10 @@ public class BattleManager : MonoBehaviour
         RunManager.Instance.UnregisterBattleScene(battleSceneController);
         RunManager.Instance.UnregisterEnemy(enemy, enemyConfig);
         RunManager.Instance.UnregisterBattleManager(this) ;
+    }
+    public void EndBattle()
+    {
+        battleEnded = true;
     }
     public void Lose()
     {
