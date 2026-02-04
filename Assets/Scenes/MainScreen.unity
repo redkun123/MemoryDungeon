@@ -151,7 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ad4f685ac27f94c87d7d7440db974c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temp: 0
+  currentEnemy: {fileID: 0}
   roomDB: {fileID: 11400000, guid: f41041e04aaa44e499517362f02ad39f, type: 2}
+  roomRest: {fileID: 0}
 --- !u!4 &88786095
 Transform:
   m_ObjectHideFlags: 0
@@ -815,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d2c021d7cd2664daeb5fd9cb8876a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusBarPrefab: {fileID: 3858914306380151515, guid: 4c6e5b4d93eed1d46b491b9f0fe4346f, type: 3}
   runManagerPrefab: {fileID: 470335052913448723, guid: 01f2c7b4156fb8c46a7df16da3d67b48, type: 3}
   playerConfig: {fileID: 11400000, guid: dbede78adca6ab143a7df95862e9a221, type: 2}
 --- !u!1 &984129775

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy/Config")]
 public class EnemyConfig : ScriptableObject
 {
+    public string charName;
     public int maxHP;
     public List<Card> moveSet;
 }

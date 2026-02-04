@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Character
 {
-    public string Name;
+    public string name;
     public int maxHP;
     public int currentHP;
     public bool isAlive;
@@ -26,7 +26,7 @@ public class Character
             isAlive = false;
             Dies?.Invoke();
         }
-        Debug.Log($"{Name} lost {damage} HP");
+        Debug.Log($"{name} lost {damage} HP");
     }
     public void GainGuard(int guard)
     {

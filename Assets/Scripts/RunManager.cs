@@ -20,6 +20,7 @@ public class RunManager : MonoBehaviour
     public BattleManager battleManager { get; private set; }
     public RunData run { get; private set; }
     public RunManager runManager { get; private set; }
+    public StatusBar statusBar { get; private set; }
 
     public void Awake()
     {
@@ -51,6 +52,7 @@ public class RunManager : MonoBehaviour
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
         Debug.Log("Floor Manager created");
+        UpdateStatusBar(player, floorManager.floor);
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager);
@@ -59,13 +61,21 @@ public class RunManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+    public void RegisterStatusBar(StatusBar sB)
+    {
+        statusBar = sB;
+    }
+    public void UpdateStatusBar(Player player, int currentFloor)
+    {
+        statusBar.UpdateStatus(player, currentFloor);
+    }
     public void RegisterBattleScene(BattleSceneController controller)
     {
         battleSceneController = controller;
         Debug.Log("Battle Scene Controller registered");
     }
 
-    public void UnregisterBattleScene(BattleSceneController controller)     
+    public void UnregisterBattleScene(BattleSceneController controller)
     {
         if (battleSceneController == controller)
             battleSceneController = null;
