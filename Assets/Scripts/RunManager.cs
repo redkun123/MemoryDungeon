@@ -18,7 +18,7 @@ public class RunManager : MonoBehaviour
     [SerializeField] RoomRest roomRest;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
-    public RunData run { get; private set; }
+    public SaveData run { get; private set; }
     public RunManager runManager { get; private set; }
     public StatusBar statusBar { get; private set; }
 
@@ -32,11 +32,11 @@ public class RunManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    public void Init(GameData data)
-    {
-        run = new RunData(data);
-        StartRun();
-    }
+    //public void Init(SaveSystem data)
+    //{
+    //    run = new SaveData(data);
+    //    StartRun();
+    //}
     public void CreatePLayer()
     {
         this.player = PlayerFactory.Create(GameManager.Instance.playerConfig);
@@ -52,7 +52,8 @@ public class RunManager : MonoBehaviour
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
         Debug.Log("Floor Manager created");
-        UpdateStatusBar(player, floorManager.floor);
+        
+        UpdateStatusBar();
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager);
@@ -65,9 +66,14 @@ public class RunManager : MonoBehaviour
     {
         statusBar = sB;
     }
-    public void UpdateStatusBar(Player player, int currentFloor)
+    public void UpdateStatusBar()
     {
+        int currentFloor = floorManager.floor;
         statusBar.UpdateStatus(player, currentFloor);
+    }
+    public void RegisterStatusBar()
+    {
+
     }
     public void RegisterBattleScene(BattleSceneController controller)
     {

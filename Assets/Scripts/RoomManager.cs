@@ -119,6 +119,12 @@ public class RoomManager
                 break;
         }
     }
+    public void ShowCurrentRoom(int currentRoomID)
+    {
+        //currentRoom = roomDB[currentRoomID];
+        //Cần làm list room theo ID
+        EnterChosenRoom(currentRoom);
+    }
     public void LoadBattleRoom(RoomBattle chosenRoom)
     {
         Debug.Log("Loading battle");

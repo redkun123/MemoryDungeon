@@ -44,6 +44,7 @@ public class FloorManager
                 break;
         }
         floor++;
+        RunManager.Instance.UpdateStatusBar();
         roomManager.EnterChosenRoom(currentRoom);
     }
 }
