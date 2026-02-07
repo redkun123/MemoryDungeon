@@ -51,6 +51,8 @@ public class BattleManager : MonoBehaviour
         battleLogic = new();
         battleLogic.Register(this);
         this.player = player;
+        player.deck = new();
+        player.deck.AddRange(player.trueDeck);
         Extensions.Shuffle(player.deck);
         player.hand = new List<Card>();
         player.discard = new List<Card>();

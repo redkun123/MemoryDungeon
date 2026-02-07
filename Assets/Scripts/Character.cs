@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Character
 {
@@ -11,7 +12,7 @@ public class Character
     public int currentHP;
     public bool isAlive;
     public event Action Dies;
-    public event Action<int, int> OnHPChanged;
+    public event Action<int, int> OnHPChange;
     public void TakeDamage(int damage)
     {
         int oldHP = currentHP;
@@ -19,7 +20,7 @@ public class Character
         currentHP = Math.Max(currentHP, 0);
         if (currentHP != oldHP)
         {
-            OnHPChanged?.Invoke(currentHP, maxHP);
+            OnHPChange?.Invoke(currentHP, maxHP);
         }
         if (currentHP <= 0)
         {
@@ -28,6 +29,7 @@ public class Character
         }
         Debug.Log($"{name} lost {damage} HP");
     }
+
     public void GainGuard(int guard)
     {
         

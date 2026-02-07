@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -11,12 +12,15 @@ public class Player : Character
     public int maxEnergy;
     public int currentEnergy;
     public int gold;
+    public List<Card> trueDeck;
     public List<Card> deck;
     public List<Card> hand;
     public List<Card> discard;
     public event Action<int, int> OnEnergyChanged;
-    public event Action<int> OnDeckChanged;
+    public event Action<int> OnDeckChange;
+    public event Action<int> OnTrueDeckChange;
     public event Action<int> OnDiscardChanged;
+    public event Action<int> OnGoldChange;
     public void SpendEnergy(int amount)
     {
         int oldEn = currentEnergy;
@@ -41,7 +45,7 @@ public class Player : Character
     }
     public void DiscardAll()
     {
-        for (int i = hand.Count-1; i >= 0; i--)
+        for (int i = hand.Count - 1; i >= 0; i--)
         {
             Card card = hand[i];
             hand.RemoveAt(i);
@@ -63,7 +67,7 @@ public class Player : Character
         if (deck.Count == 0) return;
         Card card = deck[0];
         deck.RemoveAt(0);
-        OnDeckChanged?.Invoke(deck.Count);
+        OnDeckChange?.Invoke(deck.Count);
         hand.Add(card);
     }
     private void RefillDeck()
@@ -72,6 +76,6 @@ public class Player : Character
         discard.Clear();
         OnDiscardChanged?.Invoke(discard.Count);
         deck.Shuffle();
-        OnDeckChanged?.Invoke(deck.Count);
+        OnDeckChange?.Invoke(deck.Count);
     }
 }

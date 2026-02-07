@@ -16,7 +16,7 @@ public class DeckManager : MonoBehaviour
     }
     public void UpdateDeckCount()
     {
-        player.OnDeckChanged += deckBattleUI.Set;
+        player.OnDeckChange += deckBattleUI.Set;
         deckBattleUI.Set(player.deck.Count);
     }
     public void UpdateDiscardCount()

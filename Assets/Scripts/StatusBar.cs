@@ -24,7 +24,7 @@ public class StatusBar : MonoBehaviour
         playerName.text = $"{player.name}";
         playerHP.text = $"{player.currentHP} / {player.maxHP}";
         playerGold.text = $"{player.gold}";
-        deckCount.text = $"{player.deck.Count}";
+        deckCount.text = $"{player.trueDeck.Count}";
         floor.text = $"Floor {currentFloor}";
     }
 }

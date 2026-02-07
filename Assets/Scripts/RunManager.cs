@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,7 +22,6 @@ public class RunManager : MonoBehaviour
     public SaveData run { get; private set; }
     public RunManager runManager { get; private set; }
     public StatusBar statusBar { get; private set; }
-
     public void Awake()
     {
         if (Instance != null)
@@ -52,7 +52,7 @@ public class RunManager : MonoBehaviour
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
         Debug.Log("Floor Manager created");
-        
+        RegisterStatusBar();
         UpdateStatusBar();
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
@@ -71,9 +71,23 @@ public class RunManager : MonoBehaviour
         int currentFloor = floorManager.floor;
         statusBar.UpdateStatus(player, currentFloor);
     }
+    public void UpdateStatusHP(int oldHP, int newHP)
+    {
+        UpdateStatusBar();
+    }
+    public void UpdateStatusGold(int gold)
+    {
+        UpdateStatusBar();
+    }
+    public void UpdateStatusDeck(int deckCount)
+    {
+        UpdateStatusBar();
+    }
     public void RegisterStatusBar()
     {
-
+        player.OnHPChange += UpdateStatusHP;
+        player.OnGoldChange += UpdateStatusGold;
+        player.OnTrueDeckChange += UpdateStatusDeck;
     }
     public void RegisterBattleScene(BattleSceneController controller)
     {

@@ -13,7 +13,7 @@ public static class PlayerFactory
         player.maxEnergy = 3;
         player.currentEnergy = player.maxEnergy;
         player.gold = config.startGold;
-        player.deck = new List<Card>(config.startingDeck);
+        player.trueDeck = new List<Card>(config.startingDeck);
         player.name = config.charName;
         return player;
     }
