@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomID: 0
   roomName: StartRun
-  roomType: 2
+  storyTitle: Memory Lost
+  startingNodeID: Start Room 1
+  storyNodes:
+  - {fileID: 11400000, guid: 6b39f31804ece1f45964b2fb0df99578, type: 2}
+  - {fileID: 11400000, guid: fbe97957e9c04bd4dadcb092ddd9b76c, type: 2}

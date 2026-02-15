@@ -8,18 +8,34 @@ public class StoryManager : MonoBehaviour
     [SerializeField] Image storyImage;
     [SerializeField] TextMeshProUGUI title;
     [SerializeField] TextMeshProUGUI description;
-    [SerializeField] GameObject optionPrefab;
+    //[SerializeField] GameObject optionPrefab;
     [SerializeField] Transform optionParent;
     public List<StoryResult> currentResults;
+    public Dictionary<string, StoryNode> nodeMap;
+    public StoryNode currentNode;
+    public RoomStory currentRoom;
     void Awake()
     {
-        currentResults = new List<StoryResult>();
+        RunManager.Instance.RegisterStoryManager(this);
+        currentRoom = RunManager.Instance.currentStory;
+        Setup(currentRoom);
     }
     public void Setup(RoomStory content)
     {
-        title.text = content.storyTitle;
-    //    LoadNodeContent(startingNodeID);
-    //storyNodes;
+        //Setup các Story Node
+        nodeMap = new Dictionary<string, StoryNode>();
+        foreach (var node in currentRoom.storyNodes)
+        {
+            if (nodeMap.ContainsKey(node.nodeID))
+            {
+                Debug.LogError($"Duplicate node id: {node.nodeID}");
+                continue;
+            }
+            nodeMap.Add(node.nodeID, node);
+        }
+        //currentResults = new List<StoryResult>();
+        currentNode = GetNode(currentRoom.startingNodeID);
+        LoadNodeContent(currentNode);
     }
     public void ExecuteChosenOption(StoryOption storyOption)
     {
@@ -54,19 +70,23 @@ public class StoryManager : MonoBehaviour
         }
         currentResults.Clear();
     }
-    public void LoadNodeContent(string nodeID)
+    public void LoadNodeContent(StoryNode currentNode)
     {
-        //    description.text = node.nodeDescription;
-        //    storyImage = node.nodeImage;
-        //    foreach (StoryButton s in node.optionButton)
-        //    {
-        //        //var btn = Instantiate(optionPrefab, optionParent);
-        //        //btn.Init(s.option, this);
-        //    }
+        title.text = currentRoom.storyTitle;
+        description.text = currentNode.nodeDescription;
+        storyImage.sprite = currentNode.nodeImage;
+        //currentResults = currentNode.optionButton;
+        //foreach (StoryButton s in currentNode.optionButton)
+        //{
+        //    //var btn = Instantiate(optionPrefab, optionParent);
+        //    //btn.Init(s.option, this);
+        //}
     }
-    public void InitNode(string nodeID)
+    void InitNode(string nodeId)
     {
-
+        currentNode = GetNode(nodeId);
+        if (currentNode == null) return;
+        LoadNodeContent(currentNode);
     }
     public void ModifyGold()
     {
@@ -87,5 +107,18 @@ public class StoryManager : MonoBehaviour
     public void Leave()
     {
 
+    }
+    public StoryNode GetNode(string nodeId)
+    {
+        if (nodeMap.TryGetValue(nodeId, out var node))
+            return node;
+
+        Debug.LogError($"Node id not found: {nodeId}");
+        return null;
+    }
+    private void OnDestroy()
+    {
+        if (RunManager.Instance != null)
+            RunManager.Instance.UnregisterStoryManager(this);
     }
 }

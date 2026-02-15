@@ -11,7 +11,7 @@ public static class SceneMap
         return type switch
         {
             RoomType.Battle => "BattleScene",
-            RoomType.Story => "EventScene",
+            RoomType.Story => "StoryScene",
             RoomType.Shop => "ShopScene",
             RoomType.Boss => "BossScene",
             _ => throw new Exception("Unknown room type")

@@ -140,6 +140,7 @@ public class RoomManager
     }
     public void LoadStoryRoom(RoomStory chosenRoom)
     {
+        RunManager.Instance.StartStory(chosenRoom);
         Debug.Log("Loading story");
     }
 }

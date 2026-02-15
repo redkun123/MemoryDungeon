@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cae2224c2bd05498c4b4c1358dc6a9, type: 3}
   m_Name: StartRoom2
   m_EditorClassIdentifier: 
-  nodeName: 
+  nodeName: Start Room 2
+  nodeID: Start Room 2
   nodeImage: {fileID: 0}
-  nodeDescription: 
-  storyOptions: []
+  nodeDescription: 'A gentle voice whisper to your ears: "How are you feeling today?"'

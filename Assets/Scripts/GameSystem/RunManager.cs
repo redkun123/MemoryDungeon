@@ -22,6 +22,8 @@ public class RunManager : MonoBehaviour
     public SaveData run { get; private set; }
     public RunManager runManager { get; private set; }
     public StatusBar statusBar { get; private set; }
+    public StoryManager storyManager { get; private set; }
+    public RoomStory currentStory { get; private set; }
     public void Awake()
     {
         if (Instance != null)
@@ -45,6 +47,11 @@ public class RunManager : MonoBehaviour
     {
         Debug.Log("Trying to start battle");
         currentEnemy = enemycf;
+    }
+    public void StartStory(RoomStory chosenRoom)
+    {
+        Debug.Log("Trying to start story");
+        currentStory = chosenRoom;
     }
     public void StartRun()
     {
@@ -110,6 +117,17 @@ public class RunManager : MonoBehaviour
     {
         if (battleManager == bm)
             battleManager = null;
+    }
+    public void RegisterStoryManager(StoryManager sm)
+    {
+        storyManager = sm;
+        Debug.Log("Story Manager registered");
+    }
+
+    public void UnregisterStoryManager(StoryManager sm)
+    {
+        if (storyManager == sm)
+            storyManager = null;
     }
     public void GetEnemy()
     {

@@ -113,9 +113,7 @@ public class BattleManager : MonoBehaviour
         {
             Win();
         }
-        RunManager.Instance.UnregisterBattleScene(battleSceneController);
         RunManager.Instance.UnregisterEnemy(enemy, enemyConfig);
-        RunManager.Instance.UnregisterBattleManager(this) ;
     }
     public void EndBattle()
     {

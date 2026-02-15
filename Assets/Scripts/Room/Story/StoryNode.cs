@@ -8,7 +8,7 @@ public class StoryNode: ScriptableObject
 {
     public string nodeName;
     public string nodeID;
-    public Image nodeImage;
+    public Sprite nodeImage;
     public string nodeDescription;
     public List<StoryButton> optionButton;
 }

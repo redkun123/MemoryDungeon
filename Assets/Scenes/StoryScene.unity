@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 22425396}
+  - component: {fileID: 22425397}
   m_Layer: 0
   m_Name: StoryManager
   m_TagString: Untagged
@@ -153,6 +154,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &22425397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22425395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb62acbfc06e4d49acc23cbd0e36c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyImage: {fileID: 1083890287}
+  title: {fileID: 1078194400}
+  description: {fileID: 640187639}
+  optionPrefab: {fileID: 0}
+  optionParent: {fileID: 1360839842}
+  currentResults: []
+  currentNode: {fileID: 0}
+  currentRoom: {fileID: 0}
 --- !u!1 &156221830
 GameObject:
   m_ObjectHideFlags: 0
