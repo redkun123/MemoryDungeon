@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: StartRoom2
   m_EditorClassIdentifier: 
   nodeName: Start Room 2
-  nodeID: Start Room 2
-  nodeImage: {fileID: 0}
+  nodeID: StartRoom2
+  nodeImage: {fileID: 21300000, guid: b8b158fa3be02684d8181d2ba28a3ebd, type: 3}
   nodeDescription: 'A gentle voice whisper to your ears: "How are you feeling today?"'
+  options:
+  - {fileID: 11400000, guid: 03a256084b2752c4f8c5f56f175ca288, type: 2}
+  - {fileID: 11400000, guid: 8beed3b8c4dd3024b82b29eb50aaab37, type: 2}

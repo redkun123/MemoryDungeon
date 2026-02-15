@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
-  m_Name: Option1
+  m_Name: Option2
   m_EditorClassIdentifier: 
-  optionDescription: Get up from the bed.
+  optionDescription: Flirt with the nurse.
   results:
-  - {fileID: 11400000, guid: 7e360722337a5f94d95ad536007b4403, type: 2}
+  - {fileID: 11400000, guid: 271174e9c9874a749b91434345ed04f2, type: 2}

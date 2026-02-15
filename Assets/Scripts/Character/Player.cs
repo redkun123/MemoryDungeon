@@ -59,7 +59,12 @@ public class Player : Character
         this.currentEnergy = maxEnergy;
         OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
     }
-
+    public void ModifyGold(int amount)
+    {
+        this.gold += amount;
+        gold = Math.Max(gold, 0);
+        OnGoldChange?.Invoke(gold);
+    }
 
     public void DrawOne()
     {

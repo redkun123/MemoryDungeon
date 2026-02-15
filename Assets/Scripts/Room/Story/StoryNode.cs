@@ -10,5 +10,5 @@ public class StoryNode: ScriptableObject
     public string nodeID;
     public Sprite nodeImage;
     public string nodeDescription;
-    public List<StoryButton> optionButton;
+    public List<StoryOption> options;
 }
