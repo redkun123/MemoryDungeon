@@ -24,6 +24,8 @@ public class RunManager : MonoBehaviour
     public StatusBar statusBar { get; private set; }
     public StoryManager storyManager { get; private set; }
     public RoomStory currentStory { get; private set; }
+    public LobbyManager lobbyManager { get; private set; }
+    public RewardGenerator rewardGenerator { get; private set; }
     public void Awake()
     {
         if (Instance != null)
@@ -58,6 +60,7 @@ public class RunManager : MonoBehaviour
         CreatePLayer();
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
+        rewardGenerator = new RewardGenerator();
         Debug.Log("Floor Manager created");
         RegisterStatusBar();
         UpdateStatusBar();
@@ -128,6 +131,17 @@ public class RunManager : MonoBehaviour
     {
         if (storyManager == sm)
             storyManager = null;
+    }
+    public void RegisterLobbyManager(LobbyManager lm)
+    {
+        lobbyManager = lm;
+        Debug.Log("Lobby Manager registered");
+    }
+
+    public void UnregisterLobbyManager(LobbyManager lm)
+    {
+        if (lobbyManager == lm)
+            lobbyManager = null;
     }
     public void GetEnemy()
     {

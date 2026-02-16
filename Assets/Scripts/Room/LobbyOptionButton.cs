@@ -4,17 +4,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Option3Button : MonoBehaviour
+public class LobbyOptionButton : MonoBehaviour
 {
     [SerializeField] private Button _option1Button;
     [SerializeField] private TextMeshProUGUI roomName;
-    public void Awake()
+    private int optionCount;
+    public void Init(int option)
     {
+        optionCount = option;
         _option1Button.onClick.AddListener(OnClickNextRoom);
-        roomName.text = RunManager.Instance.DisplayRoomName(2);
+        roomName.text = RunManager.Instance.DisplayRoomName(optionCount);
     }
     public void OnClickNextRoom()
     {
-        RunManager.Instance.BindRandomRoom(2);
+        RunManager.Instance.BindRandomRoom(optionCount);
     }
 }

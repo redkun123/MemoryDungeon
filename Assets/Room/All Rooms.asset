@@ -20,4 +20,4 @@ MonoBehaviour:
   normalRoom:
   - {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
   - {fileID: 11400000, guid: 7bae628e62a328e4d87c2a5d44a4be02, type: 2}
-  - {fileID: 11400000, guid: 77e99662c408f514f9ff7cb4e2d8f786, type: 2}
+  - {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}
