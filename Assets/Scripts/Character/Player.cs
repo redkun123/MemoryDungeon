@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
 using static UnityEngine.EventSystems.EventTrigger;
@@ -74,6 +75,11 @@ public class Player : Character
         deck.RemoveAt(0);
         OnDeckChange?.Invoke(deck.Count);
         hand.Add(card);
+    }
+    public void ModifyDeck(Card card)
+    {
+        trueDeck.Add(card);
+        OnTrueDeckChange?.Invoke(trueDeck.Count);
     }
     private void RefillDeck()
     {

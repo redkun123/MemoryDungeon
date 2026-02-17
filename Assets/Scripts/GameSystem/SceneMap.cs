@@ -14,7 +14,8 @@ public static class SceneMap
             RoomType.Story => "StoryScene",
             RoomType.Shop => "ShopScene",
             RoomType.Boss => "BossScene",
-            _ => throw new Exception("Unknown room type")
+            RoomType.Rest => "RestScene",
+            _ => throw new Exception($"Unknown room type - {type}")
         };
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -130,6 +130,9 @@ public class BattleManager : MonoBehaviour
         WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "YOU WIN!!!";
         Debug.Log("You win!");
-        RunManager.Instance.RoomComplete();
+
+        //Tạm thời gen ra phần thưởng normal
+        RunManager.Instance.GenerateRandomReward(RewardGenerator.RewardRank.Normal);
+        //RunManager.Instance.RoomComplete();
     }
 }

@@ -17,6 +17,9 @@ public class RunManager : MonoBehaviour
     public FloorManager floorManager { get; private set; }
     [SerializeField] RoomDB roomDB;
     [SerializeField] RoomRest roomRest;
+    [SerializeField] CardDB cardDB;
+    //[SerializeField] RelicDB relicDB;
+    [SerializeField] RewardPopup rewardPopupPrefab;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
     public SaveData run { get; private set; }
@@ -60,7 +63,7 @@ public class RunManager : MonoBehaviour
         CreatePLayer();
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
-        rewardGenerator = new RewardGenerator();
+        rewardGenerator = new RewardGenerator(cardDB);
         Debug.Log("Floor Manager created");
         RegisterStatusBar();
         UpdateStatusBar();
@@ -143,6 +146,17 @@ public class RunManager : MonoBehaviour
         if (lobbyManager == lm)
             lobbyManager = null;
     }
+    //public void RegisterRewardGenerator(RewardGenerator rg)
+    //{
+    //    rewardGenerator = rg;
+    //    Debug.Log("Reward Generator registered");
+    //}
+
+    //public void UnregisterRewardGenerator(RewardGenerator rg)
+    //{
+    //    if (rewardGenerator == rg)
+    //        rewardGenerator = null;
+    //}
     public void GetEnemy()
     {
         enemy = battleManager.enemy;
@@ -182,5 +196,18 @@ public class RunManager : MonoBehaviour
     public string DisplayRoomName(int roomTempID)
     {
         return roomManager.randRoom[roomTempID].roomName;
+    }
+    public void GenerateRandomReward(RewardGenerator.RewardRank rank)
+    {
+        int rewardCount = 3;
+        List<Reward> rewards = new List<Reward>();
+        rewards = rewardGenerator.RequestReward(rewardCount, rank);
+        Debug.Log($"Reward Display Count: {rewards.Count}");
+        DisplayRandomReward(rewards);
+    }
+    public void DisplayRandomReward(List<Reward> rewards)
+    {
+        RewardPopup rewardPopup = Instantiate(rewardPopupPrefab);
+        rewardPopup.Init(rewards);
     }
 }

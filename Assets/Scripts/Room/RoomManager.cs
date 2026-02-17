@@ -56,6 +56,10 @@ public class RoomManager
     }
     public void SpawnRandomRoom()
     {
+        if (randRoom != null)
+        {
+            randRoom.Clear();
+        }
         Debug.Log("Spawning room");
         List<Room> roomPool = new();
         roomPool.AddRange(roomDB.normalRoom);
