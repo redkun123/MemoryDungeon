@@ -82,6 +82,7 @@ public class BattleManager : MonoBehaviour
         {
             CheckGameResult();
         }
+        enemy.ClearGuard();
         battleLogic.EnemyActionPerTurn(enemy, player);
         if (battleEnded)
         {
@@ -98,6 +99,7 @@ public class BattleManager : MonoBehaviour
         {
             CheckGameResult();
         }
+        player.ClearGuard();
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         battleLogic.RefillHand(handManager, player);
