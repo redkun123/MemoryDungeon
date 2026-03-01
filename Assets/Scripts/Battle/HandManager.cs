@@ -8,20 +8,21 @@ public class HandManager : MonoBehaviour
     [SerializeField] private CardDisplay cardUI;
     [SerializeField] private Transform handArea;
     [SerializeField] public float spacing = 200f;
+    private Player player;
     List<Card> hand;
     List<CardDisplay> cardInHand = new();
 
-    public void AddCardToHand(Player player)
+    private void Awake()
     {
-        this.hand = player.hand;
-        for (int i = 0; i < hand.Count; i++)
-        {
-            cardInHand.Add(CreateCard(hand[i]));
-            Debug.Log($"Display card draw {i}");
-            UpdateHandVisual();
-        }
+        player = RunManager.Instance.player;
+        player.OnDraw += DrawOne;
     }
-
+    public void DrawOne(Card card)
+    {
+        cardInHand.Add(CreateCard(card));
+        Debug.Log($"Display card draw {card}");
+        UpdateHandVisual();
+    }
     public void RemoveCardFromHand(CardDisplay cardUI)
     {
         Debug.Log("Trying to remove card");

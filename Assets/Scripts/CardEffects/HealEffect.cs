@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Card/Card Effect/Attack")]
-public class AttackEffect : CardEffect
+[CreateAssetMenu(menuName = "Card/Card Effect/Heal")]
+public class HealEffect : CardEffect
 {
-    [SerializeField] public int damage;
+    [SerializeField] public int healAmount;
     public override void Execute(Character targetChar)
     {
-        targetChar.TakeDamage(damage);
-        Debug.Log($"{targetChar} took {damage} dmg");
+        targetChar.RestoreHP(healAmount);
+        Debug.Log($"{targetChar} restored {healAmount} HP");
     }
     public override void Execute(List<Card> targetCard)
     {

@@ -22,6 +22,7 @@ public class Player : Character
     public event Action<int> OnTrueDeckChange;
     public event Action<int> OnDiscardChanged;
     public event Action<int> OnGoldChange;
+    public event Action<Card> OnDraw;
     public void SpendEnergy(int amount)
     {
         int oldEn = currentEnergy;
@@ -31,11 +32,7 @@ public class Player : Character
             OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
         }
     }
-    public void RestoreHP(int amount) //Hồi máu
-    {
-        currentHP += amount;
-        currentHP = Math.Min(currentHP, maxHP);
-    }
+
 
     public void Discard(Card card)
     {
@@ -75,6 +72,8 @@ public class Player : Character
         deck.RemoveAt(0);
         OnDeckChange?.Invoke(deck.Count);
         hand.Add(card);
+        OnDraw?.Invoke(card);
+        Debug.Log("Draw 1 card.");
     }
     public void ModifyDeck(Card card)
     {

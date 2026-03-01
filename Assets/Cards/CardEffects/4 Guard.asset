@@ -15,5 +15,5 @@ MonoBehaviour:
   effectName: Head Guard
   effectDescription: Gain 4 Guard.
   effectTarget: 1
-  effectTargetType: 0
+  effectTargetType: 1
   guard: 4

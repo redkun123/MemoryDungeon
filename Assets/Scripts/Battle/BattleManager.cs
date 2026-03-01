@@ -9,6 +9,7 @@ public class BattleManager : MonoBehaviour
     [Header("Battle Managers")]
     [SerializeField] private HandManager handManager;
     [SerializeField] private BattleSceneController battleSceneController;
+    [SerializeField] public CardController cardController;
 
     [Header("Slots")]
     [SerializeField] private Transform playerSlot;
@@ -104,7 +105,6 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         battleLogic.RefillHand(handManager, player);
     }
-
     public void CheckGameResult()
     {
         if (!player.isAlive)

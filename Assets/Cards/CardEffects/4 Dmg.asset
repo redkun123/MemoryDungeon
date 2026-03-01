@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectName: 4 Dmg
   effectDescription: Deal 4 Damage
+  effectTarget: 0
+  effectTargetType: 1
   damage: 4

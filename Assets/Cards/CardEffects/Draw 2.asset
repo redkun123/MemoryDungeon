@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03e131a2c597d44ead232a94e667499, type: 3}
-  m_Name: 50 Dmg Self
+  m_Script: {fileID: 11500000, guid: 69c18c1ea848bf64bb052f3645a7c441, type: 3}
+  m_Name: Draw 2
   m_EditorClassIdentifier: 
-  effectName: 50 Dmg
-  effectDescription: Lose 50 HP
+  effectName: Draw 2
+  effectDescription: Draw 2 cards
   effectTarget: 1
-  effectTargetType: 1
-  damage: 50
+  effectTargetType: 0
+  drawAmount: 2

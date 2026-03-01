@@ -89,4 +89,19 @@ public class Character
         }
         else return;
     }
+    public void RestoreHP(int amount) //Hồi máu
+    {
+        int oldHP = currentHP;
+        currentHP += amount;
+        currentHP = Math.Min(currentHP, maxHP);
+        if (currentHP != oldHP)
+        {
+            OnHPChange?.Invoke(currentHP,maxHP);
+            Debug.Log($"{name} healed. Current HP: {currentHP}");
+        }
+        else
+        {
+            Debug.Log($"{name}'s HP is full!");
+        }
+    }
 }

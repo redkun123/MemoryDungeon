@@ -36,6 +36,13 @@ public class CardController : MonoBehaviour
     {
         if (selectedCardUI == null) return;
         Debug.Log("Card confirmed");
+        if (!battleLogic.CanPlayCard(selectedCardData))
+        {
+            Debug.Log("Not enough Energy");
+            battleManager.cardController.ClearSelection();
+            return;
+        }
+        Debug.Log("Card validated");
         battleLogic.PlayCard(selectedCardData, battleManager.enemy);
         handManager.RemoveCardFromHand(selectedCardUI);
         ClearSelection();
@@ -49,7 +56,7 @@ public class CardController : MonoBehaviour
         Debug.Log("Card selected");
     }
 
-    void ClearSelection()
+    public void ClearSelection()
     {   
         if (selectedCardUI == null) return;
         selectedCardUI.CardHighlight(false);

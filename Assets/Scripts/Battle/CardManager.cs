@@ -30,7 +30,11 @@ public class CardManager
             {
                 effect.Execute(targetCard);
             }
-                Debug.Log($"Card {card.name} played");
+            else
+            {
+                effect.Execute();
+            }    
+            Debug.Log($"Card {card.name} played");
         }
     }
     public void TargetAcquire(CardEffect effect)
@@ -42,6 +46,8 @@ public class CardManager
                 break;
             case CardEffect.EffectTargetType.Card:
                 targetCard = CardTargetAcquire(effect.effectTarget);
+                break;
+            case CardEffect.EffectTargetType.None:
                 break;
         }
     }

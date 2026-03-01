@@ -29,7 +29,6 @@ public class BattleLogic
             player.DrawOne();
             Debug.Log($"Draw {i}");
         }
-        handManager.AddCardToHand(player);
     }
     public bool CanPlayCard(Card card)
     {
@@ -43,9 +42,7 @@ public class BattleLogic
     }
 
     public void PlayCard(Card card, Enemy enemy)
-    {
-        if (!CanPlayCard(card)) return;
-        Debug.Log("Card validated");     
+    {    
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
         CardManager cardManager = new CardManager(player, enemy, card);

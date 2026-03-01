@@ -7,6 +7,7 @@ public abstract class CardEffect : ScriptableObject
 {   
     public abstract void Execute(Character targetChar);
     public abstract void Execute(List<Card> targetCard);
+    public abstract void Execute();
     public string effectName;
     public string effectDescription;
     //public Character user;
@@ -24,6 +25,7 @@ public abstract class CardEffect : ScriptableObject
     }
     public enum EffectTargetType
     {
+        None,
         Character,
         Card
     }

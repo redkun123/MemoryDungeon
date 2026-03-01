@@ -15,4 +15,8 @@ public class GuardEffect : CardEffect
     {
 
     }
+    public override void Execute()
+    {
+
+    }
 }
