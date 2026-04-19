@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3a8e75108c442c4eb81a00109b16a4f, type: 3}
+  m_Name: ShopItem
+  m_EditorClassIdentifier: 
+  allCard:
+  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
+  - {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
+  - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
+  - {fileID: 11400000, guid: d2a7d2fe796cb9e42b875473f9ffee28, type: 2}
+  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
+  cardItem:
+  - card: {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
+    price: 10
+  - card: {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
+    price: 10
+  - card: {fileID: 11400000, guid: d2a7d2fe796cb9e42b875473f9ffee28, type: 2}
+    price: 10
+  - card: {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
+    price: 10
+  - card: {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
+    price: 10
