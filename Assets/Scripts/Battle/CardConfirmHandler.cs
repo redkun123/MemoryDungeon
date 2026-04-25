@@ -7,6 +7,6 @@ public class CardConfirmHandler : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData cardConfirmEvent)
     {
-        CardInputRouter.Instance.OnConfirmClick(cardConfirmEvent);
+        CardInputRouter.Instance.OnBattleConfirmClick(cardConfirmEvent);
     }
 }

@@ -67,6 +67,7 @@ public class RunManager : MonoBehaviour
         Debug.Log("Floor Manager created");
         RegisterStatusBar();
         UpdateStatusBar();
+        DeckUIManager.Instance.RegisterPlayer(player);
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager);
@@ -92,7 +93,7 @@ public class RunManager : MonoBehaviour
     {
         UpdateStatusBar();
     }
-    public void UpdateStatusDeck(int deckCount)
+    public void UpdateStatusDeck(List<Card> deck)
     {
         UpdateStatusBar();
     }

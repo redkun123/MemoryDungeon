@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class CardController : MonoBehaviour
 {
-    [SerializeField] private CardInputRouter card;
     [SerializeField] private BattleManager battleManager;
     [SerializeField] private HandManager handManager;
     BattleLogic battleLogic;
@@ -32,7 +31,7 @@ public class CardController : MonoBehaviour
         CardSelect(cardUI);
     }
 
-    public void CardConfirm()
+    public void CardBattleConfirm()
     {
         if (selectedCardUI == null) return;
         Debug.Log("Card confirmed");

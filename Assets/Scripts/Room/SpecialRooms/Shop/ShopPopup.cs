@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ShopPopup : MonoBehaviour
     //[SerializeField] private ShopSlot removeCard;
     [SerializeField] private List<Transform> cardSlotPos;
     [SerializeField] private ShopSlot cardSlotPrefab;
+    [SerializeField] private RemoveCardButton removeCardButton;
     //[SerializeField] private List<ShopSlot> relicSlot;
     private List<ShopSlot> activeSlots;
     public void LoadCard(List<Card> card, Dictionary<Card, int> cardPrice)

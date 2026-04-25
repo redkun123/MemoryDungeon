@@ -19,7 +19,7 @@ public class Player : Character
     public List<Card> discard;
     public event Action<int, int> OnEnergyChanged;
     public event Action<int> OnDeckChange;
-    public event Action<int> OnTrueDeckChange;
+    public event Action <List<Card>>OnTrueDeckChange;
     public event Action<int> OnDiscardChanged;
     public event Action<int> OnGoldChange;
     public event Action<Card> OnDraw;
@@ -78,7 +78,12 @@ public class Player : Character
     public void ModifyDeck(Card card)
     {
         trueDeck.Add(card);
-        OnTrueDeckChange?.Invoke(trueDeck.Count);
+        OnTrueDeckChange?.Invoke(trueDeck);
+    }
+    public void RemoveCard(Card card)
+    {
+        trueDeck.Remove(card);
+        OnTrueDeckChange?.Invoke(trueDeck);
     }
     private void RefillDeck()
     {

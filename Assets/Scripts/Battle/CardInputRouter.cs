@@ -6,7 +6,27 @@ using UnityEngine.EventSystems;
 public class CardInputRouter : MonoBehaviour
 {
     public static CardInputRouter Instance { get; private set; }
-    [SerializeField] private CardController cardController;
+    private CardController cardController;
+    [SerializeField] private RemoveCardConfirmPopup confirmPopupPrefab;
+    private RemoveCardConfirmPopup confirmPopup;
+    public CardInputMode currentMode = CardInputMode.None;
+    public CardInputMode oldMode = CardInputMode.None;
+    public enum CardInputMode
+    {
+        None,
+        Battle,
+        Remove,
+        View
+    }
+    public void SetMode(CardInputMode mode)
+    {
+        SavePreviousMode();
+        currentMode = mode;
+    }
+    public void SavePreviousMode()
+    {
+        oldMode = currentMode;
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -14,17 +34,57 @@ public class CardInputRouter : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
         Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    public void SetupBattle(CardController cardController)
+    {
+        this.cardController = cardController;
+        currentMode = CardInputMode.Battle;
     }
     public void OnCardClick(CardDisplay cardUI, PointerEventData cardClickEvent)
+    {
+        switch (currentMode)
+        {
+            case CardInputMode.Battle:
+                OnBattleCardSelect(cardUI);
+                break;
+            case CardInputMode.Remove:
+                OnRemoveSelect(cardUI);
+                break;
+            case CardInputMode.View:
+                OnViewSelect(cardUI);
+                break;
+            default:
+                Debug.Log("No card selected");
+                break;
+        }
+    }
+    public void OnRemoveSelect(CardDisplay cardUI)
+    {
+        if (confirmPopup != null)
+        {
+            confirmPopup.gameObject.SetActive(true);
+        }
+        else
+        {
+            confirmPopup = Instantiate(confirmPopupPrefab);
+        }
+        confirmPopup.cardData = cardUI.cardData;
+    }
+    public void OnViewSelect(CardDisplay cardUI)
+    {
+        //phong to la bai
+    }
+    public void OnBattleCardSelect(CardDisplay cardUI)
     {
         if (cardUI == null) return;
         cardController.CardClick(cardUI);
     }
-    public void OnConfirmClick(PointerEventData cardConfirmEvent)
+    public void OnBattleConfirmClick(PointerEventData cardConfirmEvent)
     {
+        if (currentMode != CardInputMode.Battle) return;
         Debug.Log("Confirm click.");
-        cardController.CardConfirm();
+        cardController.CardBattleConfirm();
     }
 }

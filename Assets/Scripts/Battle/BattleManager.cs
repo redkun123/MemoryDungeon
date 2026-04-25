@@ -48,6 +48,7 @@ public class BattleManager : MonoBehaviour
     }
     public void StartBattle(Player player, EnemyConfig enemycf)
     {
+        CardInputRouter.Instance.SetupBattle(cardController);
         battleEnded = false;
         battleLogic = new();
         battleLogic.Register(this);
