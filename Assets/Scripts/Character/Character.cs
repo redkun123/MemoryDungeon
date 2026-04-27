@@ -17,6 +17,8 @@ public class Character
     public event Action<int> OnModifyGuard;
     public event Action OnLostGuard;
     public int currentGuard;
+    public List<Status> status;
+    public StatusManager statusManager;
     public void TakeDamage(int damage)
     {
         //Nếu bị attack thì trừ Guard trước, còn thừa bao nhiêu thì mới trừ HP

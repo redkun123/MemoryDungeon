@@ -13,6 +13,7 @@ public static class EnemyFactory
         enemy.moveSet = new List<Card>(config.moveSet);
         enemy.turnCount = 0;
         enemy.name = config.charName;
+        enemy.statusManager = new StatusManager(enemy);
         return enemy;
     }
 }

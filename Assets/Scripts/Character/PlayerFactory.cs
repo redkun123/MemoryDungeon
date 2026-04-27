@@ -15,6 +15,7 @@ public static class PlayerFactory
         player.gold = config.startGold;
         player.trueDeck = new List<Card>(config.startingDeck);
         player.name = config.charName;
+        player.statusManager = new StatusManager(player);
         return player;
     }
 }
