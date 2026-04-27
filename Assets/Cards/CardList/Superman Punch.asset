@@ -16,6 +16,5 @@ MonoBehaviour:
   energyCost: 3
   cardSprite: {fileID: 21300000, guid: d638d47c993047c4a9b2396320a489c4, type: 3}
   cardEffect:
-  - {fileID: 11400000, guid: e772289f626f894478f4bfe62f613bd2, type: 2}
   - {fileID: 11400000, guid: 48cb2a940ff4c7e49bb76294268ee4e7, type: 2}
   cardType: 0

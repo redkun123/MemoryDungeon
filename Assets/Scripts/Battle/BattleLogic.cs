@@ -48,7 +48,7 @@ public class BattleLogic
     {    
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
-        CardManager cardManager = new CardManager(player, enemy, card);
+        cardManager = new CardManager(player, enemy, card);
         cardManager.battleExecutor = battleExecutor;
         cardManager.UseCard(card);
         player.Discard(card);
@@ -56,17 +56,20 @@ public class BattleLogic
         {
             battleManager.CheckGameResult();
         }
+        cardManager = null;
     }
     public void EnemyActionPerTurn(Enemy enemy, Player player)
     {
         Card card = enemy.moveSet[enemy.turnCount];
         Debug.Log($"Enemy used {enemy.moveSet[enemy.turnCount]}");
         cardManager = new CardManager(enemy, player, card);
+        cardManager.battleExecutor = battleExecutor;
         cardManager.UseCard(card);
         if (battleManager.battleEnded)
         {
             battleManager.CheckGameResult();
         }
+        cardManager = null;
         enemy.turnCount = EnemyConfigTurnCount(enemy);
     }
 
