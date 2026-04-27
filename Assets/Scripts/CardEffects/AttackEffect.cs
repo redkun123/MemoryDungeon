@@ -6,17 +6,8 @@ using UnityEngine;
 public class AttackEffect : CardEffect
 {
     [SerializeField] public int damage;
-    public override void Execute(Character targetChar)
+    public override IEffect CreateEffect(Character source, Character target)
     {
-        targetChar.TakeDamage(damage);
-        Debug.Log($"{targetChar} took {damage} dmg");
-    }
-    public override void Execute(List<Card> targetCard)
-    {
-
-    }
-    public override void Execute()
-    {
-
+        return new DamageEffect(damage);
     }
 }

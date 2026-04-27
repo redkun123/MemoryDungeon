@@ -12,10 +12,13 @@ public class BattleLogic
     public HandManager handManager;
     public int maxHandSize = 6;
     private BattleManager battleManager;
+    public BattleExecutor battleExecutor;
+    public CardManager cardManager;
     public void Register(BattleManager bm)
     {
         battleManager = bm;
         Debug.Log("Battle Manager registered to battle logic");
+        battleExecutor = bm.battleExecutor;
     }
     public void RefillHand(HandManager handManager, Player player)
     {
@@ -46,6 +49,7 @@ public class BattleLogic
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
         CardManager cardManager = new CardManager(player, enemy, card);
+        cardManager.battleExecutor = battleExecutor;
         cardManager.UseCard(card);
         player.Discard(card);
         if (battleManager.battleEnded)
@@ -57,7 +61,7 @@ public class BattleLogic
     {
         Card card = enemy.moveSet[enemy.turnCount];
         Debug.Log($"Enemy used {enemy.moveSet[enemy.turnCount]}");
-        CardManager cardManager = new CardManager(enemy, player, card);
+        cardManager = new CardManager(enemy, player, card);
         cardManager.UseCard(card);
         if (battleManager.battleEnded)
         {

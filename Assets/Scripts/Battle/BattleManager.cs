@@ -25,6 +25,7 @@ public class BattleManager : MonoBehaviour
     public Enemy enemy;
     public EnemyConfig enemyConfig;
     public BattleLogic battleLogic;
+    public BattleExecutor battleExecutor;
 
     public bool isPlayerTurn;
     public bool battleEnded;
@@ -39,7 +40,7 @@ public class BattleManager : MonoBehaviour
     }
     private void Start()
     {
-        StartBattle(player,enemyConfig);
+        StartBattle(player, enemyConfig);
     }
     private void OnDestroy()
     {
@@ -48,6 +49,7 @@ public class BattleManager : MonoBehaviour
     }
     public void StartBattle(Player player, EnemyConfig enemycf)
     {
+        battleExecutor = new();
         CardInputRouter.Instance.SetupBattle(cardController);
         battleEnded = false;
         battleLogic = new();
@@ -124,7 +126,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Lose()
     {
-        WinLosePopup popup = Instantiate(winLosePopup,new Vector3(0, 0, 0), Quaternion.identity);
+        WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "GAME OVER";
         Debug.Log("You lost.");
     }

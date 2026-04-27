@@ -10,6 +10,7 @@ public class CardManager
     public List<Card> targetCard;
     public Character targetChar;
     public Card card;
+    public BattleExecutor battleExecutor;
 
     public CardManager(Character user, Character opponent, Card card)
     {
@@ -19,21 +20,13 @@ public class CardManager
     }
     public void UseCard(Card card)
     {
-        foreach (var effect in card.cardEffect)
+        foreach (var cardEffect in card.cardEffect)
         {
-            TargetAcquire(effect);
-            if (targetChar != null)
-            {
-                effect.Execute(targetChar);
-            }
-            else if (targetCard != null)
-            {
-                effect.Execute(targetCard);
-            }
-            else
-            {
-                effect.Execute();
-            }    
+            TargetAcquire(cardEffect);
+            Character source = user;
+            Character target = targetChar;
+            IEffect effect = cardEffect.CreateEffect(source, target);
+            battleExecutor.ExecuteEffect(effect, source, target);
             Debug.Log($"Card {card.name} played");
         }
     }
