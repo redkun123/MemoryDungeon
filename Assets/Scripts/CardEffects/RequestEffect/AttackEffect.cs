@@ -6,8 +6,8 @@ using UnityEngine;
 public class AttackEffect : CardEffect
 {
     [SerializeField] public int damage;
-    public override IEffect CreateEffect(Character source, Character target)
+    public override IEffectExecute CreateEffect(Character source, Character target)
     {
-        return new DamageEffect(damage);
+        return new AttackExecute(damage);
     }
 }

@@ -20,5 +20,7 @@ public enum EffectType
     Damage,
     Block,
     LoseHP,
-    ApplyStatus
+    ApplyStatus,
+    Heal,
+    Discard
 }

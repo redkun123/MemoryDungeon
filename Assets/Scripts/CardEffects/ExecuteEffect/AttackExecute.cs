@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageEffect : IEffect
+public class AttackExecute : IEffectExecute
 {
     private int damage;
 
-    public DamageEffect(int damage)
+    public AttackExecute(int damage)
     {
         this.damage = damage;
     }

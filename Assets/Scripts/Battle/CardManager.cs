@@ -25,7 +25,7 @@ public class CardManager
             TargetAcquire(cardEffect);
             Character source = user;
             Character target = targetChar;
-            IEffect effect = cardEffect.CreateEffect(source, target);
+            IEffectExecute effect = cardEffect.CreateEffect(source, target);
             battleExecutor.ExecuteEffect(effect, source, target);
             Debug.Log($"Card {card.name} played");
         }

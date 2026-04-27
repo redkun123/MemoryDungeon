@@ -26,5 +26,5 @@ public abstract class CardEffect : ScriptableObject
         Character,
         Card
     }
-    public abstract IEffect CreateEffect(Character source, Character target);
+    public abstract IEffectExecute CreateEffect(Character source, Character target);
 }

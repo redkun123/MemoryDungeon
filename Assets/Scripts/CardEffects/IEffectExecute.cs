@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static EffectContext;
 
-public interface IEffect
+public interface IEffectExecute
 {
     int GetValue();
     EffectType GetEffectType();

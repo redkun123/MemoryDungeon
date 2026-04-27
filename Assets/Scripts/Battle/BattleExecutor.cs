@@ -18,7 +18,7 @@ public class BattleExecutor
         player = RunManager.Instance.player;
         enemy = RunManager.Instance.enemy;
     }
-    public void ExecuteEffect(IEffect effect, Character source, Character target)
+    public void ExecuteEffect(IEffectExecute effect, Character source, Character target)
     {
         var ctx = new EffectContext(source, target, effect.GetValue(), effect.GetEffectType());
         source.statusManager.ApplyModifiers(ctx);

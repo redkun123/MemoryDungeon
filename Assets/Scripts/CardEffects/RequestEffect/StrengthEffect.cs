@@ -6,8 +6,8 @@ using UnityEngine;
 public class StrengthEffect : CardEffect
 {
     [SerializeField] public int stack;
-    public override IEffect CreateEffect(Character source, Character target)
+    public override IEffectExecute CreateEffect(Character source, Character target)
     {
-         return new ApplyStatusEffect(typeof(StrengthStatus), stack);
+         return new ApplyStatusExecute(typeof(StrengthStatus), stack);
     }
 }

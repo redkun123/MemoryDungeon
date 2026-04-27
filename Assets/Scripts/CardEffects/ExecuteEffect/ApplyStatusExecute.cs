@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplyStatusEffect : IEffect
+public class ApplyStatusExecute : IEffectExecute
 {
     private System.Type statusType;
     private int stack;
 
-    public ApplyStatusEffect(System.Type type, int stack)
+    public ApplyStatusExecute(System.Type type, int stack)
     {
         statusType = type;
         this.stack = stack;
