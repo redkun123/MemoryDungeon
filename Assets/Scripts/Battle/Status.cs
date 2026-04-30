@@ -7,6 +7,7 @@ public abstract class Status
     StatusType type;
     bool isDebuff;
     bool removeAtEndOfTurn;
+    public string name;
     public Character owner {  get; private set; }
     public int stack {  get; private set; }
     private enum StatusType

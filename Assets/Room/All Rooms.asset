@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8ea59279345ea4fa3e9b75e85850b1, type: 3}
   m_Name: All Rooms
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 11400000, guid: 35090e7d56551cc4fabc6c2a68c2b206, type: 2}
+  startRoom: {fileID: 11400000, guid: 77e99662c408f514f9ff7cb4e2d8f786, type: 2}
   bossRoom: {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
   finalbossRoom: {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
   restRoom: {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}

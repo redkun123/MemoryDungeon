@@ -19,3 +19,5 @@ MonoBehaviour:
   storyNodes:
   - {fileID: 11400000, guid: 6b39f31804ece1f45964b2fb0df99578, type: 2}
   - {fileID: 11400000, guid: fbe97957e9c04bd4dadcb092ddd9b76c, type: 2}
+  - {fileID: 11400000, guid: 3de23313644978b449d05c65079b2e82, type: 2}
+  - {fileID: 11400000, guid: 6e5e3db86eb15de42a95e0f18edcfad4, type: 2}

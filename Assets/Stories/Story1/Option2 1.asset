@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
-  m_Name: Option3
+  m_Name: Option2 1
   m_EditorClassIdentifier: 
-  optionDescription: Scream in panic.
+  optionDescription: Steal her bracelet.
   results:
-  - {fileID: 11400000, guid: 94396ed1a8b0c2343af5462fb933a8d5, type: 2}
+  - {fileID: 11400000, guid: d941d259ec334a14f88d9f95a0ef6c23, type: 2}
+  - {fileID: 11400000, guid: 7740f98553adab24685b0c3b28186d8a, type: 2}

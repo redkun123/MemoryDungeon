@@ -18,7 +18,7 @@ public class RunManager : MonoBehaviour
     [SerializeField] RoomDB roomDB;
     [SerializeField] RoomRest roomRest;
     [SerializeField] CardDB cardDB;
-    //[SerializeField] RelicDB relicDB;
+    [SerializeField] private RelicLibrary relicLibrary;
     [SerializeField] RewardPopup rewardPopupPrefab;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
@@ -29,6 +29,7 @@ public class RunManager : MonoBehaviour
     public RoomStory currentStory { get; private set; }
     public LobbyManager lobbyManager { get; private set; }
     public RewardGenerator rewardGenerator { get; private set; }
+    public RelicManager relicManager { get; private set; }
     public void Awake()
     {
         if (Instance != null)
@@ -64,6 +65,7 @@ public class RunManager : MonoBehaviour
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
         rewardGenerator = new RewardGenerator(cardDB);
+        relicManager = new(relicLibrary);
         Debug.Log("Floor Manager created");
         RegisterStatusBar();
         UpdateStatusBar();

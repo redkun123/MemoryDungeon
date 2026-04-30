@@ -19,9 +19,11 @@ public class StoryManager : MonoBehaviour
     public StoryNode currentNode;
     public RoomStory currentRoom;
     public List<GameObject> spawnedOptions;
+    public RelicManager relicManager;
     void Awake()
     {
         RunManager.Instance.RegisterStoryManager(this);
+        relicManager = RunManager.Instance.relicManager;
         currentRoom = RunManager.Instance.currentStory;
         Setup(currentRoom);
     }
@@ -86,7 +88,7 @@ public class StoryManager : MonoBehaviour
                     ModifyCard();
                     break;
                 case StoryResult.ResultType.ModifyRelic:
-                    ModifyRelic();
+                    ModifyRelic(currentResults[i].value);
                     break;
                 case StoryResult.ResultType.Leave:
                     Leave();
@@ -145,9 +147,9 @@ public class StoryManager : MonoBehaviour
     {
 
     }
-    public void ModifyRelic()
+    public void ModifyRelic(string id)
     {
-
+        relicManager.AddRelicByID(id);
     }
     public void Leave()
     {

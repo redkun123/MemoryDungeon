@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79cae2224c2bd05498c4b4c1358dc6a9, type: 3}
-  m_Name: StartRoom2
+  m_Name: StartRoom3
   m_EditorClassIdentifier: 
-  nodeName: Start Room 2
-  nodeID: StartRoom2
+  nodeName: Start Room 3
+  nodeID: StartRoom3
   nodeImage: {fileID: 21300000, guid: b8b158fa3be02684d8181d2ba28a3ebd, type: 3}
-  nodeDescription: 'A gentle voice whisper to your ears: "How are you feeling today?"'
+  nodeDescription: 'A gentle voice whisper to your ears: "Calm down! You are safe
+    now."'
   options:
-  - {fileID: 11400000, guid: cf980e246d8502045917b902c42e2325, type: 2}
+  - {fileID: 11400000, guid: 03a256084b2752c4f8c5f56f175ca288, type: 2}
+  - {fileID: 11400000, guid: 220cfebf3132c8b47b4482a93f9ff19a, type: 2}

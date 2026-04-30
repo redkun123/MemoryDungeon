@@ -21,22 +21,27 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private EnemyView enemyViewPrefab;
     [SerializeField] private WinLosePopup winLosePopup;
 
-    Player player;
+    public Player player;
     public Enemy enemy;
     public EnemyConfig enemyConfig;
     public BattleLogic battleLogic;
     public BattleExecutor battleExecutor;
+    public RelicManager relicManager;
 
     public bool isPlayerTurn;
     public bool battleEnded;
-    public event Action OnPlayerTurn;
+    public event Action OnPlayerTurnStart;
     public event Action OnEnemyTurn;
+    public event Action OnBattleStart;
+    public event Action OnBattleEnd;
+    public event Action OnPlayerTurnEnd;
 
     private void Awake()
     {
         RunManager.Instance.RegisterBattleManager(this);
         enemyConfig = RunManager.Instance.currentEnemy;
         this.player = RunManager.Instance.player;
+        this.relicManager = RunManager.Instance.relicManager;
     }
     private void Start()
     {
@@ -65,6 +70,8 @@ public class BattleManager : MonoBehaviour
         player.Dies += EndBattle;
         enemy.Dies += EndBattle;
         battleSceneController.BattleSceneStart();
+        relicManager.Setup();
+        OnBattleStart?.Invoke();
         StartPlayerTurn();
     }
     public Enemy CreateEnemy(EnemyConfig enemycf)
@@ -77,6 +84,7 @@ public class BattleManager : MonoBehaviour
         isPlayerTurn = false;
         player.DiscardAll();
         handManager.RemoveAll();
+        OnPlayerTurnEnd?.Invoke();
         StartEnemyTurn();
     }
     private void StartEnemyTurn()
@@ -98,7 +106,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("Player turn started");
         isPlayerTurn = true;
-        OnPlayerTurn?.Invoke();
+        OnPlayerTurnStart?.Invoke();
         if (battleEnded)
         {
             CheckGameResult();
@@ -107,6 +115,7 @@ public class BattleManager : MonoBehaviour
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         battleLogic.RefillHand(handManager, player);
+        OnPlayerTurnStart?.Invoke();
     }
     public void CheckGameResult()
     {
@@ -122,6 +131,7 @@ public class BattleManager : MonoBehaviour
     }
     public void EndBattle()
     {
+        OnBattleEnd?.Invoke();
         battleEnded = true;
     }
     public void Lose()

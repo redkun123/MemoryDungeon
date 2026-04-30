@@ -27,7 +27,7 @@ public class EnemyView : MonoBehaviour
         // Đăng ký event sau
         enemy.OnHPChange += hpBar.Set;
         enemy.OnHPChange += hpCount.Set;
-        battleManager.OnPlayerTurn += OnPlayerTurnStarted;
+        battleManager.OnPlayerTurnStart += OnPlayerTurnStarted;
         battleManager.OnEnemyTurn += OnEnemyTurnStarted;
         UpdateUI();
     }

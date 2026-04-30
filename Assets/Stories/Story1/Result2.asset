@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
-  m_Name: Option3
+  m_Script: {fileID: 11500000, guid: 32a842ceab378f64990432caa441dcb2, type: 3}
+  m_Name: Result2
   m_EditorClassIdentifier: 
-  optionDescription: Scream in panic.
-  results:
-  - {fileID: 11400000, guid: 94396ed1a8b0c2343af5462fb933a8d5, type: 2}
+  type: 1
+  value: StartRoom4
