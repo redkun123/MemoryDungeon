@@ -8,6 +8,7 @@ using UnityEditor;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public StatusBar statusBar;
     [SerializeField] public StatusBar statusBarPrefab;
     [SerializeField] private RunManager runManagerPrefab;
     [SerializeField] public PlayerConfig playerConfig;
@@ -36,8 +37,15 @@ public class GameManager : MonoBehaviour
         ////Tạo run mới
 
         //Debug.Log("Previous run data cleared");
-        StatusBar statusBar = Instantiate(statusBarPrefab);
-        DontDestroyOnLoad (statusBar);
+        if (statusBar != null)
+        {
+            statusBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            statusBar = Instantiate(statusBarPrefab);
+            DontDestroyOnLoad(statusBar);
+        }
         RunManager.Instance.StartRun();
     }
     public void EndRun()

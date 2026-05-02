@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -217,7 +218,7 @@ public class RunManager : MonoBehaviour
     public void EndRun()
     {
         ResetRun();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainScreen");
     }
     private void ResetRun()
     {
@@ -235,6 +236,7 @@ public class RunManager : MonoBehaviour
         lobbyManager = null;
         rewardGenerator = null;
         relicManager = null;
+        statusBar.gameObject.SetActive(false);
     }
 
 }

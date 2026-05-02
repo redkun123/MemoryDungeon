@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2876150528512503708}
   - component: {fileID: 2463144633616334246}
   - component: {fileID: 224608081214365420}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: FloorCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 547448892877173697}
   - component: {fileID: 5718318676205487377}
   - component: {fileID: 3903462242143906617}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 6889479034644778527}
   - component: {fileID: 1598511110219915989}
   - component: {fileID: 1389367728618197718}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: GoldIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 815728743950081390}
   - component: {fileID: 8250970801191231122}
   - component: {fileID: 8264503913619688080}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,9 +340,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6629854000681417296}
   - component: {fileID: 3858914306380151515}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: StatusBar
-  m_TagString: Untagged
+  m_TagString: HUD
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 5159264333893541481}
   - component: {fileID: 4034840790334478440}
   - component: {fileID: 6889602575415288166}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Deck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 5212436360360420794}
   - component: {fileID: 446344176709485549}
   - component: {fileID: 1018686994571366183}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: DeckUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 4710959248743311078}
   - component: {fileID: 5673171267680106586}
   - component: {fileID: 1450688221961317812}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 3328700905859173713}
   - component: {fileID: 6055723800855772079}
   - component: {fileID: 8551427349910431007}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HPText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 2597023220725584071}
   - component: {fileID: 1835992675790286740}
   - component: {fileID: 403537830318822360}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +940,7 @@ GameObject:
   - component: {fileID: 3522666036246232918}
   - component: {fileID: 789321836317626886}
   - component: {fileID: 2004314855198784798}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: FloorCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1074,7 +1074,7 @@ GameObject:
   - component: {fileID: 2579860970395384363}
   - component: {fileID: 7255756431414292755}
   - component: {fileID: 5816717254932059992}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: DeckCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,7 +1208,7 @@ GameObject:
   - component: {fileID: 2895347055392095039}
   - component: {fileID: 7149031173637457006}
   - component: {fileID: 8257472636937708914}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 8655125612971277212}
   - component: {fileID: 2812584233028850390}
   - component: {fileID: 6341762811597385006}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: DeckCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ GameObject:
   - component: {fileID: 1934951910064631584}
   - component: {fileID: 2731508801674359813}
   - component: {fileID: 4040011268406385754}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1614,7 +1614,7 @@ GameObject:
   - component: {fileID: 8565768413552377746}
   - component: {fileID: 5369657811382955929}
   - component: {fileID: 7490236769313175979}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1748,7 +1748,7 @@ GameObject:
   - component: {fileID: 7161537907869826926}
   - component: {fileID: 2205180384073510212}
   - component: {fileID: 5074584139533460623}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: CharName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1882,7 +1882,7 @@ GameObject:
   - component: {fileID: 648755368680786465}
   - component: {fileID: 6538685449306051917}
   - component: {fileID: 4671630724842484957}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: HPIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1957,7 +1957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6589669448571579987}
   - component: {fileID: 3178890942215054531}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DeckUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}

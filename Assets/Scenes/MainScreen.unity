@@ -154,7 +154,7 @@ MonoBehaviour:
   temp: 0
   currentEnemy: {fileID: 0}
   roomDB: {fileID: 11400000, guid: f41041e04aaa44e499517362f02ad39f, type: 2}
-  roomRest: {fileID: 0}
+  roomRest: {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}
   cardDB: {fileID: 11400000, guid: 4a30421d3243d984c9f8d74154e8e95d, type: 2}
   relicLibrary: {fileID: 11400000, guid: 2a4febb165f61534abd6eeec7d5f1261, type: 2}
   rewardPopupPrefab: {fileID: 4135172348903500317, guid: a5cb58583748b154cb0cfce7671d87f5, type: 3}
@@ -868,6 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32d2c021d7cd2664daeb5fd9cb8876a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusBar: {fileID: 0}
   statusBarPrefab: {fileID: 3858914306380151515, guid: 4c6e5b4d93eed1d46b491b9f0fe4346f, type: 3}
   runManagerPrefab: {fileID: 470335052913448723, guid: 01f2c7b4156fb8c46a7df16da3d67b48, type: 3}
   playerConfig: {fileID: 11400000, guid: dbede78adca6ab143a7df95862e9a221, type: 2}

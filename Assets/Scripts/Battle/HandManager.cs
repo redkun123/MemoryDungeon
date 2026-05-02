@@ -9,12 +9,13 @@ public class HandManager : MonoBehaviour
     [SerializeField] private Transform handArea;
     [SerializeField] public float spacing = 200f;
     private Player player;
-    List<Card> hand;
-    List<CardDisplay> cardInHand = new();
+    List<CardDisplay> cardInHand;
 
-    private void Awake()
+    private void OnEnable()
     {
         player = RunManager.Instance.player;
+        cardInHand = new List<CardDisplay>();
+        player.OnDraw -= DrawOne;
         player.OnDraw += DrawOne;
     }
     public void DrawOne(Card card)
@@ -26,9 +27,9 @@ public class HandManager : MonoBehaviour
     public void RemoveCardFromHand(CardDisplay cardUI)
     {
         Debug.Log("Trying to remove card");
+        Debug.Log($"Card {cardUI.cardName} go to discard pile");
         cardInHand.Remove(cardUI);
         Destroy(cardUI.gameObject);
-        Debug.Log($"Card {cardUI.cardName} go to discard pile");
         UpdateHandVisual();
     }
 
@@ -48,13 +49,13 @@ public class HandManager : MonoBehaviour
 
     public void UpdateHandVisual()
     {
+        cardInHand.RemoveAll(card => card == null);
         int cardCount = cardInHand.Count;
         for (int i = 0; i < cardCount; i++)
         {
             float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f));
-            //float horizontalOffset = spacing * i;
             cardInHand[i].transform.localPosition = new Vector3(horizontalOffset, 0, 0);
-        }
+        }   
     }
 
     public CardDisplay CreateCard(Card cardData)
@@ -62,5 +63,19 @@ public class HandManager : MonoBehaviour
         CardDisplay cardPrefab = Instantiate(cardUI, handArea);
         cardPrefab.SetupCard(cardData);
         return cardPrefab;
+    }
+    private void OnDisable()
+    {
+        if (player != null)
+            player.OnDraw -= DrawOne;
+    }
+    public void ResetHand()
+    {
+        for (int i = cardInHand.Count - 1; i >= 0; i--)
+        {
+            if (cardInHand[i] != null)
+                Destroy(cardInHand[i].gameObject);
+        }
+        cardInHand.Clear();
     }
 }

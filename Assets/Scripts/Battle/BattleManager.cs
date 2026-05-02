@@ -72,6 +72,7 @@ public class BattleManager : MonoBehaviour
         battleSceneController.BattleSceneStart();
         relicManager.Setup();
         OnBattleStart?.Invoke();
+        handManager.ResetHand();
         StartPlayerTurn();
     }
     public Enemy CreateEnemy(EnemyConfig enemycf)

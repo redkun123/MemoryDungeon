@@ -15,11 +15,6 @@ public class CardController : MonoBehaviour
     {
         this.battleLogic = battleManager.battleLogic;
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void CardClick(CardDisplay cardUI)
     { 
         if (selectedCardUI == cardUI)

@@ -18,7 +18,6 @@ public class StatusBar : MonoBehaviour
         //this.player = RunManager.Instance.player;
     }
 
-    // Update is called once per frame
     public void UpdateStatus(Player player, int currentFloor)
     {
         playerName.text = $"{player.name}";
