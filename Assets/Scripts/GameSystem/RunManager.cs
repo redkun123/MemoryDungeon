@@ -73,6 +73,7 @@ public class RunManager : MonoBehaviour
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager);
+        floorManager.DefineCurrentRoom();
     }
     public void End()
     {
@@ -180,7 +181,7 @@ public class RunManager : MonoBehaviour
     public void InitNextRoom()
     {
         Debug.Log("Loading next room");
-        floorManager.RoomOption();
+        floorManager.DefineCurrentRoom();
     }
     public void Rest()
     {
@@ -192,8 +193,8 @@ public class RunManager : MonoBehaviour
     }
     public void BindRandomRoom(int roomTempID)
     {
-        temp = roomTempID;
-        Debug.Log("Room Binded");
+        Debug.Log($"Run Manager initiating room with ID {roomTempID}");
+        roomManager.SetSelectedRoom(roomTempID);
         InitNextRoom();
     }
     public string DisplayRoomName(int roomTempID)
@@ -213,4 +214,27 @@ public class RunManager : MonoBehaviour
         RewardPopup rewardPopup = Instantiate(rewardPopupPrefab);
         rewardPopup.Init(rewards);
     }
+    public void EndRun()
+    {
+        ResetRun();
+        SceneManager.LoadScene("MainMenu");
+    }
+    private void ResetRun()
+    {
+        player = null;
+        enemy = null;
+        roomManager = null;
+        floorManager = null;
+        battleSceneController = null;
+        battleManager = null;
+        run = null;
+        runManager = null;
+        statusBar = null;
+        storyManager = null;
+        currentStory = null;
+        lobbyManager = null;
+        rewardGenerator = null;
+        relicManager = null;
+    }
+
 }

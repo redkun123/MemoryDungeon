@@ -268,5 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91191852cd128a40bc549e92bc94829, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _option1Button: {fileID: 4169932898766271930}
+  _optionButton: {fileID: 4169932898766271930}
   roomName: {fileID: 1568056160797150858}
+  lobbyManager: {fileID: 0}

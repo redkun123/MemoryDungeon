@@ -139,6 +139,7 @@ public class BattleManager : MonoBehaviour
         WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "GAME OVER";
         Debug.Log("You lost.");
+        RunManager.Instance.EndRun();
     }
     public void Win()
     {

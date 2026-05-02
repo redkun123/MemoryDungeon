@@ -12,6 +12,7 @@ public class RoomManager
     public List<Room> randRoom = new();
     public RoomDB roomDB;
     public Room currentRoom;
+    private int selectedRoomIndex;
     public RoomManager(RoomDB roomDB)
     {
         this.roomDB = roomDB;
@@ -48,10 +49,13 @@ public class RoomManager
         currentRoom = roomDB.finalbossRoom;
         return currentRoom;
     }
+    public void SetSelectedRoom(int index)
+    {
+        selectedRoomIndex = index;
+    }
     public Room ShowRandomRoom()
     {
-        currentRoom = randRoom[RunManager.Instance.temp];
-        ClearTempList();
+        currentRoom = randRoom[selectedRoomIndex];
         return currentRoom;
     }
     public void SpawnRandomRoom()

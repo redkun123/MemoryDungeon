@@ -5,16 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class FloorManager
 {
-    //[SerializeField] RoomManager roomManager;
     public RoomManager roomManager;
     private Room currentRoom;
     public int floor = 0;
     public void Init(RoomManager roomManager)
     {
         this.roomManager = roomManager;
-        RoomOption();
     }
-    public void RoomOption()
+    public void DefineCurrentRoom()
     {
         Debug.Log($"Current Floor: {floor}");
         if (floor < 0 || floor > 10)
@@ -38,7 +36,6 @@ public class FloorManager
                 Debug.Log("Final room located");
                 break;
             default:
-                roomManager.SpawnRandomRoom();
                 currentRoom = roomManager.ShowRandomRoom();
                 Debug.Log("Start room located");
                 break;
