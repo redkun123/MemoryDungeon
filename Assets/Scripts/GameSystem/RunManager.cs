@@ -73,6 +73,7 @@ public class RunManager : MonoBehaviour
         RegisterStatusBar();
         UpdateStatusBar();
         DeckUIManager.Instance.RegisterPlayer(player);
+        RelicUIManager.Instance.RegisterRelic(relicManager);
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
         floorManager.Init(roomManager, currentFloor);
@@ -132,6 +133,7 @@ public class RunManager : MonoBehaviour
         RegisterStatusBar();
         UpdateStatusBar();
         DeckUIManager.Instance.RegisterPlayer(player);
+        RelicUIManager.Instance.RegisterRelic(relicManager);
         LoadRoomFromSave(run);
     }
     public void LoadRoomFromSave(RunSaveData run)

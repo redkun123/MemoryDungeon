@@ -8,13 +8,16 @@ public class RelicManager
 {
     public RelicLibrary relicLibrary;
     public List<Relic> currentRelic;
+    public List<RelicData> currentRelicData;
     private BattleManager battleManager; //can nhac unbind sau moi battle
     public RelicContext ctx;
+    public event Action OnReceiveRelic;
 
     public RelicManager(RelicLibrary relicLibrary)
     {
         this.relicLibrary = relicLibrary;
         currentRelic = new List<Relic>();
+        currentRelicData = new List<RelicData>();
         ctx = new RelicContext();
     }
     public void Setup()
@@ -56,8 +59,10 @@ public class RelicManager
         };
         relic.Init(data);
         currentRelic.Add(relic);
+        currentRelicData.Add(data);
         Debug.Log($"Received {relic.relicName}");
         OnEquip(relic);
+        OnReceiveRelic?.Invoke();
     }
     public void OnEquip(Relic relic)
     {
