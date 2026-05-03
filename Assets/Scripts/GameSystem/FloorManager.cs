@@ -7,10 +7,11 @@ public class FloorManager
 {
     public RoomManager roomManager;
     private Room currentRoom;
-    public int floor = 0;
-    public void Init(RoomManager roomManager)
+    public int floor;
+    public void Init(RoomManager roomManager, int floor)
     {
         this.roomManager = roomManager;
+        this.floor = floor;
     }
     public void DefineCurrentRoom()
     {
@@ -42,6 +43,7 @@ public class FloorManager
         }
         floor++;
         RunManager.Instance.UpdateStatusBar();
+        RunManager.Instance.currentRoom = currentRoom;
         roomManager.EnterChosenRoom(currentRoom);
     }
 }

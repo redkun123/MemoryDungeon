@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Card/Card")]
 public class Card : ScriptableObject
 {
+    public string cardID;
     public string cardName;
     public int energyCost;
     public Sprite cardSprite;

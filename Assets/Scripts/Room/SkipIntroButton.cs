@@ -12,6 +12,6 @@ public class SkipIntroButton : MonoBehaviour
     }
     public void OnClickSkip()
     {
-        GameManager.Instance.StartRun();
+        GameManager.Instance.StartNewRun();
     }
 }

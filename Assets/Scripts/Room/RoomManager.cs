@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager
 {
-    public List<int> usedRoomID = new();
+    public List<string> usedRoomID = new();
     public List<Room> randRoom = new();
     public RoomDB roomDB;
     public Room currentRoom;
@@ -46,7 +46,7 @@ public class RoomManager
     }
     public Room ShowFinalBossRoom()
     {
-        currentRoom = roomDB.finalbossRoom;
+        currentRoom = roomDB.finalBossRoom;
         return currentRoom;
     }
     public void SetSelectedRoom(int index)
@@ -104,8 +104,18 @@ public class RoomManager
     }
     public void EnterChosenRoom(Room chosenRoom)
     {
+        if (chosenRoom == null)
+        {
+            Debug.LogError("ChosenRoom is null");
+            return;
+        }
         Debug.Log("Trying to enter chosen room");
         string sceneName = SceneMap.GetScene(chosenRoom.roomType);
+        if (string.IsNullOrEmpty(sceneName))
+        {
+            Debug.LogError($"No scene for room type: {chosenRoom.roomType}");
+            return;
+        }
         SceneManager.LoadScene(sceneName);
         switch (chosenRoom.roomType)
         {
@@ -126,12 +136,8 @@ public class RoomManager
                 LoadRestRoom(roomRest);
                 break;
         }
-    }
-    public void ShowCurrentRoom(int currentRoomID)
-    {
-        //currentRoom = roomDB[currentRoomID];
-        //Cần làm list room theo ID
-        EnterChosenRoom(currentRoom);
+        RunManager.Instance.UpdateRunSave();
+        Debug.Log("Auto saved");
     }
     public void LoadBattleRoom(RoomBattle chosenRoom)
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(1)]
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private RunManager runManagerPrefab;
     [SerializeField] public PlayerConfig playerConfig;
     [SerializeField] public Enemy enemy; //Tạm để test
+    [SerializeField] public Button _continueButton;
     //private RunManager _runManager;
     //public RunManager RunManager => _runManager;
     //[SerializeField] private BattleManager battleManager;
@@ -26,17 +28,21 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        StartOrResume();
     }
 
     public void NewGame()
     {
         SceneManager.LoadScene("IntroScene");
     }
-    public void StartRun()
+    public void StartNewRun()
     {
         ////Tạo run mới
-
-        //Debug.Log("Previous run data cleared");
+        CreateStatusBar();
+        RunManager.Instance.StartRun();
+    }
+    public void CreateStatusBar()
+    {
         if (statusBar != null)
         {
             statusBar.gameObject.SetActive(true);
@@ -46,30 +52,19 @@ public class GameManager : MonoBehaviour
             statusBar = Instantiate(statusBarPrefab);
             DontDestroyOnLoad(statusBar);
         }
-        RunManager.Instance.StartRun();
     }
-    public void EndRun()
+    public void StartOrResume()
     {
-        //Destroy(_runManager.gameObject);
-    }
-    public void Save()
-    {
-        SaveData data = new SaveData();
-        data.gold = RunManager.Instance.player.gold;
-        data.currentHP = RunManager.Instance.player.currentHP;
-        data.maxHP = RunManager.Instance.player.maxHP;
-        data.currentRoomId = RunManager.Instance.roomManager.currentRoom.roomID;
-        data.completedRooms = RunManager.Instance.roomManager.usedRoomID;
-
-        SaveSystem.SaveGame(data);
-    }
-
-    public void Load()
-    {
-        SaveData data = SaveSystem.LoadGame();
-        if (data == null) return;
-        //RunManager.Instance.player.Init(data.currentHP, data.maxHP, data.gold);
-        RunManager.Instance.roomManager.usedRoomID = data.completedRooms;
-        RunManager.Instance.roomManager.ShowCurrentRoom(data.currentRoomId);
+        if (_continueButton == null)
+        {
+            Debug.Log("Continue Button is null");
+            return;
+        }
+        if (SaveManager.Instance.CurrentRun == null)
+        {
+            _continueButton.gameObject.SetActive(false);
+            return;
+        }
+        else return;
     }
 }

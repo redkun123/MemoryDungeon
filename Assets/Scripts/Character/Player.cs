@@ -19,7 +19,7 @@ public class Player : Character
     public List<Card> discard;
     public event Action<int, int> OnEnergyChanged;
     public event Action<int> OnDeckChange;
-    public event Action <List<Card>>OnTrueDeckChange;
+    public event Action<List<Card>> OnTrueDeckChange;
     public event Action<int> OnDiscardChanged;
     public event Action<int> OnGoldChange;
     public event Action<Card> OnDraw;
@@ -32,8 +32,6 @@ public class Player : Character
             OnEnergyChanged?.Invoke(currentEnergy, maxEnergy);
         }
     }
-
-
     public void Discard(Card card)
     {
         hand.Remove(card);
@@ -63,7 +61,6 @@ public class Player : Character
         gold = Math.Max(gold, 0);
         OnGoldChange?.Invoke(gold);
     }
-
     public void DrawOne()
     {
         if (deck.Count == 0) RefillDeck();
@@ -92,5 +89,30 @@ public class Player : Character
         OnDiscardChanged?.Invoke(discard.Count);
         deck.Shuffle();
         OnDeckChange?.Invoke(deck.Count);
+    }
+    public List<string> GetDeckIDs()
+    {
+        if (trueDeck == null)
+        {
+            Debug.Log("True deck is null.");
+            return null;
+        }
+        List<string> ids = new List<string>();
+        foreach (Card card in trueDeck)
+        {
+            ids.Add(card.cardID);
+        }
+        return ids;
+    }
+    public void LoadFromRun(RunSaveData run, List<Card> deck)
+    {
+        this.gold = run.gold;
+        maxHP = run.maxHP;
+        currentHP = run.currentHP;
+        trueDeck.Clear();
+        for(int i = 0; i < deck.Count; i++)
+        {
+            ModifyDeck(deck[i]);
+        }
     }
 }

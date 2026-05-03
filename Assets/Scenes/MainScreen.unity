@@ -173,6 +173,60 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &94510364
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 94510366}
+  - component: {fileID: 94510365}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &94510365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94510364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bfa215b5a89974a8926cad99ace318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentRun:
+    currentHP: 0
+    maxHP: 0
+    gold: 0
+    floor: 0
+    currentRoomID: 
+    deckCardIds: []
+    visitedRoomIds: []
+  CurrentGame:
+    completedRoomIds: []
+--- !u!4 &94510366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94510364}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155878997
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +769,7 @@ GameObject:
   - component: {fileID: 747471872}
   - component: {fileID: 747471871}
   - component: {fileID: 747471870}
+  - component: {fileID: 747471873}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -824,6 +879,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747471868}
   m_CullTransparentMesh: 1
+--- !u!114 &747471873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747471868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f308b5e044eb665459a551c5d24f45be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _continueButton: {fileID: 747471870}
 --- !u!1 &983936203
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,6 +940,7 @@ MonoBehaviour:
   statusBarPrefab: {fileID: 3858914306380151515, guid: 4c6e5b4d93eed1d46b491b9f0fe4346f, type: 3}
   runManagerPrefab: {fileID: 470335052913448723, guid: 01f2c7b4156fb8c46a7df16da3d67b48, type: 3}
   playerConfig: {fileID: 11400000, guid: dbede78adca6ab143a7df95862e9a221, type: 2}
+  _continueButton: {fileID: 747471870}
 --- !u!1 &984129775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,3 +1905,4 @@ SceneRoots:
   - {fileID: 983936204}
   - {fileID: 590470064}
   - {fileID: 88786095}
+  - {fileID: 94510366}

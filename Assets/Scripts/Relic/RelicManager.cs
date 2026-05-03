@@ -8,7 +8,7 @@ public class RelicManager
 {
     public RelicLibrary relicLibrary;
     public List<Relic> currentRelic;
-    private BattleManager battleManager;
+    private BattleManager battleManager; //can nhac unbind sau moi battle
     public RelicContext ctx;
 
     public RelicManager(RelicLibrary relicLibrary)

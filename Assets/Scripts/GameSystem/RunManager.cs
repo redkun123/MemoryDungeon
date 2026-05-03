@@ -23,7 +23,6 @@ public class RunManager : MonoBehaviour
     [SerializeField] RewardPopup rewardPopupPrefab;
     public BattleSceneController battleSceneController { get; private set; }
     public BattleManager battleManager { get; private set; }
-    public SaveData run { get; private set; }
     public RunManager runManager { get; private set; }
     public StatusBar statusBar { get; private set; }
     public StoryManager storyManager { get; private set; }
@@ -31,6 +30,8 @@ public class RunManager : MonoBehaviour
     public LobbyManager lobbyManager { get; private set; }
     public RewardGenerator rewardGenerator { get; private set; }
     public RelicManager relicManager { get; private set; }
+    public Room currentRoom;
+    public int currentFloor;
     public void Awake()
     {
         if (Instance != null)
@@ -63,6 +64,7 @@ public class RunManager : MonoBehaviour
     public void StartRun()
     {
         CreatePLayer();
+        currentFloor = 0;
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
         rewardGenerator = new RewardGenerator(cardDB);
@@ -73,8 +75,85 @@ public class RunManager : MonoBehaviour
         DeckUIManager.Instance.RegisterPlayer(player);
         //roomManager.RoomCompleted += this.RoomComplete;
         //Load Floor 0 để bắt đầu game
-        floorManager.Init(roomManager);
+        floorManager.Init(roomManager, currentFloor);
         floorManager.DefineCurrentRoom();
+        CreateNewSave();
+    }
+    public void CreateNewSave()
+    {
+        SaveManager.Instance.CurrentRun = new RunSaveData
+        {
+            currentHP = player.currentHP,
+            maxHP = player.maxHP,
+            gold = player.gold,
+            floor = 0,
+            deckCardIds = player.GetDeckIDs(),
+            visitedRoomIds = new List<string>(),
+            currentRoomID = "0"
+        };
+        SaveManager.Instance.SaveRun();
+    }
+    public void UpdateRunSave()
+    {
+        currentFloor = floorManager.floor;
+        currentRoom = roomManager.currentRoom;
+        var run = SaveManager.Instance.CurrentRun;
+        run.currentHP = player.currentHP;
+        run.gold = player.gold;
+        run.floor = currentFloor;
+        run.deckCardIds = player.GetDeckIDs();
+        run.currentRoomID = currentRoom.roomID;
+        run.visitedRoomIds.Add(currentRoom.roomID);
+        SaveManager.Instance.SaveRun();
+    }
+    public void ResumeRun()
+    {
+        var run = SaveManager.Instance.CurrentRun;
+        if (run == null)
+        {
+            Debug.Log("No run to resume");
+            return;
+        }
+        // rebuild player state
+        var deck = LoadDeckFromSave(run);
+        if(player == null)
+        {
+            CreatePLayer();
+        }
+        player.LoadFromRun(run, deck);
+        roomManager = new RoomManager(roomDB);
+        floorManager = new FloorManager();
+        currentFloor = run.floor;
+        floorManager.Init(roomManager, currentFloor);
+        rewardGenerator = new RewardGenerator(cardDB);
+        relicManager = new(relicLibrary);
+        Debug.Log("Floor Manager created");
+        GameManager.Instance.CreateStatusBar();
+        RegisterStatusBar();
+        UpdateStatusBar();
+        DeckUIManager.Instance.RegisterPlayer(player);
+        LoadRoomFromSave(run);
+    }
+    public void LoadRoomFromSave(RunSaveData run)
+    {
+        currentRoom = roomDB.GetRoom(run.currentRoomID);
+        Debug.Log($"Current room: {currentRoom.roomName}");
+        roomManager.EnterChosenRoom(currentRoom);
+    }
+    public List<Card> LoadDeckFromSave(RunSaveData run)
+    {
+        foreach (var id in run.deckCardIds)
+        {
+            Debug.Log($"Saved ID: {id}");
+        }
+        var cardList = new List<Card>();
+        for (int i = 0; i < run.deckCardIds.Count; i++)
+        {
+            var card = cardDB.GetCard(run.deckCardIds[i]);
+            cardList.Add(card);
+            Debug.Log($"Add card: {card.cardName}");
+        }
+        return cardList;
     }
     public void End()
     {
@@ -217,6 +296,7 @@ public class RunManager : MonoBehaviour
     }
     public void EndRun()
     {
+        SaveRunData();
         ResetRun();
         SceneManager.LoadScene("MainScreen");
     }
@@ -228,15 +308,25 @@ public class RunManager : MonoBehaviour
         floorManager = null;
         battleSceneController = null;
         battleManager = null;
-        run = null;
         runManager = null;
         statusBar = null;
         storyManager = null;
         currentStory = null;
         lobbyManager = null;
         rewardGenerator = null;
-        relicManager = null;
+        relicManager.OnDestroy();
         statusBar.gameObject.SetActive(false);
     }
-
+    public void SaveRunData()
+    {
+        var save = SaveManager.Instance;
+        var gameSet = save.CurrentGame.ToHashSet();
+        foreach (var roomId in save.CurrentRun.visitedRoomIds)
+        {
+            gameSet.Add(roomId.ToString());
+        }
+        save.CurrentGame.FromHashSet(gameSet);
+        save.SaveGame();
+        save.ClearRun();
+    }
 }

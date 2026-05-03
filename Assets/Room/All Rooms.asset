@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: All Rooms
   m_EditorClassIdentifier: 
   startRoom: {fileID: 11400000, guid: 77e99662c408f514f9ff7cb4e2d8f786, type: 2}
-  bossRoom: {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
-  finalbossRoom: {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
-  restRoom: {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}
   shopRoom: {fileID: 11400000, guid: 35090e7d56551cc4fabc6c2a68c2b206, type: 2}
+  restRoom: {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}
+  bossRoom: {fileID: 11400000, guid: 62b3125b15025de42b30ca49efdfd4aa, type: 2}
+  finalBossRoom: {fileID: 11400000, guid: 20f783d3358f80a488e083c8aaa8dce9, type: 2}
   normalRoom:
   - {fileID: 11400000, guid: dc3694d18a3c917489caebf1083f4e77, type: 2}
   - {fileID: 11400000, guid: 7bae628e62a328e4d87c2a5d44a4be02, type: 2}
-  - {fileID: 11400000, guid: e04333475e56be1479a303175cb1a831, type: 2}
+  - {fileID: 11400000, guid: 11553fb24eaa176489b6693a6ab02b0e, type: 2}
+  - {fileID: 11400000, guid: aaf57b3d52c37a240b06961fed3403dd, type: 2}
+  roomDatabase: []
