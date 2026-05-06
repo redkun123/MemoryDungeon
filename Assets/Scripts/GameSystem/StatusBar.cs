@@ -21,7 +21,7 @@ public class StatusBar : MonoBehaviour
     public void UpdateStatus(Player player, int currentFloor)
     {
         playerName.text = $"{player.name}";
-        playerHP.text = $"{player.currentHP} / {player.maxHP}";
+        playerHP.text = $"{player.currentHP}/{player.maxHP}";
         playerGold.text = $"{player.gold}";
         deckCount.text = $"{player.trueDeck.Count}";
         floor.text = $"Floor {currentFloor}";
