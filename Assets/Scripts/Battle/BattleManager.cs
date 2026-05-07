@@ -115,7 +115,7 @@ public class BattleManager : MonoBehaviour
         player.ClearGuard();
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
-        battleLogic.RefillHand(handManager, player);
+        StartCoroutine(battleLogic.RefillHand(handManager, player));
         OnPlayerTurnStart?.Invoke();
     }
     public void CheckGameResult()

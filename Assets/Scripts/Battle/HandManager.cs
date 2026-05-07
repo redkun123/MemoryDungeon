@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class HandManager : MonoBehaviour
 {
     [SerializeField] private CardDisplay cardUI;
     [SerializeField] private Transform handArea;
-    [SerializeField] public float spacing = 200f;
+    [SerializeField] public float spacing = 100f;
+    [SerializeField] private Transform deckPosition;
+    [SerializeField] private Transform discardPosition;
     private Player player;
     List<CardDisplay> cardInHand;
 
@@ -20,10 +23,22 @@ public class HandManager : MonoBehaviour
     }
     public void DrawOne(Card card)
     {
-        cardInHand.Add(CreateCard(card));
+        var newCard = CreateCard(card);
+        cardInHand.Add(newCard);
         Debug.Log($"Display card draw {card}");
+
+        //spawn in deck position
+        newCard.transform.position = deckPosition.position;
+        newCard.transform.localScale = Vector3.zero;
+        cardInHand.Add(newCard);
+
+        // Scale animation
+        newCard.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
+
+        //update target position
         UpdateHandVisual();
     }
+
     public void RemoveCardFromHand(CardDisplay cardUI)
     {
         Debug.Log("Trying to remove card");
@@ -53,9 +68,14 @@ public class HandManager : MonoBehaviour
         int cardCount = cardInHand.Count;
         for (int i = 0; i < cardCount; i++)
         {
-            float horizontalOffset = (spacing * (i - (cardCount - 1) / 2f));
-            cardInHand[i].transform.localPosition = new Vector3(horizontalOffset, 0, 0);
-        }   
+            Vector3 targetPos = GetCardPosition(i, cardCount);
+            cardInHand[i].transform.DOLocalMove(targetPos, 0.25f).SetEase(Ease.OutCubic);
+        }
+    }
+    private Vector3 GetCardPosition(int index, int total)
+    {
+        float horizontalOffset = spacing * (index - (total - 1) / 2f);
+        return new Vector3(horizontalOffset, 0, 0);
     }
 
     public CardDisplay CreateCard(Card cardData)

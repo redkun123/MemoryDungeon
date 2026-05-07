@@ -20,7 +20,7 @@ public class BattleLogic
         Debug.Log("Battle Manager registered to battle logic");
         battleExecutor = bm.battleExecutor;
     }
-    public void RefillHand(HandManager handManager, Player player)
+    public IEnumerator RefillHand(HandManager handManager, Player player)
     {
         Debug.Log("Refill hand started");
         this.player = player;
@@ -30,8 +30,10 @@ public class BattleLogic
         for (int i = 0; i < need; i++)
         {
             player.DrawOne();
+            yield return new WaitForSeconds(0.25f);
             Debug.Log($"Draw {i}");
         }
+        Debug.Log($"Need draw: {need}");
     }
     public bool CanPlayCard(Card card)
     {

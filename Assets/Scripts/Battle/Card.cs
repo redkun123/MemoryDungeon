@@ -17,7 +17,7 @@ public class Card : ScriptableObject
         Attack,
         Guard,
         Setup,
-        Feint
+        Curse
     }
 
     public string GetFullDescription()
