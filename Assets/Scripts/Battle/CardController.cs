@@ -37,9 +37,11 @@ public class CardController : MonoBehaviour
             return;
         }
         Debug.Log("Card validated");
-        battleLogic.PlayCard(selectedCardData, battleManager.enemy);
-        handManager.RemoveCardFromHand(selectedCardUI);
+        CardDisplay ui = selectedCardUI;
+        Card data = selectedCardData;
         ClearSelection();
+        battleLogic.PlayCard(data, battleManager.enemy);
+        handManager.RemoveCardFromHand(ui);
     }
 
     void CardSelect(CardDisplay cardUI)

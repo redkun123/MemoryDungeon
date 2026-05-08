@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardUI: {fileID: 3802254148638860812, guid: 88e88264adf2e0949b4d3ad04103423f, type: 3}
   handArea: {fileID: 1156866014}
-  spacing: 100
+  spacing: 200
   deckPosition: {fileID: 1365462187}
   discardPosition: {fileID: 510681106}
 --- !u!1 &1292656770

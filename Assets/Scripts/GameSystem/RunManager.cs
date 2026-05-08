@@ -97,6 +97,10 @@ public class RunManager : MonoBehaviour
     public void UpdateRunSave()
     {
         currentFloor = floorManager.floor;
+        if (currentFloor <= 1)
+        {
+            return;
+        }
         currentRoom = roomManager.currentRoom;
         var run = SaveManager.Instance.CurrentRun;
         run.currentHP = player.currentHP;
