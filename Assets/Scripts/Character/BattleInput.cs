@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class BattleInput : MonoBehaviour
 {
     public BattleManager battleManager;
     //public event Action<Vector2> OnClick;

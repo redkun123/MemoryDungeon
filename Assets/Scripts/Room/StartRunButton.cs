@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkipIntroButton : MonoBehaviour
+public class StartRunButton : MonoBehaviour
 {
     [SerializeField] private Button _skipIntroButton;
     public void Awake()
