@@ -778,7 +778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3316475249050092597}
-  fill: {fileID: 4320084724540266361}
+  hpText: {fileID: 4211904450987589060}
+  tweenDuration: 0.6
 --- !u!1 &8415572134417832414
 GameObject:
   m_ObjectHideFlags: 0

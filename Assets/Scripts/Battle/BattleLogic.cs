@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
 using static UnityEngine.GraphicsBuffer;
@@ -47,7 +48,7 @@ public class BattleLogic
     }
 
     public void PlayCard(Card card, Enemy enemy)
-    {    
+    {
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
         cardManager = new CardManager(player, enemy, card);
@@ -60,6 +61,8 @@ public class BattleLogic
         }
         cardManager = null;
     }
+
+
     public void EnemyActionPerTurn(Enemy enemy, Player player)
     {
         Card card = enemy.moveSet[enemy.turnCount];

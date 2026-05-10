@@ -14,6 +14,7 @@ public class Character
     public bool isAlive;
     public event Action Dies;
     public event Action<int, int> OnHPChange;
+    public event Action<int> OnAttacked;
     public event Action<int> OnModifyGuard;
     public event Action OnLostGuard;
     public int currentGuard;
@@ -22,6 +23,7 @@ public class Character
     public void TakeDamage(int damage)
     {
         //Nếu bị attack thì trừ Guard trước, còn thừa bao nhiêu thì mới trừ HP
+        OnAttacked?.Invoke(damage);
         int calcDamage = damage;
         int oldHP = currentHP;
         if (currentGuard > 0)

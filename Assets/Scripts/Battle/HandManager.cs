@@ -17,7 +17,7 @@ public class HandManager : MonoBehaviour
     private void Awake()
     {
         player = RunManager.Instance.player;
-        if(cardInHand == null)
+        if (cardInHand == null)
         {
             cardInHand = new List<CardDisplay>();
         }
@@ -48,9 +48,8 @@ public class HandManager : MonoBehaviour
 
     public void RemoveCardFromHand(CardDisplay cardUI)
     {
-        Debug.Log("Trying to remove card");
+        SendToDiscard(cardUI);
         Debug.Log($"Card {cardUI.cardName.text} go to discard pile");
-        Destroy(cardUI.gameObject);
         cardInHand.Remove(cardUI);
         UpdateHandVisual();
     }
@@ -80,6 +79,17 @@ public class HandManager : MonoBehaviour
             RectTransform rect = cardInHand[i].GetComponent<RectTransform>();
             rect.DOAnchorPos(targetPos, 0.25f).SetEase(Ease.OutCubic);
         }
+    }
+    public void SendToDiscard(CardDisplay card)
+    {
+        RectTransform rect = card.GetComponent<RectTransform>();
+        DG.Tweening.Sequence seq = DOTween.Sequence();
+        seq.Join(rect.DOMove(discardPosition.position, 1f).SetEase(Ease.OutCubic));
+        seq.Join(card.transform.DOScale(Vector3.zero, 3f).SetEase(Ease.OutBack));
+        seq.OnComplete(() =>
+        {
+            Destroy(card.gameObject);
+        });
     }
     private Vector2 GetCardPosition(int index, int total)
     {

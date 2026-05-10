@@ -22,11 +22,11 @@ public class EnemyView : MonoBehaviour
         }
         // Init UI trước
         hpBar.InitSet(enemy.currentHP, enemy.maxHP);
-        hpCount.Set(enemy.currentHP, enemy.maxHP);
+        //hpCount.Set(enemy.currentHP, enemy.maxHP);
 
         // Đăng ký event sau
         enemy.OnHPChange += hpBar.Set;
-        enemy.OnHPChange += hpCount.Set;
+        //enemy.OnHPChange += hpCount.Set;
         battleManager.OnPlayerTurnStart += OnPlayerTurnStarted;
         battleManager.OnEnemyTurn += OnEnemyTurnStarted;
         UpdateUI();
@@ -34,7 +34,7 @@ public class EnemyView : MonoBehaviour
     void UpdateUI()
     {
         hpBar.Set(enemy.currentHP, enemy.maxHP);
-        hpCount.Set(enemy.currentHP, enemy.maxHP);
+        //hpCount.Set(enemy.currentHP, enemy.maxHP);
         intention.ShowIntention(enemy);
     }
     private void OnPlayerTurnStarted()

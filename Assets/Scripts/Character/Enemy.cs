@@ -20,4 +20,8 @@ public class Enemy : Character
     //    currentHP = maxHP;
     //    isAlive = true;
     //}
+    public IEnumerator PlayHitAnimation()
+    {
+        yield return new WaitForSeconds(0.25f);
+    }
 }

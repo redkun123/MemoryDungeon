@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -10,25 +11,41 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private HPBar hpBar;
     [SerializeField] private HPCount hpCount;
     [SerializeField] private GuardCount guardCount;
+    [SerializeField] private RectTransform avatar;
+    [SerializeField] private DamageText damageTextPrefab;
 
     public void Bind(Player player)
     {
         this.player = player;
-        UpdateHP();
+        RegisterHP();
         RegisterGuard();
     }
 
-    void UpdateHP()
+    void RegisterHP()
     {
         player.OnHPChange += hpBar.Set;
-        player.OnHPChange += hpCount.Set;
+        //player.OnHPChange += hpCount.Set;
+        player.OnAttacked += PlayHitEffect;
         hpBar.InitSet(player.currentHP, player.maxHP);
-        hpCount.Set(player.currentHP, player.maxHP);
+        //hpCount.Set(player.currentHP, player.maxHP);
     }
     void RegisterGuard()
     {
         player.OnModifyGuard += guardCount.ModifyGuard;
         player.OnLostGuard += guardCount.LostGuard;
+    }
+    public void PlayHitEffect(int damage)
+    {
+        avatar.DOShakeAnchorPos(
+            duration: 0.2f,
+            strength: 20f,
+            vibrato: 20,
+            randomness: 90,
+            snapping: false,
+            fadeOut: true
+        );  
+        var dmgText = Instantiate( damageTextPrefab,avatar );
+        dmgText.Setup(damage);
     }
 }
 
