@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyView : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class EnemyView : MonoBehaviour
     [SerializeField] public EnemyIntention intention;
     [SerializeField] public HPBar hpBar;
     [SerializeField] private HPCount hpCount;
+    [SerializeField] private GuardCount guardCount;
+    [SerializeField] private RectTransform avatar;
+    [SerializeField] private DamageText damageTextPrefab;
     [SerializeField] private GameObject intentionPanel;
-    //[SerializeField] public TextMeshProUGUI intentionText;
 
     public void Bind(Enemy enemy, BattleManager battleManager)
     {
@@ -21,21 +24,24 @@ public class EnemyView : MonoBehaviour
             return;
         }
         // Init UI trước
-        hpBar.InitSet(enemy.currentHP, enemy.maxHP);
-        //hpCount.Set(enemy.currentHP, enemy.maxHP);
+        //hpBar.InitSet(enemy.currentHP, enemy.maxHP);
+        ////hpCount.Set(enemy.currentHP, enemy.maxHP);
 
-        // Đăng ký event sau
-        enemy.OnHPChange += hpBar.Set;
-        //enemy.OnHPChange += hpCount.Set;
+        //// Đăng ký event sau
+        //enemy.OnHPChange += hpBar.Set;
+        ////enemy.OnHPChange += hpCount.Set;
         battleManager.OnPlayerTurnStart += OnPlayerTurnStarted;
         battleManager.OnEnemyTurn += OnEnemyTurnStarted;
-        UpdateUI();
+        RegisterUI();
     }
-    void UpdateUI()
+    void RegisterUI()
     {
-        hpBar.Set(enemy.currentHP, enemy.maxHP);
-        //hpCount.Set(enemy.currentHP, enemy.maxHP);
-        intention.ShowIntention(enemy);
+        //intention.ShowIntention(enemy);
+        enemy.OnHPChange += hpBar.Set;
+        enemy.OnAttacked += PlayHitEffect;
+        hpBar.InitSet(enemy.currentHP, enemy.maxHP);
+        enemy.OnModifyGuard += guardCount.ModifyGuard;
+        enemy.OnLostGuard += guardCount.LostGuard;
     }
     private void OnPlayerTurnStarted()
     {
@@ -45,6 +51,19 @@ public class EnemyView : MonoBehaviour
     private void OnEnemyTurnStarted()
     {
         intentionPanel.SetActive(false);
+    }
+    public void PlayHitEffect(int damage)
+    {
+        avatar.DOShakeAnchorPos(
+            duration: 0.2f,
+            strength: 20f,
+            vibrato: 20,
+            randomness: 90,
+            snapping: false,
+            fadeOut: true
+        );
+        var dmgText = Instantiate(damageTextPrefab, avatar);
+        dmgText.Setup(damage);
     }
 }
 

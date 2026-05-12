@@ -17,20 +17,14 @@ public class PlayerView : MonoBehaviour
     public void Bind(Player player)
     {
         this.player = player;
-        RegisterHP();
-        RegisterGuard();
+        RegisterUI();
     }
 
-    void RegisterHP()
+    void RegisterUI()
     {
         player.OnHPChange += hpBar.Set;
-        //player.OnHPChange += hpCount.Set;
         player.OnAttacked += PlayHitEffect;
         hpBar.InitSet(player.currentHP, player.maxHP);
-        //hpCount.Set(player.currentHP, player.maxHP);
-    }
-    void RegisterGuard()
-    {
         player.OnModifyGuard += guardCount.ModifyGuard;
         player.OnLostGuard += guardCount.LostGuard;
     }
