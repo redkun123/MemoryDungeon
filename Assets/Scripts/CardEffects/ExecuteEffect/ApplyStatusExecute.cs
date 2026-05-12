@@ -21,5 +21,6 @@ public class ApplyStatusExecute : IEffectExecute
     {
         var status = (Status)System.Activator.CreateInstance(statusType);
         ctx.target.statusManager.AddStatus(status, stack);
+        Debug.Log($"Added {stack} {status.name} to {ctx.target}");
     }
 }

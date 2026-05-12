@@ -9,7 +9,7 @@ public abstract class Status
     bool removeAtEndOfTurn;
     public string name;
     public Character owner {  get; private set; }
-    public int stack {  get; private set; }
+    public int stack {  get; set; }
     private enum StatusType
     {
         None,
