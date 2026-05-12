@@ -9,6 +9,9 @@ public class LobbyOptionButton : MonoBehaviour
 {
     [SerializeField] private Button _optionButton;
     [SerializeField] private TextMeshProUGUI roomName;
+    [SerializeField] private Image roomIcon;
+    [SerializeField] private Image roomBG;
+    [SerializeField] private LobbyPreset lobbyPreset;
     public LobbyManager lobbyManager;
     private int optionID;
     public void Init(int option, string displayName)

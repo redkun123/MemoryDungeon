@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplyStatusEffect : MonoBehaviour
+[CreateAssetMenu(menuName = "Card/Card Effect/Apply Effect")]
+public class ApplyStatusEffect : CardEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] public int stack;
+    public override IEffectExecute CreateEffect(Character source, Character target)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return new ApplyStatusExecute(typeof(StrengthStatus), stack);
     }
 }
