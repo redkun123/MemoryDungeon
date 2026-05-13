@@ -11,7 +11,7 @@ public class LobbyManager : MonoBehaviour
     private RoomManager roomManager;
     private List<GameObject> spawnedOptions;
     private List<int> optionID;
-    private float spacing = 500f;
+    private float spacing = 630f;
     private void Awake()
     {
         RunManager.Instance.RegisterLobbyManager(this);
@@ -50,25 +50,6 @@ public class LobbyManager : MonoBehaviour
         var roomType = room.roomType;
         string type = roomType.ToString();
         Debug.Log($"Room type: {type}");
-    /*    switch (roomType)
-        {
-            case Room.RoomType.Battle:
-                type = "Battle";
-                break;
-            case Room.RoomType.Story:
-                type = "Story";
-                break;
-            case Room.RoomType.Rest:
-                type = "Rest";
-                break;
-            case Room.RoomType.Shop:
-                type = "Shop";
-                break;
-            default:
-                Debug.Log($"Can't find this room type: {roomType}");
-                break;
-        }
-    */
         return type;
     }
 

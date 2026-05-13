@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RestRoomPreset
   m_EditorClassIdentifier: 
   roomName: Rest
-  roomBG: {fileID: 21300000, guid: dcf5f674901434b4cb8f9e73dd07fe11, type: 3}
+  roomBG: {fileID: 21300000, guid: 2c383401875789f4b9c7322dd564e90a, type: 3}
   roomIcon: {fileID: 21300000, guid: 20a265f64fb4b1b42b7589aa0615e14f, type: 3}
