@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e64f83aa42b60241b6b3addaf345025, type: 3}
-  m_Name: RestRoomPreset
+  m_Name: StorytRoomPreset
   m_EditorClassIdentifier: 
-  roomName: Rest
-  roomBG: {fileID: 21300000, guid: dcf5f674901434b4cb8f9e73dd07fe11, type: 3}
-  roomIcon: {fileID: 21300000, guid: 20a265f64fb4b1b42b7589aa0615e14f, type: 3}
+  roomName: Story
+  roomBG: {fileID: 21300000, guid: aea0d4a3ecdac6c49bf70b31ab62aece, type: 3}
+  roomIcon: {fileID: 21300000, guid: ac8fdbb98e613a94fb1c30caa983cba0, type: 3}

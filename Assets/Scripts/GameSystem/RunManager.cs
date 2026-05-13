@@ -283,9 +283,9 @@ public class RunManager : MonoBehaviour
         roomManager.SetSelectedRoom(roomTempID);
         InitNextRoom();
     }
-    public string DisplayRoomName(int roomTempID)
+    public Room DisplayRoomName(int roomTempID)
     {
-        return roomManager.randRoom[roomTempID].roomName;
+        return roomManager.randRoom[roomTempID];
     }
     public void GenerateRandomReward(RewardGenerator.RewardRank rank)
     {

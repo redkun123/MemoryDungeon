@@ -11,10 +11,10 @@ public class LobbyOptionButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI roomName;
     [SerializeField] private Image roomIcon;
     [SerializeField] private Image roomBG;
-    [SerializeField] private LobbyPreset lobbyPreset;
+
     public LobbyManager lobbyManager;
     private int optionID;
-    public void Init(int option, string displayName)
+    public void Init(int option, RoomPreset room)
     {
         if (_optionButton == null || roomName == null)
         {
@@ -24,7 +24,9 @@ public class LobbyOptionButton : MonoBehaviour
         optionID = option;
         _optionButton.onClick.RemoveAllListeners();
         _optionButton.onClick.AddListener(OnClickNextRoom);
-        roomName.text = displayName;
+        roomName.text = room.roomName;
+        roomIcon.sprite = room.roomIcon;
+        roomBG.sprite = room.roomBG;
     }
     public void OnClickNextRoom()
     {
@@ -36,5 +38,9 @@ public class LobbyOptionButton : MonoBehaviour
     public void SetInteractable(bool value)
     {
         _optionButton.interactable = value;
+    }
+    private void OnDestroy()
+    {
+        _optionButton.onClick.RemoveAllListeners();
     }
 }
