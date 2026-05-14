@@ -21,12 +21,14 @@ public abstract class Status
     {
         this.owner = owner;
         this.stack = stack;
+        GetName();
         OnApply();
     }
     public virtual void OnStack(int addStack)
     {
         stack += addStack;
     }
+    public virtual void GetName() { }
     protected virtual void OnApply() { }
     protected virtual void OnRemove() { }
     public virtual void OnTurnStart() { }

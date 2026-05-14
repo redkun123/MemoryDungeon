@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class VulnerableStatus : Status
 {
-    public override void Modify(EffectContext ctx)
+    public override void GetName()
     {
         name = "Vulnerable";
-        if (ctx.type == EffectType.Damage && ctx.source == owner)
+    }
+    public override void Modify(EffectContext ctx)
+    {
+        if (ctx.type == EffectType.Damage && ctx.target == owner)
         {
             ctx.value = Mathf.RoundToInt(ctx.value * 1.5f);
         }

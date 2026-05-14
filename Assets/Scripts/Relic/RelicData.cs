@@ -22,7 +22,7 @@ public class RelicData : ScriptableObject
         {
             StatusTypeByName.Strength => typeof(StrengthStatus),
             //StatusTypeByName.Weak => typeof(WeakStatus),
-            //StatusTypeByName.Vulnerable => typeof(VulnerableStatus),
+            StatusTypeByName.Vulnerable => typeof(VulnerableStatus),
             StatusTypeByName.Guard => typeof(GuardEffect),
             //StatusTypeByName.Energy
             _ => null
