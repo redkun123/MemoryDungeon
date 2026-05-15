@@ -70,10 +70,6 @@ public class BattleLogic
         cardManager = new CardManager(enemy, player, card);
         cardManager.battleExecutor = battleExecutor;
         cardManager.UseCard(card);
-        if (battleManager.battleEnded)
-        {
-            battleManager.CheckGameResult();
-        }
         cardManager = null;
         enemy.turnCount = EnemyConfigTurnCount(enemy);
     }

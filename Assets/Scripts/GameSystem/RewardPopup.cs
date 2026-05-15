@@ -18,10 +18,10 @@ public class RewardPopup : MonoBehaviour
         int rewardCount = currentReward.Count;
         spawnedReward = new List<GameObject>();
         //Spawn các nút phần thưởng
-        foreach (var reward in currentReward)
+        for (int i = 0; i < rewardCount; i++)
         {
             var btn = Instantiate(randomRewardPrefab, rewardParent);
-            btn.Init(reward, RunManager.Instance.rewardGenerator);
+            btn.Init(currentReward[i], RunManager.Instance.rewardGenerator);
             spawnedReward.Add(btn.gameObject);
         }
         UpdateRewardVisual();
