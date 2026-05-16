@@ -64,12 +64,11 @@ public class RewardGenerator
         List<RewardType> randomType = new()
         {
             RewardType.Relic,
-            RewardType.HP,
             RewardType.Gold,
             RewardType.Card
         };
         List<Reward> curentReward = new();
-        for (int j = 0; j <= i; j++)
+        for (int j = 0; j < i; j++)
         {
             Reward reward = new();
             Extensions.Shuffle(randomType);
