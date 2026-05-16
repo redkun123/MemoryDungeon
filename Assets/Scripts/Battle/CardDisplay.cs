@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -38,6 +39,15 @@ public class CardDisplay : MonoBehaviour
             cardBG.color = defaultColor;
             Debug.Log("Change color to normal");
         }
+    }
+    private void OnDestroy()
+    {
+        transform.DOKill(true);
+
+        RectTransform rect =
+            GetComponent<RectTransform>();
+
+        rect.DOKill(true);
     }
 }
 

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PlayerConfig playerConfig;
     [SerializeField] public Enemy enemy; //Tạm để test
     [SerializeField] public Button _continueButton;
+    //[SerializeField] public StartRunButton startButtonPrefab;
     //private RunManager _runManager;
     //public RunManager RunManager => _runManager;
     //[SerializeField] private BattleManager battleManager;
@@ -53,6 +54,11 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(statusBar);
         }
     }
+    //public void CreateStartButton()
+    //{
+    //    Vector2 buttonSpawn = new Vector2(0, 0);
+    //    var button = Instantiate(startButtonPrefab, buttonSpawn,Quaternion.identity);
+    //}
     public void StartOrResume()
     {
         if (_continueButton == null)

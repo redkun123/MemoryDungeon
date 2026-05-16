@@ -7,10 +7,11 @@ public class LobbyManager : MonoBehaviour
 {
     [SerializeField] Transform optionParent;
     [SerializeField] LobbyOptionButton optionButtonPrefab;
+    [SerializeField] private LobbyPreset lobbyPreset;
     private RoomManager roomManager;
     private List<GameObject> spawnedOptions;
     private List<int> optionID;
-    private float spacing = 500f;
+    private float spacing = 630f;
     private void Awake()
     {
         RunManager.Instance.RegisterLobbyManager(this);
@@ -18,6 +19,7 @@ public class LobbyManager : MonoBehaviour
         optionID = new List<int>();
         spawnedOptions = new();
         var roomCount = RunManager.Instance.roomManager.randRoom.Count;
+        lobbyPreset.Init();
         SpawnOptionButton(roomCount);
         UpdateOptionVisual();
     }
@@ -34,12 +36,21 @@ public class LobbyManager : MonoBehaviour
         {
             optionID.Add(i);
             var btn = Instantiate(optionButtonPrefab, optionParent);
-            var name = RunManager.Instance.DisplayRoomName(i);
-            Debug.Log($"{name}");
-            btn.Init(i, name);
+            var room = RunManager.Instance.DisplayRoomName(i);
+            var roomType = GetRoomType(room);
+            var roomPreset = lobbyPreset._lookup(roomType);
+            Debug.Log($"{room.roomName}");
+            btn.Init(i, roomPreset);
             btn.lobbyManager = this;
             spawnedOptions.Add(btn.gameObject);
         }
+    }
+    private string GetRoomType(Room room)
+    {
+        var roomType = room.roomType;
+        string type = roomType.ToString();
+        Debug.Log($"Room type: {type}");
+        return type;
     }
 
     private void UpdateOptionVisual()

@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class ShopPopup : MonoBehaviour
 {
-    //[SerializeField] private ShopSlot removeCard;
     [SerializeField] private List<Transform> cardSlotPos;
+    [SerializeField] private List<Transform> relicSlotPos;
     [SerializeField] private ShopSlot cardSlotPrefab;
+    [SerializeField] private ShopSlot relicSlotPrefab;
     [SerializeField] private RemoveCardButton removeCardButton;
-    //[SerializeField] private List<ShopSlot> relicSlot;
+
     private List<ShopSlot> activeSlots;
     public void LoadCard(List<Card> card, Dictionary<Card, int> cardPrice)
     {
@@ -27,14 +28,16 @@ public class ShopPopup : MonoBehaviour
     {
         activeSlots = new List<ShopSlot>();
     }
-    public void LoadRelic()
+    public void LoadRelic(List<RelicData> relic, Dictionary<RelicData,int> relicPrice)
     {
-        //for (int i = 0; i < relicSlot.Count; i++)
-        //{
-        //    Extensions.Shuffle(sellRelic);
-        //    var item = sellRelic[0];
-        //    relicSlot[i].Init(item);
-        //}
+        for (int i = 0; i < relic.Count; i++)
+        {
+            RelicData item = relic[i];
+            int price = relicPrice[item];
+            ShopSlot relicSlot = Instantiate(relicSlotPrefab, relicSlotPos[i]);
+            relicSlot.Init(item, price, i);
+            activeSlots.Add(relicSlot);
+        }
     }
     public void BuySuccess(int slotID)
     {
@@ -48,4 +51,5 @@ public class ShopPopup : MonoBehaviour
     {
         return activeSlots;
     }
+
 }

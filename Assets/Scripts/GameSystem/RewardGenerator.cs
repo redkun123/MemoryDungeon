@@ -6,14 +6,19 @@ using UnityEngine;
 public class RewardGenerator
 {
     private Dictionary<string, Card> cardLibrary;
-    //[SerializeField] private List<Relic> relicLibrary;
+    private Dictionary<string, RelicData> relicLibrary;
     //Generate cac phan qua
-    public RewardGenerator(CardDB DB)
+    public RewardGenerator(CardDB cardDB, RelicLibrary relicDB)
     {
         cardLibrary = new();
-        foreach (var card in DB.cardDatabase)
+        foreach (var card in cardDB.cardDatabase)
         {
             cardLibrary.Add(card.name, card);
+        }
+        relicLibrary = new();
+        foreach (var relic in relicDB.relics)
+        {
+            relicLibrary.Add(relic.name, relic); ;
         }
     }
     public enum RewardType
@@ -31,30 +36,6 @@ public class RewardGenerator
         Story,
         Boss
     }
-    //public void RequestSpecificReward(RewardType type, int amount, string uniqueName)
-    //{
-    //    switch (type)
-    //    {
-    //        case RewardType.None:
-    //            Debug.Log("Reward type invalid");
-    //            break;
-    //        case RewardType.Gold:
-    //            GenerateGold(amount);
-    //            break;
-    //        case RewardType.Card:
-    //            GenerateCard(uniqueName);
-    //            break;
-    //        case RewardType.Relic:
-    //            GenerateRelic(uniqueName);
-    //            break;
-    //        case RewardType.HP:
-    //            GenerateHP(amount);
-    //            break;
-    //        default:
-    //            Debug.Log("Reward type is unknown");
-    //            break;
-    //    }
-    //}
     public void AddSpecificReward(Reward reward)
     {
         switch (reward.rewardType)
@@ -71,9 +52,6 @@ public class RewardGenerator
             case RewardType.Relic:
                 AddRelic(reward.rewardName);
                 break;
-            case RewardType.HP:
-                AddHP(reward.amount);
-                break;
             default:
                 Debug.Log("Reward type is unknown");
                 break;
@@ -86,7 +64,6 @@ public class RewardGenerator
         List<RewardType> randomType = new()
         {
             RewardType.Relic,
-            RewardType.HP,
             RewardType.Gold,
             RewardType.Card
         };
@@ -98,7 +75,6 @@ public class RewardGenerator
             reward.rewardType = randomType[0];
             reward.amount = RequestAmount(rank, reward.rewardType);
             reward.rewardName = RequestName(reward.rewardType);
-            //RequestSpecificReward(type, amount, uniqueName);
             curentReward.Add(reward);
             Debug.Log($"Reward count: {curentReward.Count}");
         }
@@ -148,13 +124,15 @@ public class RewardGenerator
             case RewardType.Gold:
                 uniqueName = "Gold";
                 break;
-            case RewardType.HP:
-                uniqueName = "HP";
+            case RewardType.Relic:
+                List<RelicData> tempRelic = relicLibrary.Values.ToList();
+                Extensions.Shuffle(tempRelic);
+                uniqueName = tempRelic[0].relicName;
                 break;
             case RewardType.Card:
-                List<Card> temp = cardLibrary.Values.ToList();
-                Extensions.Shuffle(temp);
-                uniqueName = temp[0].cardName;
+                List<Card> tempCard = cardLibrary.Values.ToList();
+                Extensions.Shuffle(tempCard);
+                uniqueName = tempCard[0].cardName;
                 break;
             default:
                 Debug.Log("Can't find this reward name");
@@ -162,21 +140,20 @@ public class RewardGenerator
         }
         return uniqueName;
     }
-    public void GenerateGold(int amount)
+    public int GenerateGold(Reward reward)
     {
-
+        return reward.amount;
     }
-    public void GenerateCard(string name)
+    public Card GenerateCard(Reward reward)
     {
-
+        Card card = cardLibrary[reward.rewardName];
+        return card;
     }
-    public void GenerateRelic(string name)
+    public RelicData GenerateRelic(Reward reward)
     {
-
-    }
-    public void GenerateHP(int amount)
-    {
-
+        Debug.Log($"Relic reward name: {reward.rewardName}");
+        RelicData relic = relicLibrary[reward.rewardName];
+        return relic;
     }
     public void AddGold(int amount)
     {
@@ -184,16 +161,12 @@ public class RewardGenerator
     }
     public void AddCard(string name)
     {
-        Card card = new();
-        card = cardLibrary[name];
+        Card card = cardLibrary[name];
         RunManager.Instance.player.ModifyDeck(card);
     }
     public void AddRelic(string name)
     {
-
-    }
-    public void AddHP(int amount)
-    {
-        RunManager.Instance.player.RestoreHP(amount);
+        //RelicData relic = relicLibrary[name];
+        RunManager.Instance.relicManager.AddRelicByID(name);
     }
 }

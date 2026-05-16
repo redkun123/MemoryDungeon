@@ -11,11 +11,11 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI priceText;
     public Card cardForSell;
+    public RelicData relicForSell;
     public int price;
     public int id;
-    private string itemType;
+    public string itemType;
     public Action<ShopSlot> OnBuyClicked;
-
     private void Awake()
     {
         _buy.onClick.AddListener(() =>
@@ -32,8 +32,13 @@ public class ShopSlot : MonoBehaviour
         itemType = "Card";
         id = slotID;
     }
-    public void Init()
+    public void Init(RelicData relic, int price, int slotID)
     {
-
+        relicForSell = relic;
+        this.price = price;
+        itemImage.sprite = relic.icon;
+        priceText.text = price.ToString();
+        itemType = "Relic";
+        id = slotID;
     }
 }

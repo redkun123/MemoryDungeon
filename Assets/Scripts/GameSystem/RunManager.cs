@@ -67,7 +67,7 @@ public class RunManager : MonoBehaviour
         currentFloor = 0;
         roomManager = new RoomManager(roomDB);
         floorManager = new FloorManager();
-        rewardGenerator = new RewardGenerator(cardDB);
+        rewardGenerator = new RewardGenerator(cardDB, relicLibrary);
         relicManager = new(relicLibrary);
         Debug.Log("Floor Manager created");
         RegisterStatusBar();
@@ -96,6 +96,10 @@ public class RunManager : MonoBehaviour
     public void UpdateRunSave()
     {
         currentFloor = floorManager.floor;
+        if (currentFloor <= 1)
+        {
+            return;
+        }
         currentRoom = roomManager.currentRoom;
         var run = SaveManager.Instance.CurrentRun;
         run.currentHP = player.currentHP;
@@ -125,7 +129,7 @@ public class RunManager : MonoBehaviour
         floorManager = new FloorManager();
         currentFloor = run.floor;
         floorManager.Init(roomManager, currentFloor);
-        rewardGenerator = new RewardGenerator(cardDB);
+        rewardGenerator = new RewardGenerator(cardDB, relicLibrary);
         relicManager = new(relicLibrary);
         Debug.Log("Floor Manager created");
         GameManager.Instance.CreateStatusBar();
@@ -278,15 +282,14 @@ public class RunManager : MonoBehaviour
         roomManager.SetSelectedRoom(roomTempID);
         InitNextRoom();
     }
-    public string DisplayRoomName(int roomTempID)
+    public Room DisplayRoomName(int roomTempID)
     {
-        return roomManager.randRoom[roomTempID].roomName;
+        return roomManager.randRoom[roomTempID];
     }
     public void GenerateRandomReward(RewardGenerator.RewardRank rank)
     {
         int rewardCount = 3;
-        List<Reward> rewards = new List<Reward>();
-        rewards = rewardGenerator.RequestReward(rewardCount, rank);
+        var rewards = rewardGenerator.RequestReward(rewardCount, rank);
         Debug.Log($"Reward Display Count: {rewards.Count}");
         DisplayRandomReward(rewards);
     }

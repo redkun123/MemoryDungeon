@@ -11,15 +11,28 @@ public class ShopManager : MonoBehaviour
     public List<Card> allCard;
     public List<Card> cardForSale;
     public Dictionary<Card, int> allCardPrice;
+    public List<RelicData> allRelic;
+    public List<RelicData> relicForSale;
+    public Dictionary<RelicData, int> allRelicPrice;
     public ShopInventory shopInventory;
     private GameObject popup;
     public ShopPopup shopPopup;
+    Player player;
+    RelicManager relicManager;
 
     private void Awake()
     {
         InitShop();
     }
     public void InitShop()
+    {
+        SetupCard();
+        SetupRelic();
+        popup = shopPopup.gameObject;
+        shopPopup.Init();
+        SetupShop();
+    }
+    public void SetupCard()
     {
         this.allCard = shopItem.allCard;
         for (int i = 0; i < allCard.Count; i++)
@@ -32,9 +45,20 @@ public class ShopManager : MonoBehaviour
         this.cardForSale = shopInventory.GetCardForSale(5, allCard);
         var spawnPos = new Vector3(0, 0, 0);
         shopPopup = Instantiate(shopPopupPrefab, spawnPos, Quaternion.identity);
-        popup = shopPopup.gameObject;
-        shopPopup.Init();
-        SetupShop();
+    }
+    public void SetupRelic()
+    {
+        this.allRelic = shopItem.allRelic;
+        for (int i = 0; i < allRelic.Count; i++)
+        {
+            Debug.Log($"{allRelic[i].relicName}");
+        }
+        this.allRelicPrice = shopItem.allRelicPrice;
+        shopInventory = new();
+        Debug.Log("Shop Inventory created.");
+        this.relicForSale = shopInventory.GetRelicForSale(3, allRelic);
+        var spawnPos = new Vector3(0, 0, 0);
+        shopPopup = Instantiate(shopPopupPrefab, spawnPos, Quaternion.identity);
     }
     public void SetupShop()
     {
@@ -43,7 +67,13 @@ public class ShopManager : MonoBehaviour
         {
             slot.OnBuyClicked += HandleBuy;
         }
-        Debug.Log("Bind slots to shop manager");
+        Debug.Log("Bind card slots to shop manager");
+        shopPopup.LoadRelic(relicForSale, allRelicPrice);
+        foreach (var slot in shopPopup.GetSlots())
+        {
+            slot.OnBuyClicked += HandleBuy;
+        }
+        Debug.Log("Bind relic slots to shop manager");
     }
     public void SetPopupActive()
     {
@@ -63,21 +93,52 @@ public class ShopManager : MonoBehaviour
     }
     public void HandleBuy(ShopSlot slot)
     {
-        Player player = RunManager.Instance.player;
+        player = RunManager.Instance.player;
+        relicManager = RunManager.Instance.relicManager;
+        switch (slot.itemType)
+        {
+            case "Card":
+                HandleCard(slot);
+                break;
+            case "Relic":
+                HandleRelic(slot);
+                break;
+            default:
+                Debug.Log("Can't define this item.");
+                break;
+        }
+    }
+    private void HandleCard(ShopSlot slot)
+    {
+        var card = slot.cardForSell;
         var price = slot.price;
-        //if (slot.cardForSell != null && slot.relicForSell == null)
-        //{
-
-        //}
-        var item = slot.cardForSell;
         var slotID = slot.id;
-        //Add item (card/relic) vao tai khoan cua player
+        //Add card vao tai khoan cua player
         if (player.gold >= price)
         {
-            RunManager.Instance.player.ModifyDeck(item);
+            player.ModifyDeck(card);
             shopPopup.BuySuccess(slotID);
             player.gold -= price;
             Debug.Log("Buy card success");
+        }
+        else
+        {
+            Debug.Log("Not enough gold.");
+            return;
+        }
+    }
+    private void HandleRelic(ShopSlot slot)
+    {
+        var relic = slot.relicForSell;
+        var price = slot.price;
+        var slotID = slot.id;
+        //Add relic vao tai khoan cua player
+        if (player.gold >= price)
+        {
+            relicManager.AddRelicByID(relic.relicName);
+            shopPopup.BuySuccess(slotID);
+            player.gold -= price;
+            Debug.Log("Buy relic success");
         }
         else
         {

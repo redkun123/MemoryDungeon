@@ -27,6 +27,7 @@ public class StatusManager
         {
             existing.OnStack(stack);
         }
+        Debug.Log($"{owner} get {stack} {newStatus.name}");
         CleanUp();
     }
     public void OnBattleEnd()

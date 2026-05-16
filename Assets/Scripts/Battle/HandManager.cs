@@ -8,16 +8,23 @@ public class HandManager : MonoBehaviour
 {
     [SerializeField] private CardDisplay cardUI;
     [SerializeField] private Transform handArea;
-    [SerializeField] public float spacing = 100f;
+    [SerializeField] public float spacing = 200f;
     [SerializeField] private Transform deckPosition;
     [SerializeField] private Transform discardPosition;
     private Player player;
     List<CardDisplay> cardInHand;
 
-    private void OnEnable()
+    private void Awake()
     {
         player = RunManager.Instance.player;
-        cardInHand = new List<CardDisplay>();
+        if (cardInHand == null)
+        {
+            cardInHand = new List<CardDisplay>();
+        }
+        else
+        {
+            cardInHand.Clear();
+        }
         player.OnDraw -= DrawOne;
         player.OnDraw += DrawOne;
     }
@@ -30,35 +37,31 @@ public class HandManager : MonoBehaviour
         //spawn in deck position
         newCard.transform.position = deckPosition.position;
         newCard.transform.localScale = Vector3.zero;
-        cardInHand.Add(newCard);
 
         // Scale animation
         newCard.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
 
         //update target position
+        Debug.Log($"Current number of card in hand: {cardInHand.Count}");
         UpdateHandVisual();
     }
 
     public void RemoveCardFromHand(CardDisplay cardUI)
     {
-        Debug.Log("Trying to remove card");
-        Debug.Log($"Card {cardUI.cardName} go to discard pile");
+        SendToDiscard(cardUI);
+        Debug.Log($"Card {cardUI.cardName.text} go to discard pile");
         cardInHand.Remove(cardUI);
-        Destroy(cardUI.gameObject);
         UpdateHandVisual();
     }
-
     public void RemoveAll()
     {
         Debug.Log("Trying to remove all card");
-        for (int i = cardInHand.Count - 1; i >= 0; i--)
+        var tempList = new List<CardDisplay>();
+        tempList.AddRange(cardInHand);
+        for (int i = tempList.Count - 1; i >= 0; i--)
         {
-            CardDisplay cardUI = cardInHand[i];
-            cardInHand.RemoveAt(i);
-            Debug.Log($"Card {cardUI.cardName} go to discard pile");
-            Destroy(cardUI.gameObject);
+            RemoveCardFromHand(tempList[i]);
         }
-        UpdateHandVisual();
         Debug.Log("All card removed");
     }
 
@@ -66,16 +69,32 @@ public class HandManager : MonoBehaviour
     {
         cardInHand.RemoveAll(card => card == null);
         int cardCount = cardInHand.Count;
+        for (int j = 0; j < cardCount; j++)
+        {
+            Debug.Log($"Card {j} in hand: {cardInHand[j].cardName.text}");
+        }
         for (int i = 0; i < cardCount; i++)
         {
-            Vector3 targetPos = GetCardPosition(i, cardCount);
-            cardInHand[i].transform.DOLocalMove(targetPos, 0.25f).SetEase(Ease.OutCubic);
+            Vector2 targetPos = GetCardPosition(i, cardCount);
+            RectTransform rect = cardInHand[i].GetComponent<RectTransform>();
+            rect.DOAnchorPos(targetPos, 0.25f).SetEase(Ease.OutCubic);
         }
     }
-    private Vector3 GetCardPosition(int index, int total)
+    public void SendToDiscard(CardDisplay card)
+    {
+        RectTransform rect = card.GetComponent<RectTransform>();
+        DG.Tweening.Sequence seq = DOTween.Sequence();
+        seq.Join(rect.DOMove(discardPosition.position, 1f).SetEase(Ease.OutCubic));
+        seq.Join(card.transform.DOScale(Vector3.zero, 3f).SetEase(Ease.OutBack));
+        seq.OnComplete(() =>
+        {
+            Destroy(card.gameObject);
+        });
+    }
+    private Vector2 GetCardPosition(int index, int total)
     {
         float horizontalOffset = spacing * (index - (total - 1) / 2f);
-        return new Vector3(horizontalOffset, 0, 0);
+        return new Vector2(horizontalOffset, 0);
     }
 
     public CardDisplay CreateCard(Card cardData)

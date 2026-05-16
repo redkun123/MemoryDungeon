@@ -9,7 +9,7 @@ public abstract class Status
     bool removeAtEndOfTurn;
     public string name;
     public Character owner {  get; private set; }
-    public int stack {  get; private set; }
+    public int stack {  get; set; }
     private enum StatusType
     {
         None,
@@ -21,13 +21,14 @@ public abstract class Status
     {
         this.owner = owner;
         this.stack = stack;
+        GetName();
         OnApply();
     }
     public virtual void OnStack(int addStack)
     {
         stack += addStack;
     }
-    public virtual void SetName() { }
+    public virtual void GetName() { }
     protected virtual void OnApply() { }
     protected virtual void OnRemove() { }
     public virtual void OnTurnStart() { }

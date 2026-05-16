@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 3896275917028045572}
   - component: {fileID: 9038273125483085655}
   - component: {fileID: 8575987581335981875}
+  - component: {fileID: 5840433984578902348}
   m_Layer: 5
   m_Name: ShopSlot
   m_TagString: Untagged
@@ -171,10 +172,10 @@ RectTransform:
   - {fileID: 782112200396341336}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 150}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8602708977283687882
 CanvasRenderer:
@@ -274,4 +275,20 @@ MonoBehaviour:
   itemImage: {fileID: 3896275917028045572}
   priceText: {fileID: 8890413884176292391}
   cardForSell: {fileID: 0}
+  relicForSell: {fileID: 0}
   price: 0
+  id: 0
+--- !u!114 &5840433984578902348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942160941105047509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1

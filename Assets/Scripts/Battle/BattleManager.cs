@@ -97,12 +97,14 @@ public class BattleManager : MonoBehaviour
         if (battleEnded)
         {
             CheckGameResult();
+            return;
         }
         enemy.ClearGuard();
         battleLogic.EnemyActionPerTurn(enemy, player);
         if (battleEnded)
         {
             CheckGameResult();
+            return;
         }
         StartPlayerTurn();
     }
@@ -111,15 +113,16 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Player turn started");
         isPlayerTurn = true;
         OnPlayerTurnStart?.Invoke();
-        if (battleEnded)
-        {
-            CheckGameResult();
-        }
         player.ClearGuard();
         player.RestoreEnergy(player.maxEnergy);
         Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
         StartCoroutine(battleLogic.RefillHand(handManager, player));
         OnPlayerTurnStart?.Invoke();
+        if (battleEnded)
+        {
+            CheckGameResult();
+            return;
+        }
     }
     public void CheckGameResult()
     {
@@ -147,9 +150,9 @@ public class BattleManager : MonoBehaviour
     }
     public void Win()
     {
-        WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
+        /*WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
         popup.result.text = "YOU WIN!!!";
-        Debug.Log("You win!");
+        Debug.Log("You win!");*/
 
         //Tạm thời gen ra phần thưởng normal
         RunManager.Instance.GenerateRandomReward(RewardGenerator.RewardRank.Normal);
