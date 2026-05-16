@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ public class StatusManager
 {
     private Character owner;
     private List<Status> statuses;
+    private Dictionary<string,string> statusByName;
+    public event Action OnStatusListChange;
     public StatusManager(Character owner)
     {
         this.owner = owner;
@@ -76,6 +79,26 @@ public class StatusManager
                 statuses.RemoveAt(i);
             }
         }
+        OnStatusListChange?.Invoke();
     }
-    public List<Status> GetAll() => statuses;
+    public Dictionary<string,string> GetAll()
+    {
+        if (statusByName == null)
+        {
+            statusByName = new Dictionary<string,string>();
+        }
+        else
+        {
+            statusByName.Clear();
+        }
+        for(int i = 0; i < statuses.Count; i++)
+        {
+            if (statuses[i].name == null)
+            {
+                statuses[i].SetName();
+            }
+            statusByName.Add(statuses[i].name, statuses[i].stack.ToString());
+        }
+        return statusByName;
+    }
 }

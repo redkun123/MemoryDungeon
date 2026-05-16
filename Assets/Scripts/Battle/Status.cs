@@ -27,6 +27,7 @@ public abstract class Status
     {
         stack += addStack;
     }
+    public virtual void SetName() { }
     protected virtual void OnApply() { }
     protected virtual void OnRemove() { }
     public virtual void OnTurnStart() { }

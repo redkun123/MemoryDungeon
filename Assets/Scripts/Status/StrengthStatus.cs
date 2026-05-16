@@ -6,10 +6,13 @@ public class StrengthStatus : Status
 {
     public override void Modify(EffectContext ctx)
     {
-        name = "Strength";
         if (ctx.type == EffectType.Damage && ctx.source == owner)
         {
             ctx.value += stack;
         }
+    }
+    public override void SetName()
+    {
+        name = "Strength";
     }
 }
