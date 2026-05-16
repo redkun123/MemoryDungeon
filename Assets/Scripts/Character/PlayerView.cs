@@ -11,6 +11,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private HPBar hpBar;
     [SerializeField] private HPCount hpCount;
     [SerializeField] private GuardCount guardCount;
+    [SerializeField] private Transform statusArea;
     [SerializeField] private RectTransform avatar;
     [SerializeField] private DamageText damageTextPrefab;
 

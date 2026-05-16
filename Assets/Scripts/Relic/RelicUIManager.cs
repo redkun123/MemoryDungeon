@@ -29,12 +29,12 @@ public class RelicUIManager : MonoBehaviour
         var inventory = relicManager.currentRelicData;
         Debug.Log($"Refreshing relic list: {inventory}");
         // render
-        //foreach (Transform child in content)
-        //{
-        //    Destroy(child.gameObject);
-        //}
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
+        }
 
-        // spawn card
+        // spawn relic
         foreach (var relic in inventory)
         {
             var relicUI = Instantiate(relicPrefab, content);

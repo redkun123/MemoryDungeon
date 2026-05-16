@@ -74,8 +74,7 @@ public class RunManager : MonoBehaviour
         UpdateStatusBar();
         DeckUIManager.Instance.RegisterPlayer(player);
         RelicUIManager.Instance.RegisterRelic(relicManager);
-        //roomManager.RoomCompleted += this.RoomComplete;
-        //Load Floor 0 để bắt đầu game
+        StatusUIManager.Instance.RegisterPlayerStatus(player);
         floorManager.Init(roomManager, currentFloor);
         floorManager.DefineCurrentRoom();
         CreateNewSave();

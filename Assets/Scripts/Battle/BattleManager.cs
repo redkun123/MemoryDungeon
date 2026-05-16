@@ -27,6 +27,8 @@ public class BattleManager : MonoBehaviour
     public BattleLogic battleLogic;
     public BattleExecutor battleExecutor;
     public RelicManager relicManager;
+    public StatusManager playerSM;
+    public StatusManager enemySM;
 
     public bool isPlayerTurn;
     public bool battleEnded;
@@ -71,6 +73,7 @@ public class BattleManager : MonoBehaviour
         enemy.Dies += EndBattle;
         battleSceneController.BattleSceneStart();
         relicManager.Setup();
+        RegisterStatusManager();
         OnBattleStart?.Invoke();
         handManager.ResetHand();
         StartPlayerTurn();
@@ -154,5 +157,16 @@ public class BattleManager : MonoBehaviour
         //Tạm thời gen ra phần thưởng normal
         RunManager.Instance.GenerateRandomReward(RewardGenerator.RewardRank.Normal);
         //RunManager.Instance.RoomComplete();
+    }
+    private void RegisterStatusManager()
+    {
+        playerSM = player.statusManager;
+        enemySM = enemy.statusManager;
+        OnBattleEnd += playerSM.OnBattleEnd;
+        OnPlayerTurnStart += playerSM.OnTurnStart;
+        OnPlayerTurnEnd += playerSM.OnTurnEnd;
+        OnBattleEnd += enemySM.OnBattleEnd;
+        OnPlayerTurnStart += enemySM.OnTurnStart;
+        OnBattleEnd += enemySM.OnBattleEnd;
     }
 }
