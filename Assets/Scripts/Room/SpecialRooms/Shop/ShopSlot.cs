@@ -10,6 +10,7 @@ public class ShopSlot : MonoBehaviour
     [SerializeField] Button _buy;
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] CardDisplay cardPrefab;
     public Card cardForSell;
     public RelicData relicForSell;
     public int price;
@@ -27,7 +28,9 @@ public class ShopSlot : MonoBehaviour
     {
         cardForSell = card;
         this.price = price;
-        itemImage.sprite = card.cardSprite;
+        var cardSlot = Instantiate(cardPrefab, itemImage.gameObject.transform);
+        cardSlot.transform.localScale = Vector3.one * 0.6f;
+        cardSlot.SetupCard(cardForSell);
         priceText.text = price.ToString();
         itemType = "Card";
         id = slotID;
