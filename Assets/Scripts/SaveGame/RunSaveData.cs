@@ -13,5 +13,6 @@ public class RunSaveData
     public string currentRoomID;
     public List<string> deckCardIds;
     public List<string> visitedRoomIds;
+    public List<string> relicList;
     //public int seed; // optional
 }

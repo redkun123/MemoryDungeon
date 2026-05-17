@@ -42,11 +42,6 @@ public class RunManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    //public void Init(SaveSystem data)
-    //{
-    //    run = new SaveData(data);
-    //    StartRun();
-    //}
     public void CreatePLayer()
     {
         this.player = PlayerFactory.Create(GameManager.Instance.playerConfig);
@@ -78,7 +73,6 @@ public class RunManager : MonoBehaviour
         UpdateStatusBar();
         DeckUIManager.Instance.RegisterPlayer(player);
         RelicUIManager.Instance.RegisterRelic(relicManager);
-
         floorManager.Init(roomManager, currentFloor);
         floorManager.DefineCurrentRoom();
         CreateNewSave();
@@ -93,7 +87,8 @@ public class RunManager : MonoBehaviour
             floor = 0,
             deckCardIds = player.GetDeckIDs(),
             visitedRoomIds = new List<string>(),
-            currentRoomID = "0"
+            currentRoomID = "0",
+            relicList = relicManager.GetRelicData(),
         };
         SaveManager.Instance.SaveRun();
     }
@@ -104,7 +99,7 @@ public class RunManager : MonoBehaviour
         {
             return;
         }
-        currentRoom = roomManager.currentRoom;
+        //currentRoom = roomManager.currentRoom;
         var run = SaveManager.Instance.CurrentRun;
         run.currentHP = player.currentHP;
         run.gold = player.gold;
@@ -112,6 +107,7 @@ public class RunManager : MonoBehaviour
         run.deckCardIds = player.GetDeckIDs();
         run.currentRoomID = currentRoom.roomID;
         run.visitedRoomIds.Add(currentRoom.roomID);
+        run.relicList = relicManager.GetRelicData();
         SaveManager.Instance.SaveRun();
     }
     public void ResumeRun()
@@ -135,6 +131,10 @@ public class RunManager : MonoBehaviour
         floorManager.Init(roomManager, currentFloor);
         rewardGenerator = new RewardGenerator(cardDB, relicLibrary);
         relicManager = new(relicLibrary);
+        for (int i = 0; i < run.relicList.Count; i++)
+        {
+            relicManager.AddRelicByID(run.relicList[i]); //tam thoi add lai relic
+        }
         Debug.Log("Floor Manager created");
         GameManager.Instance.CreateStatusBar();
         RegisterStatusBar();
@@ -332,6 +332,10 @@ public class RunManager : MonoBehaviour
         foreach (var roomId in save.CurrentRun.visitedRoomIds)
         {
             gameSet.Add(roomId.ToString());
+        }
+        foreach(var relic in save.CurrentRun.relicList)
+        {
+            gameSet.Add(relic.ToString());
         }
         save.CurrentGame.FromHashSet(gameSet);
         save.SaveGame();

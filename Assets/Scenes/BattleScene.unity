@@ -1271,6 +1271,8 @@ MonoBehaviour:
   enemyViewPrefab: {fileID: 205523635956432438, guid: 2cc095750e9d11f4f936354c6af2a28f, type: 3}
   energyView: {fileID: 2040171239}
   deckManager: {fileID: 828832795}
+  playerView: {fileID: 0}
+  enemyView: {fileID: 0}
 --- !u!1 &828832792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1387,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976270293}
+  - component: {fileID: 976270296}
   m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
@@ -1412,6 +1415,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &976270296
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976270292}
+  m_CullTransparentMesh: 1
 --- !u!1 &976400914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9607844, g: 0.49411768, b: 0.098039225, a: 1}
+  m_Color: {r: 1, g: 0.57237566, b: 0.20943397, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1558,13 +1569,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: d230d0f2899ca1b4d946fa35bfc5d135, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1018170985

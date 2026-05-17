@@ -16,6 +16,10 @@ public class EnemyView : MonoBehaviour
     [SerializeField] private GameObject intentionPanel;
     [SerializeField] public Transform statusArea;
 
+    [Header("Attack Animation")]
+    [SerializeField] private float attackMoveDistance = 100f;
+    [SerializeField] private float attackDuration = 0.12f;
+    private Vector2 originalPos;
     public void Bind(Enemy enemy, BattleManager battleManager)
     {
         this.enemy = enemy;
@@ -40,6 +44,7 @@ public class EnemyView : MonoBehaviour
         //intention.ShowIntention(enemy);
         enemy.OnHPChange += hpBar.Set;
         enemy.OnAttacked += PlayHitEffect;
+        enemy.OnAttacking += PlayAttackEffect;
         hpBar.InitSet(enemy.currentHP, enemy.maxHP);
         enemy.OnModifyGuard += guardCount.ModifyGuard;
         enemy.OnLostGuard += guardCount.LostGuard;
@@ -65,6 +70,24 @@ public class EnemyView : MonoBehaviour
         );
         var dmgText = Instantiate(damageTextPrefab, avatar);
         dmgText.Setup(damage);
+    }
+    public void PlayAttackEffect(int damage)
+    {
+        //tam thoi danh manh nhe dung chung anim
+        avatar.DOKill();
+        Sequence seq = DOTween.Sequence();
+        seq.Append(
+            avatar.DOAnchorPosX(
+                originalPos.x + attackMoveDistance,
+                attackDuration
+            ).SetEase(Ease.OutQuad)
+        );
+        seq.Append(
+            avatar.DOAnchorPosX(
+                originalPos.x,
+                attackDuration
+            ).SetEase(Ease.InQuad)
+        );
     }
 }
 

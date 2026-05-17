@@ -17,6 +17,7 @@ public class AttackExecute : IEffectExecute
 
     public void Resolve(EffectContext ctx)
     {
+        ctx.source.Attack(damage);
         ctx.target.TakeDamage(ctx.value);
     }
 }

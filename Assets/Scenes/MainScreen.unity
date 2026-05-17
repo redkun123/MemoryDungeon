@@ -212,6 +212,7 @@ MonoBehaviour:
     currentRoomID: 
     deckCardIds: []
     visitedRoomIds: []
+    relicList: []
   CurrentGame:
     completedRoomIds: []
 --- !u!4 &94510366
@@ -1541,7 +1542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23119c4fcd2fc274f81cccad65440ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 1948528486}
   statusPrefab: {fileID: 7229628890926965712, guid: 9d9acd518e2170e46a2dc7a669b66141, type: 3}
   statusDB: {fileID: 11400000, guid: ca3eba237cb214741ae43e07c9cf6885, type: 2}
 --- !u!1 &1694537656
@@ -2088,6 +2088,7 @@ GameObject:
   - component: {fileID: 1989865551}
   - component: {fileID: 1989865550}
   - component: {fileID: 1989865549}
+  - component: {fileID: 1989865552}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -2197,6 +2198,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989865547}
   m_CullTransparentMesh: 1
+--- !u!114 &1989865552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989865547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0576dd63f26c9c442a76cfd1e17d6ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quitGameButton: {fileID: 1989865549}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

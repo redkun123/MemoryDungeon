@@ -102,4 +102,13 @@ public class RelicManager
     {
         relic.OnTrigger(ctx);
     }
+    public List<string> GetRelicData()
+    {
+        List<string> listRelic = new List<string>();
+        for (int i = 0; i < currentRelicData.Count; i++)
+        {
+            listRelic.Add(currentRelicData[i].id);
+        }
+        return listRelic;
+    }
 }

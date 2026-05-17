@@ -16,7 +16,15 @@ public class EnergyBar : MonoBehaviour
     }
     public void Set(int currentEnergy, int maxEnergy)
     {
-        energyBar.value = currentEnergy;
-        energyBar.value = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+        if (currentEnergy == 0)
+        {
+            energyBar.value = 0;
+        }
+        else return;
     }
+    //public void Set(int currentEnergy, int maxEnergy)
+    //{
+    //    energyBar.value = currentEnergy;
+    //    energyBar.value = Mathf.Clamp(currentEnergy, 0, maxEnergy);
+    //}
 }
