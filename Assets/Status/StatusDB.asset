@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statuses:
   - {fileID: 11400000, guid: 5e13214835353604fa2f7f0c47907101, type: 2}
+  - {fileID: 11400000, guid: 7131ba76afdd20b49be4aefe347854d5, type: 2}

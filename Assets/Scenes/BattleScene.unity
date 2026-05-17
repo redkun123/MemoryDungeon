@@ -764,59 +764,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1531720434}
---- !u!1 &441175596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 441175597}
-  - component: {fileID: 441175598}
-  m_Layer: 0
-  m_Name: RunManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &441175597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441175596}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2117532531}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &441175598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441175596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5ad4f685ac27f94c87d7d7440db974c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  temp: 0
-  currentEnemy: {fileID: 0}
-  roomDB: {fileID: 0}
-  roomRest: {fileID: 0}
-  cardDB: {fileID: 0}
-  relicLibrary: {fileID: 0}
-  rewardPopupPrefab: {fileID: 0}
-  currentRoom: {fileID: 0}
-  currentFloor: 0
 --- !u!1 &510681105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1267,7 @@ MonoBehaviour:
   playerSlot: {fileID: 764074764}
   enemySlot: {fileID: 1779533979}
   handArea: {fileID: 1156866014}
-  playerViewPrefab: {fileID: 7097680653862599339, guid: 8f33499244b02084fa5ba528eb721c22, type: 3}
+  playerViewPrefab: {fileID: 7097680653862599339, guid: c3d2b9e679324b149b46324396a123a5, type: 3}
   enemyViewPrefab: {fileID: 205523635956432438, guid: 2cc095750e9d11f4f936354c6af2a28f, type: 3}
   energyView: {fileID: 2040171239}
   deckManager: {fileID: 828832795}
@@ -2392,8 +2339,6 @@ MonoBehaviour:
   playerSlot: {fileID: 764074764}
   enemySlots: {fileID: 1779533979}
   handArea: {fileID: 1156866014}
-  playerViewPrefab: {fileID: 7097680653862599339, guid: 8f33499244b02084fa5ba528eb721c22, type: 3}
-  enemyViewPrefab: {fileID: 205523635956432438, guid: 2cc095750e9d11f4f936354c6af2a28f, type: 3}
   winLosePopup: {fileID: 5533047489392674840, guid: acf986f4c4e760645a349af1ce14db4c, type: 3}
   enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}
   isPlayerTurn: 0
@@ -2702,7 +2647,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 441175597}
   - {fileID: 1531720432}
   - {fileID: 766343870}
   - {fileID: 1702762802}

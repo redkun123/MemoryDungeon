@@ -96,7 +96,7 @@ public class StatusManager
         {
             if (statuses[i].name == null)
             {
-                statuses[i].SetName();
+                statuses[i].GetName();
             }
             statusByName.Add(statuses[i].name, statuses[i].stack.ToString());
         }

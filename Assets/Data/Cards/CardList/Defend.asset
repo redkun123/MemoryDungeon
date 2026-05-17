@@ -18,4 +18,5 @@ MonoBehaviour:
   cardSprite: {fileID: 21300000, guid: 4bd985de569436d4d9c53c26901c33b8, type: 3}
   cardEffect:
   - {fileID: 11400000, guid: 2a6f0b9dc347b3045aaa11d2b269e0d9, type: 2}
+  - {fileID: 11400000, guid: 48bbeb69fcff0dd4994e169900e6ed6d, type: 2}
   cardType: 1

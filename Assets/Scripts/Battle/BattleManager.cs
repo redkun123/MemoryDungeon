@@ -17,8 +17,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private Transform handArea;
 
     [Header("Prefabs")]
-    [SerializeField] private PlayerView playerViewPrefab;
-    [SerializeField] private EnemyView enemyViewPrefab;
     [SerializeField] private WinLosePopup winLosePopup;
 
     public Player player;
@@ -73,6 +71,7 @@ public class BattleManager : MonoBehaviour
         enemy.Dies += EndBattle;
         battleSceneController.BattleSceneStart();
         relicManager.Setup();
+        RunManager.Instance.RegisterStatusUI();
         RegisterStatusManager();
         OnBattleStart?.Invoke();
         handManager.ResetHand();

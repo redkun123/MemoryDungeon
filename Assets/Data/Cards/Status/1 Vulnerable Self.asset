@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80f672693d9f0a94b94a994411aac784, type: 3}
-  m_Name: Strength
+  m_Script: {fileID: 11500000, guid: 52cbeb82acec7a34f9f6fc25a7ceeb1c, type: 3}
+  m_Name: 1 Vulnerable Self
   m_EditorClassIdentifier: 
-  id: 0
-  statusName: Strength
-  description: So fucking strong
-  icon: {fileID: 21300000, guid: 768d794956a9f3147afcb09959aad0a7, type: 3}
+  effectName: 1 Vulnerable Self
+  effectDescription: Get 2 Vulnerable
+  effectTarget: 1
+  effectTargetType: 1
+  stack: 1

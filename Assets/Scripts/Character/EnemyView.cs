@@ -14,6 +14,7 @@ public class EnemyView : MonoBehaviour
     [SerializeField] private RectTransform avatar;
     [SerializeField] private DamageText damageTextPrefab;
     [SerializeField] private GameObject intentionPanel;
+    [SerializeField] public Transform statusArea;
 
     public void Bind(Enemy enemy, BattleManager battleManager)
     {

@@ -17,7 +17,11 @@ public class BattleSceneController : MonoBehaviour
     [SerializeField] private EnemyView enemyViewPrefab;
     [SerializeField] private EnergyView energyView;
     [SerializeField] private DeckManager deckManager;
-    //[SerializeField] private DeckBattleUI deckBattleUI;
+
+    public Player Player { get; private set; }
+    public Enemy Enemy { get; private set; }
+    public PlayerView playerView;
+    public EnemyView enemyView;
 
     private void Awake()
     {
@@ -31,20 +35,20 @@ public class BattleSceneController : MonoBehaviour
     }
     public void BattleSceneStart()
     {
-        Player player = RunManager.Instance.player;
-        Enemy enemy = RunManager.Instance.enemy;
+        Player = RunManager.Instance.player;
+        Enemy = RunManager.Instance.enemy;
 
         // Spawn Player
-        PlayerView playerView = Instantiate(playerViewPrefab,playerSlot.position,Quaternion.identity,playerSlot);
-        playerView.Bind(player);
+        playerView = Instantiate(playerViewPrefab,playerSlot.position,Quaternion.identity,playerSlot);
+        playerView.Bind(Player);
 
         // Spawn Enemy
-        EnemyView enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);
-        enemyView.Bind(enemy, battleManager);
+        enemyView = Instantiate(enemyViewPrefab,enemySlot.position,Quaternion.identity,enemySlot);
+        enemyView.Bind(Enemy, battleManager);
 
 
-        energyView.Bind(player);
-        deckManager.Bind(player);
+        energyView.Bind(Player);
+        deckManager.Bind(Player);
 
     }
 }

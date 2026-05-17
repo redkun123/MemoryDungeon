@@ -56,6 +56,10 @@ public class RunManager : MonoBehaviour
         Debug.Log("Trying to start battle");
         currentEnemy = enemycf;
     }
+    public void RegisterStatusUI()
+    {
+        StatusUIManager.Instance.RegisterCharacterStatus(battleSceneController);
+    }
     public void StartStory(RoomStory chosenRoom)
     {
         Debug.Log("Trying to start story");
@@ -74,7 +78,7 @@ public class RunManager : MonoBehaviour
         UpdateStatusBar();
         DeckUIManager.Instance.RegisterPlayer(player);
         RelicUIManager.Instance.RegisterRelic(relicManager);
-        StatusUIManager.Instance.RegisterPlayerStatus(player);
+
         floorManager.Init(roomManager, currentFloor);
         floorManager.DefineCurrentRoom();
         CreateNewSave();

@@ -202,6 +202,7 @@ MonoBehaviour:
   avatar: {fileID: 1357106958398831547}
   damageTextPrefab: {fileID: 200887398789919665, guid: b6854ed4cb057714c91add48e828c4c0, type: 3}
   intentionPanel: {fileID: 9221891655562778613}
+  statusArea: {fileID: 6310181040377305563}
 --- !u!1 &8415572134417832414
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +625,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac72c9747f614f499283d0cceb2e958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &6310181040377305563 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4098642654819606483, guid: e55a9fa8f292021459ae15dcfa9c8ddf, type: 3}
+  m_PrefabInstance: {fileID: 8030773548564956680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7164714473055792165 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 872893639855335981, guid: e55a9fa8f292021459ae15dcfa9c8ddf, type: 3}
