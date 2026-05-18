@@ -295,8 +295,6 @@ GameObject:
   - component: {fileID: 2583576440500946540}
   - component: {fileID: 2355932000609551015}
   - component: {fileID: 6392415941567203240}
-  - component: {fileID: 4050167663444669608}
-  - component: {fileID: 3162989420343632358}
   m_Layer: 6
   m_Name: CardBG
   m_TagString: Untagged
@@ -351,31 +349,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardUI: {fileID: 3802254148638860812}
---- !u!114 &4050167663444669608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4359981696772178300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea6d5e047e68ac4c9d6d3c079b5f591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardUI: {fileID: 3802254148638860812}
---- !u!225 &3162989420343632358
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4359981696772178300}
-  m_Enabled: 0
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &5247736340173451743
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,6 +361,7 @@ GameObject:
   - component: {fileID: 3802254148638860812}
   - component: {fileID: 8537092411745507830}
   - component: {fileID: 7795012361131805865}
+  - component: {fileID: 7242666663616735737}
   m_Layer: 6
   m_Name: CardDefault
   m_TagString: Card
@@ -502,6 +476,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &7242666663616735737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5247736340173451743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea6d5e047e68ac4c9d6d3c079b5f591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardUI: {fileID: 3802254148638860812}
 --- !u!1 &5325750819220825859
 GameObject:
   m_ObjectHideFlags: 0

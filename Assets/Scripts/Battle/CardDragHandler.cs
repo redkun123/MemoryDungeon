@@ -45,11 +45,13 @@ public class CardDragHandler : MonoBehaviour,
     public void OnBeginDrag(PointerEventData eventData)
     {
         isDragging = true;
-
+        canvasGroup.blocksRaycasts = false;
+        cardUI.droppedOnConfirmArea = false;
         canvasGroup.blocksRaycasts = false;
 
         CardInputRouter.Instance.OnCardBeginDrag(cardUI);
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -60,7 +62,7 @@ public class CardDragHandler : MonoBehaviour,
     public void OnEndDrag(PointerEventData eventData)
     {
         isDragging = false;
-
+        cardUI.EndDragVisual();
         canvasGroup.blocksRaycasts = true;
 
         if (!cardUI.droppedOnConfirmArea)
@@ -69,6 +71,7 @@ public class CardDragHandler : MonoBehaviour,
         }
         else
         {
+            Debug.Log("Skip EndDrag because already confirmed");
             return;
         }
     }

@@ -9,12 +9,27 @@ public class CardConfirmHandler : MonoBehaviour, IPointerClickHandler, IDropHand
     {
         CardInputRouter.Instance.OnBattleConfirmClick(cardConfirmEvent);
     }
-    public void OnDrop(PointerEventData cardConfirmEvent)
+    public void OnDrop(PointerEventData eventData)
     {
-        CardDisplay cardUI = cardConfirmEvent.pointerDrag.GetComponent<CardDisplay>();
+        var go = eventData.pointerDrag;
+        if (go == null)
+        {
+            Debug.LogWarning("OnDrop: pointerDrag is null");
+            return;
+        }
 
-        if (cardUI == null) return;
+        CardDisplay cardUI = go.GetComponent<CardDisplay>();
+
+        if (cardUI == null)
+        {
+            Debug.LogWarning("OnDrop: no CardDisplay found");
+            return;
+        }
+
         cardUI.droppedOnConfirmArea = true;
+
+        Debug.Log($"Drop confirmed: {cardUI.name}");
+
         CardInputRouter.Instance.OnReleaseConfirmArea(cardUI);
     }
 }

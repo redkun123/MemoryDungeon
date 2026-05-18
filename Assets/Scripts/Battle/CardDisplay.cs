@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -18,10 +18,10 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] Color highlightColor;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] private RectTransform visual;
-
     private Vector3 defaultScale;
     private Vector3 defaultPos;
     //[SerializeField] TextMeshProUGUI cardType;
+    public event Action ReturnCardToHand;
     public bool droppedOnConfirmArea;
 
     public void SetupCard(Card card)
@@ -32,11 +32,11 @@ public class CardDisplay : MonoBehaviour
         cardImage.sprite = card.cardSprite;
         cardDescription.text = cardData.GetFullDescription();
     }
-    public void SaveInitLocation()
+    public void SaveLocation()
     {
         defaultScale = visual.localScale;
         defaultPos = visual.localPosition;
-    }    
+    }
     public void CardHighlight(bool selectCard)
     {
         Debug.Log($"Card clicked: {cardName.text}");
@@ -63,7 +63,7 @@ public class CardDisplay : MonoBehaviour
     public void HoverVisual(bool active)
     {
         if (canvasGroup == null) return;
-
+        canvasGroup.blocksRaycasts = true;
         visual.DOKill();
 
         if (active)
@@ -102,14 +102,10 @@ public class CardDisplay : MonoBehaviour
 
     public void ReturnToHand()
     {
-        //RectTransform rect = GetComponent<RectTransform>();
-
         canvasGroup.blocksRaycasts = true;
-
-        //rect.anchoredPosition = Vector2.zero;
-        //rect.localScale = Vector3.one;
         visual.anchoredPosition = Vector2.zero;
         visual.localScale = Vector3.one;
+        ReturnCardToHand?.Invoke();
     }
 }
 

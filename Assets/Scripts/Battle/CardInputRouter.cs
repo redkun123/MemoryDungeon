@@ -106,7 +106,9 @@ public class CardInputRouter : MonoBehaviour
     {
         //if (cardUI.droppedOnConfirmArea) // neu tha trong vung confirm
         //{
-            cardController.CardBattleConfirm();
+        Debug.Log("Executing play card");
+
+        cardController.CardBattleConfirm();
         //}
         //else
         //{

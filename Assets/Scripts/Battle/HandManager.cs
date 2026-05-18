@@ -53,6 +53,11 @@ public class HandManager : MonoBehaviour
         cardInHand.Remove(cardUI);
         UpdateHandVisual();
     }
+    public void TempRemoveCard(CardDisplay cardUI)
+    {
+        cardInHand.Remove(cardUI);
+        UpdateHandVisual();
+    }
     public void RemoveAll()
     {
         Debug.Log("Trying to remove all card");
@@ -75,6 +80,7 @@ public class HandManager : MonoBehaviour
         }
         for (int i = 0; i < cardCount; i++)
         {
+            cardInHand[i].transform.SetSiblingIndex(i);
             Vector2 targetPos = GetCardPosition(i, cardCount);
             RectTransform rect = cardInHand[i].GetComponent<RectTransform>();
             rect.DOAnchorPos(targetPos, 0.25f).SetEase(Ease.OutCubic);
@@ -88,6 +94,7 @@ public class HandManager : MonoBehaviour
         seq.Join(card.transform.DOScale(Vector3.zero, 3f).SetEase(Ease.OutBack));
         seq.OnComplete(() =>
         {
+            card.ReturnCardToHand -= UpdateHandVisual;
             Destroy(card.gameObject);
         });
     }
@@ -101,7 +108,8 @@ public class HandManager : MonoBehaviour
     {
         CardDisplay cardPrefab = Instantiate(cardUI, handArea);
         cardPrefab.SetupCard(cardData);
-        cardPrefab.SaveInitLocation();
+        cardPrefab.SaveLocation();
+        cardPrefab.ReturnCardToHand += UpdateHandVisual;
         return cardPrefab;
     }
     private void OnDisable()
@@ -114,8 +122,17 @@ public class HandManager : MonoBehaviour
         for (int i = cardInHand.Count - 1; i >= 0; i--)
         {
             if (cardInHand[i] != null)
+            {
+                cardInHand[i].ReturnCardToHand -= UpdateHandVisual;
                 Destroy(cardInHand[i].gameObject);
+            }
         }
         cardInHand.Clear();
     }
+    /*public void SaveCardInitPos(CardDisplay card)
+    {
+        card.transform.SetParent(handArea);
+        card.originalParent = handArea;
+        card.originalPos = card.GetComponent<RectTransform>().anchoredPosition;
+    }*/
 }
