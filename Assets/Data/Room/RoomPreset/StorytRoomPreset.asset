@@ -15,3 +15,4 @@ MonoBehaviour:
   roomName: Story
   roomBG: {fileID: 21300000, guid: 4ae1008750a3e2248bf1e1b56882ec2a, type: 3}
   roomIcon: {fileID: 21300000, guid: ac8fdbb98e613a94fb1c30caa983cba0, type: 3}
+  roomIconBG: {fileID: 21300000, guid: 9b7917c69c4309d4ba13cbfe360a1a44, type: 3}

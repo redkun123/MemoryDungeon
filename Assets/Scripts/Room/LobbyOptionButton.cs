@@ -10,6 +10,7 @@ public class LobbyOptionButton : MonoBehaviour
     [SerializeField] private Button _optionButton;
     [SerializeField] private TextMeshProUGUI roomName;
     [SerializeField] private Image roomIcon;
+    [SerializeField] private Image roomIconBG;
     [SerializeField] private Image roomBG;
 
     public LobbyManager lobbyManager;
@@ -27,6 +28,7 @@ public class LobbyOptionButton : MonoBehaviour
         roomName.text = room.roomName;
         roomIcon.sprite = room.roomIcon;
         roomBG.sprite = room.roomBG;
+        roomIconBG.sprite = room.roomIconBG;
     }
     public void OnClickNextRoom()
     {

@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomName: Battle
   roomBG: {fileID: 21300000, guid: d8a8499ab337e4f429f7a7e3432ff217, type: 3}
-  roomIcon: {fileID: 21300000, guid: e2b0b7f591437ec47bc6188766fe5e3e, type: 3}
+  roomIcon: {fileID: 21300000, guid: ce44179860d8cc04fbe77a67fcf92322, type: 3}
+  roomIconBG: {fileID: 21300000, guid: 8bb3eb5041a39a14f9cf5577dd81ee3d, type: 3}

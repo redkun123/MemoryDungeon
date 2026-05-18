@@ -8,4 +8,5 @@ public class RoomPreset : ScriptableObject
     [SerializeField] public string roomName;
     [SerializeField] public Sprite roomBG;
     [SerializeField] public Sprite roomIcon;
+    [SerializeField] public Sprite roomIconBG;
 }
