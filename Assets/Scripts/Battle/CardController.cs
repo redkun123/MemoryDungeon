@@ -34,6 +34,7 @@ public class CardController : MonoBehaviour
         {
             Debug.Log("Not enough Energy");
             battleManager.cardController.ClearSelection();
+            CardInputRouter.Instance.CardDeselect(selectedCardUI);
             return;
         }
         Debug.Log("Card validated");
@@ -44,7 +45,7 @@ public class CardController : MonoBehaviour
         handManager.RemoveCardFromHand(ui);
     }
 
-    void CardSelect(CardDisplay cardUI)
+    public void CardSelect(CardDisplay cardUI)
     {
         selectedCardUI = cardUI;
         selectedCardData = cardUI.cardData;

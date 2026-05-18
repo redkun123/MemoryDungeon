@@ -87,4 +87,35 @@ public class CardInputRouter : MonoBehaviour
         Debug.Log("Confirm click.");
         cardController.CardBattleConfirm();
     }
+    public void OnCardHover(CardDisplay cardUI)
+    {
+        cardUI.HoverVisual(true);
+    }
+    public void OnCardUnhover(CardDisplay cardUI)
+    {
+        cardUI.HoverVisual(false);
+    }
+
+    public void OnCardBeginDrag(CardDisplay cardUI)
+    {
+        cardUI.droppedOnConfirmArea = false;
+        cardUI.BeginDragVisual();
+        cardController.CardSelect(cardUI);
+    }
+    public void OnReleaseConfirmArea(CardDisplay cardUI)
+    {
+        //if (cardUI.droppedOnConfirmArea) // neu tha trong vung confirm
+        //{
+            cardController.CardBattleConfirm();
+        //}
+        //else
+        //{
+        //    CardDeselect(cardUI);
+        //}
+    }
+    public void CardDeselect(CardDisplay cardUI)
+    {
+        cardController.ClearSelection();
+        cardUI.ReturnToHand();
+    }
 }

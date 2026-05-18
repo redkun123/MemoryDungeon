@@ -101,6 +101,7 @@ public class HandManager : MonoBehaviour
     {
         CardDisplay cardPrefab = Instantiate(cardUI, handArea);
         cardPrefab.SetupCard(cardData);
+        cardPrefab.SaveInitLocation();
         return cardPrefab;
     }
     private void OnDisable()
