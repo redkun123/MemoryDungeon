@@ -171,7 +171,7 @@ MonoBehaviour:
   description: {fileID: 640187639}
   optionPrefab: {fileID: 7189093496469364219, guid: 2ff533d51f2698f48950580882335a3a, type: 3}
   optionParent: {fileID: 1360839842}
-  spacing: 80
+  spacing: 85
   currentResults: []
   currentNode: {fileID: 0}
   currentRoom: {fileID: 0}
@@ -801,8 +801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 130}
-  m_SizeDelta: {x: 1300, y: 250}
+  m_AnchoredPosition: {x: 0, y: 127.5}
+  m_SizeDelta: {x: 1300, y: 255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1997812194
 GameObject:
@@ -841,8 +841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -720, y: -30}
-  m_SizeDelta: {x: 1300, y: 850}
+  m_AnchoredPosition: {x: -720, y: -50}
+  m_SizeDelta: {x: 1300, y: 895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1997812196
 MonoBehaviour:
@@ -1022,8 +1022,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 299, y: -30}
-  m_SizeDelta: {x: 500, y: 850}
+  m_AnchoredPosition: {x: 299, y: -50}
+  m_SizeDelta: {x: 500, y: 895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2120447005
 CanvasRenderer:

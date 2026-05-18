@@ -13,7 +13,7 @@ public class StoryManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI description;
     [SerializeField] StoryButton optionPrefab;
     [SerializeField] Transform optionParent;
-    public float spacing = 100f;
+    public float spacing = 200f;
     public List<StoryResult> currentResults;
     public Dictionary<string, StoryNode> nodeMap;
     public StoryNode currentNode;
