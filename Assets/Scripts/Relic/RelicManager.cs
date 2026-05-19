@@ -24,28 +24,6 @@ public class RelicManager
     {
         battleManager = RunManager.Instance.battleManager;
         ctx.Init(battleManager);
-        foreach (var relic in currentRelic)
-        {
-            var trigger = relic.data.trigger;
-            switch (trigger)
-            {
-                case TriggerType.BattleStart:
-                    battleManager.OnBattleStart += () => OnTriggerRelic(relic);
-                    break;
-                case TriggerType.BattleEnd:
-                    battleManager.OnBattleEnd += () => OnTriggerRelic(relic);
-                    break;
-                case TriggerType.PlayerTurnStart:
-                    battleManager.OnPlayerTurnStart += () => OnTriggerRelic(relic);
-                    break;
-                case TriggerType.PlayerTurnEnd:
-                    battleManager.OnPlayerTurnEnd += () => OnTriggerRelic(relic);
-                    break;
-                default:
-                    Debug.Log("Trigger type unknown");
-                    break;
-            }
-        }
     }
     public void AddRelicByID(string id)
     {
@@ -72,36 +50,49 @@ public class RelicManager
     public void OnDestroy()
     {
         currentRelic.Clear();
-        if (battleManager != null)
+        battleManager = null;
+    }
+    public IEnumerator TriggerPhase(BattlePhase phase)
+    {
+        foreach (var relic in currentRelic)
         {
-            foreach (var relic in currentRelic)
-            {
-                var trigger = relic.data.trigger;
-                switch (trigger)
-                {
-                    case TriggerType.BattleStart:
-                        battleManager.OnBattleStart -= () => OnTriggerRelic(relic);
-                        break;
-                    case TriggerType.BattleEnd:
-                        battleManager.OnBattleEnd -= () => OnTriggerRelic(relic);
-                        break;
-                    case TriggerType.PlayerTurnStart:
-                        battleManager.OnPlayerTurnStart -= () => OnTriggerRelic(relic);
-                        break;
-                    case TriggerType.PlayerTurnEnd:
-                        battleManager.OnPlayerTurnEnd -= () => OnTriggerRelic(relic);
-                        break;
-                    default:
-                        Debug.Log("Trigger type unknown");
-                        break;
-                }
-            }
+            if (!ShouldTrigger(relic, phase))
+                continue;
+
+            yield return TriggerRelic(relic);
         }
     }
-    public void OnTriggerRelic(Relic relic)
+    private bool ShouldTrigger(Relic relic, BattlePhase phase)
+    {
+        return relic.data.trigger switch
+        {
+            TriggerType.BattleStart =>
+                phase == BattlePhase.BattleStart,
+
+            TriggerType.PlayerTurnStart =>
+                phase == BattlePhase.TurnStart,
+
+            TriggerType.PlayerTurnEnd =>
+                phase == BattlePhase.TurnEnd,
+
+            _ => false
+        };
+    }
+    private IEnumerator TriggerRelic(Relic relic)
     {
         relic.OnTrigger(ctx);
+
+        yield return null;
     }
+    //Them animation relic
+    //private IEnumerator TriggerRelic(Relic relic)
+    //{
+    //    yield return relic.PlayEffect();
+
+    //    relic.OnTrigger(ctx);
+
+    //    yield return new WaitForSeconds(0.3f);
+    //}
     public List<string> GetRelicData()
     {
         List<string> listRelic = new List<string>();

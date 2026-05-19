@@ -8,8 +8,8 @@ public abstract class Status
     bool isDebuff;
     bool removeAtEndOfTurn;
     public string name;
-    public Character owner {  get; private set; }
-    public int stack {  get; set; }
+    public Character owner { get; private set; }
+    public int stack { get; set; }
     private enum StatusType
     {
         None,
@@ -31,6 +31,7 @@ public abstract class Status
     public virtual void GetName() { }
     protected virtual void OnApply() { }
     protected virtual void OnRemove() { }
+    public virtual void OnBattleStart() { }
     public virtual void OnTurnStart() { }
     public virtual void OnTurnEnd() { }
     public virtual void Modify(EffectContext ctx) { }

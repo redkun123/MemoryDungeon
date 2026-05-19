@@ -15,6 +15,34 @@ public class StatusManager
         this.owner = owner;
         statuses = new();
     }
+    public IEnumerator TriggerPhase(BattlePhase phase)
+    {
+        foreach (var status in statuses)
+        {
+            yield return TriggerStatus(status, phase);
+        }
+
+        CleanUp();
+    }
+    private IEnumerator TriggerStatus(Status status, BattlePhase phase)
+    {
+        switch (phase)
+        {
+            case BattlePhase.BattleStart:
+                status.OnBattleStart();
+                break;
+
+            case BattlePhase.TurnStart:
+                status.OnTurnStart();
+                break;
+
+            case BattlePhase.TurnEnd:
+                status.OnTurnEnd();
+                break;
+        }
+
+        yield return null;
+    }
     public void AddStatus(Status newStatus, int stack)
     {
         var existing = statuses.FirstOrDefault(s => s.GetType() == newStatus.GetType());
@@ -32,10 +60,10 @@ public class StatusManager
     }
     public void OnBattleEnd()
     {
-        foreach (var status in statuses)
-        {
-            RemoveStatus(status);
-        }
+        //for (int i = statuses.Count - 1; i >= 0; i--)
+        //{
+        //    RemoveStatus(statuses[i]);
+        //}
     }
     public void RemoveStatus(Status status)
     {
@@ -44,18 +72,18 @@ public class StatusManager
     }
     public void OnTurnStart()
     {
-        foreach (var s in statuses)
-            s.OnTurnStart();
+        //foreach (var s in statuses)
+        //    s.OnTurnStart();
 
-        CleanUp();
+        //CleanUp();
     }
 
     public void OnTurnEnd()
     {
-        foreach (var s in statuses)
-            s.OnTurnEnd();
+        //foreach (var s in statuses)
+        //    s.OnTurnEnd();
 
-        CleanUp();
+        //CleanUp();
     }
     public void OnAttack(EffectContext ctx)
     {
