@@ -36,7 +36,7 @@ public class EnemyView : MonoBehaviour
         //enemy.OnHPChange += hpBar.Set;
         ////enemy.OnHPChange += hpCount.Set;
         battleManager.OnPlayerTurnStart += OnPlayerTurnStarted;
-        battleManager.OnEnemyTurn += OnEnemyTurnStarted;
+        battleManager.OnEnemyTurnStart += OnEnemyTurnStarted;
         originalPos = avatar.anchoredPosition;
         RegisterUI();
     }

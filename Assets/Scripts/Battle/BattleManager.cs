@@ -31,10 +31,15 @@ public class BattleManager : MonoBehaviour
     public bool isPlayerTurn;
     public bool battleEnded;
     public event Action OnPlayerTurnStart;
-    public event Action OnEnemyTurn;
+    public event Action OnEnemyTurnStart;
     public event Action OnBattleStart;
     public event Action OnBattleEnd;
     public event Action OnPlayerTurnEnd;
+    public event Action OnEnemyTurnEnd;
+
+    public bool inputLocked;
+    private bool resolvingAction;
+    private bool playerPressedEndTurn;
 
     private void Awake()
     {
@@ -49,8 +54,125 @@ public class BattleManager : MonoBehaviour
     }
     private void OnDestroy()
     {
+        handManager.CreateNewCard -= RegisterCardToBM;
         if (RunManager.Instance != null)
             RunManager.Instance.UnregisterBattleManager(this);
+    }
+    private IEnumerator BattleLoop()
+    {
+        yield return StartCoroutine(BattleStartPhase());
+
+        while (!battleEnded)
+        {
+            yield return StartCoroutine(PlayerTurnPhase());
+
+            if (battleEnded)
+                yield break;
+
+            yield return StartCoroutine(EnemyTurnPhase());
+        }
+    }
+    private IEnumerator BattleStartPhase()
+    {
+        inputLocked = true;
+
+        battleSceneController.BattleSceneStart();
+
+        relicManager.Setup();
+
+        RunManager.Instance.RegisterStatusUI();
+
+        RegisterStatusManager();
+
+        OnBattleStart?.Invoke();
+
+        handManager.ResetHand();
+
+        // APPLY RELIC START BATTLE
+        yield return null;
+
+        // APPLY STATUS START BATTLE
+        yield return null;
+
+        // DRAW OPENING HAND
+        yield return StartCoroutine(battleLogic.RefillHand(handManager, player));
+
+        inputLocked = false;
+    }
+
+    private IEnumerator PlayerTurnPhase()
+    {
+        Debug.Log("PLAYER TURN");
+
+        inputLocked = true;
+
+        isPlayerTurn = true;
+
+        playerPressedEndTurn = false;
+
+        player.ClearGuard();
+
+        player.RestoreEnergy(player.maxEnergy);
+
+        OnPlayerTurnStart?.Invoke();
+
+        // APPLY PLAYER STATUS
+        yield return null;
+
+        // DRAW
+        yield return StartCoroutine(battleLogic.RefillHand(handManager, player));
+
+        inputLocked = false;
+
+        // CHỜ PLAYER END TURN
+        yield return new WaitUntil(() => playerPressedEndTurn);
+
+        inputLocked = true;
+
+        isPlayerTurn = false;
+
+        player.DiscardAll();
+
+        handManager.RemoveAll();
+
+        OnPlayerTurnEnd?.Invoke();
+
+        yield return null;
+    }
+    private IEnumerator EnemyTurnPhase()
+    {
+        Debug.Log("ENEMY TURN");
+
+        inputLocked = true;
+
+        OnEnemyTurnStart?.Invoke();
+
+        enemy.ClearGuard();
+
+        // APPLY ENEMY STATUS
+        yield return null;
+
+        yield return StartCoroutine(EnemyActionCoroutine());
+
+        OnEnemyTurnEnd?.Invoke();
+
+        yield return null;
+    }
+    private IEnumerator EnemyActionCoroutine()
+    {
+        battleLogic.EnemyActionPerTurn(enemy, player);
+
+        yield return new WaitForSeconds(1f);
+    }
+    public void EndPlayerTurn()
+    {
+        if (!isPlayerTurn)
+            return;
+
+        if (inputLocked)
+            return;
+
+        playerPressedEndTurn = true;
     }
     public void StartBattle(Player player, EnemyConfig enemycf)
     {
@@ -69,59 +191,16 @@ public class BattleManager : MonoBehaviour
         RunManager.Instance.GetEnemy();
         player.Dies += EndBattle;
         enemy.Dies += EndBattle;
-        battleSceneController.BattleSceneStart();
-        relicManager.Setup();
-        RunManager.Instance.RegisterStatusUI();
-        RegisterStatusManager();
-        OnBattleStart?.Invoke();
-        handManager.ResetHand();
-        StartPlayerTurn();
+        handManager.CreateNewCard += RegisterCardToBM;
+        StartCoroutine(BattleLoop());
+    }
+    public void RegisterCardToBM(CardDisplay card)
+    {
+        card.SetupBattle(this);
     }
     public Enemy CreateEnemy(EnemyConfig enemycf)
     {
         return enemy = EnemyFactory.Create(enemycf);
-    }
-    public void EndPlayerTurn()
-    {
-        if (!isPlayerTurn) return;
-        isPlayerTurn = false;
-        player.DiscardAll();
-        handManager.RemoveAll();
-        OnPlayerTurnEnd?.Invoke();
-        StartEnemyTurn();
-    }
-    private void StartEnemyTurn()
-    {
-        OnEnemyTurn.Invoke();
-        if (battleEnded)
-        {
-            CheckGameResult();
-            return;
-        }
-        enemy.ClearGuard();
-        battleLogic.EnemyActionPerTurn(enemy, player);
-        if (battleEnded)
-        {
-            CheckGameResult();
-            return;
-        }
-        StartPlayerTurn();
-    }
-    public void StartPlayerTurn()
-    {
-        Debug.Log("Player turn started");
-        isPlayerTurn = true;
-        OnPlayerTurnStart?.Invoke();
-        player.ClearGuard();
-        player.RestoreEnergy(player.maxEnergy);
-        Debug.Log($"True Energy: {player.currentEnergy} / {player.maxEnergy}");
-        StartCoroutine(battleLogic.RefillHand(handManager, player));
-        OnPlayerTurnStart?.Invoke();
-        if (battleEnded)
-        {
-            CheckGameResult();
-            return;
-        }
     }
     public void CheckGameResult()
     {
@@ -165,7 +244,7 @@ public class BattleManager : MonoBehaviour
         OnPlayerTurnStart += playerSM.OnTurnStart;
         OnPlayerTurnEnd += playerSM.OnTurnEnd;
         OnBattleEnd += enemySM.OnBattleEnd;
-        OnPlayerTurnStart += enemySM.OnTurnStart;
-        OnBattleEnd += enemySM.OnBattleEnd;
+        OnEnemyTurnStart += enemySM.OnTurnStart;
+        OnEnemyTurnEnd += enemySM.OnBattleEnd;
     }
 }

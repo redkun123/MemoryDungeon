@@ -18,11 +18,13 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] Color highlightColor;
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] private RectTransform visual;
+    [SerializeField] private CardDragHandler cardDragHandler;
     private Vector3 defaultScale;
     private Vector3 defaultPos;
     //[SerializeField] TextMeshProUGUI cardType;
     public event Action ReturnCardToHand;
     public bool droppedOnConfirmArea;
+    //public BattleManager battleManager;
 
     public void SetupCard(Card card)
     {
@@ -31,6 +33,10 @@ public class CardDisplay : MonoBehaviour
         energyCost.text = cardData.energyCost.ToString();
         cardImage.sprite = card.cardSprite;
         cardDescription.text = cardData.GetFullDescription();
+    }
+    public void SetupBattle(BattleManager battleManager)
+    {
+        cardDragHandler.Init(battleManager);
     }
     public void SaveLocation()
     {

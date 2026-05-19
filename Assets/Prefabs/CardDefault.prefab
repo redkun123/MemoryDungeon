@@ -411,6 +411,7 @@ MonoBehaviour:
   highlightColor: {r: 0.1764706, g: 0.5529412, b: 0.5764706, a: 1}
   canvasGroup: {fileID: 7795012361131805865}
   visual: {fileID: 4089729324302073983}
+  cardDragHandler: {fileID: 7242666663616735737}
   droppedOnConfirmArea: 0
 --- !u!212 &8537092411745507830
 SpriteRenderer:

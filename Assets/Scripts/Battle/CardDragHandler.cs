@@ -19,8 +19,13 @@ public class CardDragHandler : MonoBehaviour,
     private bool isDragging;
     private bool isHovering;
     private Vector3 dragOffset;
-    private void Awake()
+
+    private BattleManager battleManager;
+
+    public void Init(BattleManager battleManager)
     {
+        this.battleManager = battleManager;
+
         rectTransform = GetComponent<RectTransform>();
 
         canvas = GetComponentInParent<Canvas>();
@@ -31,19 +36,20 @@ public class CardDragHandler : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isDragging) return;
-
+        if (battleManager.inputLocked) return;
         CardInputRouter.Instance.OnCardHover(cardUI);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (isDragging) return;
-
+        if (battleManager.inputLocked) return;
         CardInputRouter.Instance.OnCardUnhover(cardUI);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (battleManager.inputLocked) return;
         dragOffset = transform.position - Input.mousePosition;
         isDragging = true;
         canvasGroup.blocksRaycasts = false;
@@ -56,11 +62,13 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (battleManager.inputLocked) return;
         transform.position = Input.mousePosition + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (battleManager.inputLocked) return;
         isDragging = false;
         cardUI.EndDragVisual();
         canvasGroup.blocksRaycasts = true;

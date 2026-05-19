@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,6 +13,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] private Transform discardPosition;
     private Player player;
     List<CardDisplay> cardInHand;
+    public event Action <CardDisplay> CreateNewCard;
 
     private void Awake()
     {
@@ -107,6 +108,7 @@ public class HandManager : MonoBehaviour
     public CardDisplay CreateCard(Card cardData)
     {
         CardDisplay cardPrefab = Instantiate(cardUI, handArea);
+        CreateNewCard?.Invoke(cardPrefab);
         cardPrefab.SetupCard(cardData);
         cardPrefab.SaveLocation();
         cardPrefab.ReturnCardToHand += UpdateHandVisual;
