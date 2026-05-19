@@ -104,16 +104,8 @@ public class CardInputRouter : MonoBehaviour
     }
     public void OnReleaseConfirmArea(CardDisplay cardUI)
     {
-        //if (cardUI.droppedOnConfirmArea) // neu tha trong vung confirm
-        //{
         Debug.Log("Executing play card");
-
         cardController.CardBattleConfirm();
-        //}
-        //else
-        //{
-        //    CardDeselect(cardUI);
-        //}
     }
     public void CardDeselect(CardDisplay cardUI)
     {

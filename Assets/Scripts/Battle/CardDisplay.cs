@@ -69,7 +69,7 @@ public class CardDisplay : MonoBehaviour
         if (active)
         {
             visual.DOScale(defaultScale * 1.1f, 0.15f);
-            visual.DOLocalMoveY(defaultPos.y + 30f, 0.15f);
+            visual.DOLocalMoveY(defaultPos.y + 120f, 0.15f);
         }
         else
         {

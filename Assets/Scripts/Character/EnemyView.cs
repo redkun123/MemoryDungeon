@@ -37,6 +37,7 @@ public class EnemyView : MonoBehaviour
         ////enemy.OnHPChange += hpCount.Set;
         battleManager.OnPlayerTurnStart += OnPlayerTurnStarted;
         battleManager.OnEnemyTurn += OnEnemyTurnStarted;
+        originalPos = avatar.anchoredPosition;
         RegisterUI();
     }
     void RegisterUI()
@@ -75,13 +76,16 @@ public class EnemyView : MonoBehaviour
     {
         //tam thoi danh manh nhe dung chung anim
         avatar.DOKill();
+
         Sequence seq = DOTween.Sequence();
+
         seq.Append(
             avatar.DOAnchorPosX(
-                originalPos.x + attackMoveDistance,
+                originalPos.x - attackMoveDistance,
                 attackDuration
             ).SetEase(Ease.OutQuad)
         );
+
         seq.Append(
             avatar.DOAnchorPosX(
                 originalPos.x,

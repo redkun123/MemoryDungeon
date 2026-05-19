@@ -169,7 +169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 20f540c6320dfe743977db577dc8c175, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ed0948c5b9db2441a4ff0baa5d556dc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -230,6 +230,8 @@ MonoBehaviour:
   statusArea: {fileID: 749456159176386957}
   avatar: {fileID: 8670822741528717813}
   damageTextPrefab: {fileID: 200887398789919665, guid: b6854ed4cb057714c91add48e828c4c0, type: 3}
+  attackMoveDistance: 100
+  attackDuration: 0.12
 --- !u!1001 &996731498688538865
 PrefabInstance:
   m_ObjectHideFlags: 0
