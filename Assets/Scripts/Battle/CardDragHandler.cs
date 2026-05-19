@@ -18,7 +18,7 @@ public class CardDragHandler : MonoBehaviour,
 
     private bool isDragging;
     private bool isHovering;
-
+    private Vector3 dragOffset;
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -44,6 +44,7 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        dragOffset = transform.position - Input.mousePosition;
         isDragging = true;
         canvasGroup.blocksRaycasts = false;
         cardUI.droppedOnConfirmArea = false;
@@ -55,8 +56,7 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition +=
-            eventData.delta / canvas.scaleFactor;
+        transform.position = Input.mousePosition + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)

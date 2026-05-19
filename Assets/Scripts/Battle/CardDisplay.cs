@@ -87,7 +87,7 @@ public class CardDisplay : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
 
         visual.DOScale(defaultScale * 1.2f, 0.1f);
-        visual.DOLocalMoveY(defaultPos.y + 60f, 0.1f);
+        //visual.DOLocalMoveY(defaultPos.y + 60f, 0.1f);
     }
 
     public void EndDragVisual()
@@ -103,7 +103,7 @@ public class CardDisplay : MonoBehaviour
     public void ReturnToHand()
     {
         canvasGroup.blocksRaycasts = true;
-        visual.anchoredPosition = Vector2.zero;
+        //visual.anchoredPosition = Vector2.zero;
         visual.localScale = Vector3.one;
         ReturnCardToHand?.Invoke();
     }
