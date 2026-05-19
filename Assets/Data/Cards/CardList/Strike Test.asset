@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad7f49a9ea201154991e53a97769f49d, type: 3}
-  m_Name: Defend
+  m_Name: Strike Test
   m_EditorClassIdentifier: 
-  cardID: 1
-  cardName: Defend
+  cardID: 5
+  cardName: Strike
   energyCost: 1
-  cardSprite: {fileID: 21300000, guid: 4bd985de569436d4d9c53c26901c33b8, type: 3}
+  cardSprite: {fileID: 21300000, guid: 052fed76950626f40b0898cc2ad8b9e7, type: 3}
   cardEffect:
-  - {fileID: 11400000, guid: 2a6f0b9dc347b3045aaa11d2b269e0d9, type: 2}
-  - {fileID: 11400000, guid: 48bbeb69fcff0dd4994e169900e6ed6d, type: 2}
-  cardType: 1
+  - {fileID: 11400000, guid: d05c955dcfcc80d448e753f2a36d568b, type: 2}
+  - {fileID: 11400000, guid: 2b0ea26a7c6db9a4d981fc281c906159, type: 2}
+  cardType: 0

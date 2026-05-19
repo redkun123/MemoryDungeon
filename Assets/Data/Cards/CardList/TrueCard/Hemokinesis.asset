@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad7f49a9ea201154991e53a97769f49d, type: 3}
-  m_Name: Strike
+  m_Name: Hemokinesis
   m_EditorClassIdentifier: 
-  cardID: 5
-  cardName: Strike
+  cardID: 127
+  cardName: Hemokinesis
   energyCost: 1
-  cardSprite: {fileID: 21300000, guid: 052fed76950626f40b0898cc2ad8b9e7, type: 3}
+  cardSprite: {fileID: 21300000, guid: 4948bb6f1dba9154aa1c090657481aa3, type: 3}
   cardEffect:
-  - {fileID: 11400000, guid: d05c955dcfcc80d448e753f2a36d568b, type: 2}
-  - {fileID: 11400000, guid: 2b0ea26a7c6db9a4d981fc281c906159, type: 2}
+  - {fileID: 11400000, guid: 3dbf98576f8bfde4ea8d3d2b994aecbb, type: 2}
+  - {fileID: 11400000, guid: 6ecff789e76c1b44f8ba8d1220a5b038, type: 2}
   cardType: 0
