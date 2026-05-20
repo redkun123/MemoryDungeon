@@ -15,7 +15,7 @@ public class VulnerableStatus : Status
             ctx.value = Mathf.RoundToInt(ctx.value * 1.5f);
         }
     }
-    public override void OnTurnEnd()
+    public override void OnTurnStart()
     {
         stack -= 1;
     }

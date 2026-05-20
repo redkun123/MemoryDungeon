@@ -11,7 +11,14 @@ public class StatusDB : ScriptableObject
 
     public void Init()
     {
-        statusDatabase.Clear();
+        if (statusDatabase == null)
+        {
+            statusDatabase = new List<StatusData>();
+        }
+        else
+        {
+            statusDatabase.Clear();
+        }
         for (int i = 0; i < statuses.Count; i++)
         {
             statusDatabase.Add(statuses[i]);

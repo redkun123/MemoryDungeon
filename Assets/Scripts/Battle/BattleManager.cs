@@ -66,8 +66,7 @@ public class BattleManager : MonoBehaviour
         {
             yield return StartCoroutine(PlayerTurnPhase());
 
-            if (battleEnded)
-                yield break;
+            if (battleEnded) yield break;
 
             yield return StartCoroutine(EnemyTurnPhase());
         }
@@ -89,15 +88,33 @@ public class BattleManager : MonoBehaviour
         handManager.ResetHand();
 
         // APPLY RELIC START BATTLE
-        yield return null;
-
-        // APPLY STATUS START BATTLE
-        yield return null;
+        yield return StartCoroutine(relicManager.TriggerPhase(BattlePhase.BattleStart));
 
         // DRAW OPENING HAND
         yield return StartCoroutine(battleLogic.RefillHand(handManager, player));
 
         inputLocked = false;
+    }
+    public void StartBattle(Player player, EnemyConfig enemycf)
+    {
+        battleExecutor = new();
+        CardInputRouter.Instance.SetupBattle(cardController);
+        battleEnded = false;
+        battleLogic = new();
+        battleLogic.Register(this);
+        this.player = player;
+        player.deck = new();
+        player.deck.AddRange(player.trueDeck);
+        Extensions.Shuffle(player.deck);
+        player.hand = new List<Card>();
+        player.discard = new List<Card>();
+        enemy = CreateEnemy(enemycf);
+        RunManager.Instance.GetEnemy();
+        player.Dies += EndBattle;
+        enemy.Dies += EndBattle;
+        OnBattleEnd += CheckGameResult;
+        handManager.CreateNewCard += RegisterCardToBM;
+        StartCoroutine(BattleLoop());
     }
 
     private IEnumerator PlayerTurnPhase()
@@ -117,7 +134,7 @@ public class BattleManager : MonoBehaviour
         OnPlayerTurnStart?.Invoke();
 
         // APPLY PLAYER STATUS
-        yield return null;
+        yield return StartCoroutine(player.statusManager.TriggerPhase(BattlePhase.TurnStart));
 
         // DRAW
         yield return StartCoroutine(battleLogic.RefillHand(handManager, player));
@@ -137,6 +154,10 @@ public class BattleManager : MonoBehaviour
 
         OnPlayerTurnEnd?.Invoke();
 
+        yield return StartCoroutine(relicManager.TriggerPhase(BattlePhase.TurnEnd));
+
+        yield return StartCoroutine(player.statusManager.TriggerPhase(BattlePhase.TurnEnd));
+
         yield return null;
     }
     private IEnumerator EnemyTurnPhase()
@@ -150,11 +171,13 @@ public class BattleManager : MonoBehaviour
         enemy.ClearGuard();
 
         // APPLY ENEMY STATUS
-        yield return null;
+        yield return StartCoroutine(enemy.statusManager.TriggerPhase(BattlePhase.TurnStart));
 
         yield return StartCoroutine(EnemyActionCoroutine());
 
         OnEnemyTurnEnd?.Invoke();
+
+        yield return StartCoroutine(enemy.statusManager.TriggerPhase(BattlePhase.TurnEnd));
 
         yield return null;
     }
@@ -174,26 +197,7 @@ public class BattleManager : MonoBehaviour
 
         playerPressedEndTurn = true;
     }
-    public void StartBattle(Player player, EnemyConfig enemycf)
-    {
-        battleExecutor = new();
-        CardInputRouter.Instance.SetupBattle(cardController);
-        battleEnded = false;
-        battleLogic = new();
-        battleLogic.Register(this);
-        this.player = player;
-        player.deck = new();
-        player.deck.AddRange(player.trueDeck);
-        Extensions.Shuffle(player.deck);
-        player.hand = new List<Card>();
-        player.discard = new List<Card>();
-        enemy = CreateEnemy(enemycf);
-        RunManager.Instance.GetEnemy();
-        player.Dies += EndBattle;
-        enemy.Dies += EndBattle;
-        handManager.CreateNewCard += RegisterCardToBM;
-        StartCoroutine(BattleLoop());
-    }
+
     public void RegisterCardToBM(CardDisplay card)
     {
         card.SetupBattle(this);

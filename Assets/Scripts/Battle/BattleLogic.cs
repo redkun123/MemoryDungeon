@@ -54,10 +54,10 @@ public class BattleLogic
         cardManager.battleExecutor = battleExecutor;
         cardManager.UseCard(card);
         player.Discard(card);
-        if (battleManager.battleEnded)
-        {
-            battleManager.CheckGameResult();
-        }
+        //if (battleManager.battleEnded)
+        //{
+        //    battleManager.CheckGameResult();
+        //}
         cardManager = null;
     }
 
