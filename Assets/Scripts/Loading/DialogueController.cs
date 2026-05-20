@@ -9,6 +9,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI dialogueSpeaker;
     [SerializeField] StartRunButton startRunButton;
+    [SerializeField] GameOverPopup gameOverPopupPrefab;
     private List<DialogueLine> currentStory;
     private string currentText;
     private string currentSpeaker;
@@ -90,5 +91,9 @@ public class DialogueController : MonoBehaviour
         currentSpeaker = currentStory[lineNumber].speaker;
         ShowText(currentText);
         lineNumber++;
+    }
+    private void GameOver()
+    {
+        Instantiate(gameOverPopupPrefab);
     }
 }

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed687ff37d1fdbf449c4f88362188d4a, type: 3}
   m_Name: Drago
   m_EditorClassIdentifier: 
+  charName: 
   maxHP: 200
   moveSet:
   - {fileID: 11400000, guid: 3382ef29ed54072478b9fae7934974f3, type: 2}
   - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
-  - {fileID: 11400000, guid: cc123c88e1aa5ea4f88a52056540c799, type: 2}
+  - {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
   - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}

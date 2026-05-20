@@ -13,6 +13,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField] private GuardCount guardCount;
     [SerializeField] public Transform statusArea;
     [SerializeField] private RectTransform avatar;
+    [SerializeField] private RectTransform dieAvatar;
     [SerializeField] private DamageText damageTextPrefab;
     [SerializeField] public Transform statusPopupAnchor;
 
@@ -35,6 +36,7 @@ public class PlayerView : MonoBehaviour
         hpBar.InitSet(player.currentHP, player.maxHP);
         player.OnModifyGuard += guardCount.ModifyGuard;
         player.OnLostGuard += guardCount.LostGuard;
+        player.Dies += OnDie;
     }
     public void PlayHitEffect(int damage)
     {
@@ -45,8 +47,8 @@ public class PlayerView : MonoBehaviour
             randomness: 90,
             snapping: false,
             fadeOut: true
-        );  
-        var dmgText = Instantiate( damageTextPrefab,avatar );
+        );
+        var dmgText = Instantiate(damageTextPrefab, avatar);
         dmgText.Setup(damage);
     }
     public void PlayAttackEffect(int damage)
@@ -78,6 +80,12 @@ public class PlayerView : MonoBehaviour
     public void PlayGainStatusEffect(Status status)
     {
 
+    }
+    public void OnDie()
+    {
+        hpBar.gameObject.SetActive(false);
+        avatar.gameObject.SetActive(false);
+        dieAvatar.gameObject.SetActive(true);
     }
 }
 

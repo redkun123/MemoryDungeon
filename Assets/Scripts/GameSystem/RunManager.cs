@@ -308,6 +308,10 @@ public class RunManager : MonoBehaviour
         ResetRun();
         SceneManager.LoadScene("MainScreen");
     }
+    public void LoadPrologue()
+    {
+        SceneManager.LoadScene("EndScene");
+    }    
     private void ResetRun()
     {
         player = null;

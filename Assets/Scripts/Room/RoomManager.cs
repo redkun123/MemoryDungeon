@@ -49,6 +49,10 @@ public class RoomManager
         currentRoom = roomDB.finalBossRoom;
         return currentRoom;
     }
+    public void ShowPrologue()
+    {
+        RunManager.Instance.LoadPrologue();
+    }
     public void SetSelectedRoom(int index)
     {
         selectedRoomIndex = index;
@@ -72,8 +76,6 @@ public class RoomManager
             roomPool.RemoveAll(room => usedRoomID.Contains(room.roomID));
             Debug.Log("Used rooms removed");
         }
-        roomPool.Add(roomDB.restRoom);
-        roomPool.Add(roomDB.shopRoom);
         Debug.Log("Room pool created");
         Extensions.Shuffle(roomPool);
         Debug.Log($"Số phòng trong pool: {roomPool.Count}");
@@ -89,6 +91,20 @@ public class RoomManager
         Debug.Log($"Số phòng trong room pool còn: {roomPool.Count}");
         randRoom.AddRange(roomPool);
         Debug.Log("Room pool finished");
+    }
+    public void RemoveSpecialRoom()
+    {
+        string restRoomID = "3";
+        string shopRoomID = "4";
+        usedRoomID.Add(restRoomID);
+        usedRoomID.Add(shopRoomID);
+    }
+    public void AddSpecialRoom()
+    {
+        string restRoomID = "3";
+        string shopRoomID = "4";
+        usedRoomID.Remove(restRoomID);
+        usedRoomID.Remove(shopRoomID);
     }
     public void ClearChosenRoom(Room chosenRoom)
     {

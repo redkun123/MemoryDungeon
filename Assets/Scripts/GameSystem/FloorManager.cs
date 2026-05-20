@@ -26,15 +26,15 @@ public class FloorManager
                 currentRoom = roomManager.ShowStartRoom();
                 Debug.Log("Start room located");
                 break;
-            case 8:
+            case 9:
                 currentRoom = roomManager.ShowRestRoom();
                 break;
-            case 9:
-                currentRoom = roomManager.ShowBossRoom();
-                break;
             case 10:
-                currentRoom = roomManager.ShowFinalBossRoom();
+                currentRoom = roomManager.ShowBossRoom();
                 Debug.Log("Final room located");
+                break;
+            case 11:
+                roomManager.ShowPrologue();
                 break;
             default:
                 currentRoom = roomManager.ShowRandomRoom();
@@ -42,8 +42,23 @@ public class FloorManager
                 break;
         }
         floor++;
+        AdjustSpecialRoom();
         RunManager.Instance.UpdateStatusBar();
         RunManager.Instance.currentRoom = currentRoom;
         roomManager.EnterChosenRoom(currentRoom);
+    }
+    public void AdjustSpecialRoom()
+    {
+        switch (floor)
+        {
+            case 1:
+                roomManager.RemoveSpecialRoom();
+                break;
+            case 5:
+                roomManager.AddSpecialRoom();
+                break;
+            default:
+                break;
+        }
     }
 }
