@@ -8,13 +8,19 @@ public class StatusUIManager : MonoBehaviour
     private StatusManager playerSM;
     private StatusManager enemySM;
     [SerializeField] private StatusUI statusPrefab;
-    [SerializeField] private StatusDB statusDB;
+    [SerializeField] public StatusDB statusDB;
     private Dictionary<StatusData, string> playerStatusList;
     private Dictionary<StatusData, string> enemyStatusList;
     private Player player;
     private Enemy enemy;
     private PlayerView playerView;
     private EnemyView enemyView;
+
+    [SerializeField]
+    private StatusPopupUI popupPrefab;
+
+    //[SerializeField]
+    //private Canvas battleCanvas;
     public void Awake()
     {
         if (Instance != null)
@@ -30,6 +36,7 @@ public class StatusUIManager : MonoBehaviour
         this.player = controller.Player;
         this.playerView = controller.playerView;
         playerSM = player.statusManager;
+        playerSM.RegisterStatusUI(this);
         playerSM.OnStatusListChange += RefreshPlayerStatusList;
         this.enemy = controller.Enemy;
         this.enemyView = controller.enemyView;
@@ -97,5 +104,22 @@ public class StatusUIManager : MonoBehaviour
             var statusUI = Instantiate(statusPrefab, content);
             statusUI.SetupStatus(status.Key, status.Value);
         }
+    }
+    public IEnumerator PlayStatusPopup(Character owner, StatusData data)
+    {
+        Transform anchor = null;
+
+        if (owner == player)
+        {
+            anchor = playerView.statusPopupAnchor;
+        }
+        //else
+        //{
+        //    anchor = enemyView.statusPopupAnchor;
+        //}
+
+        var popup = Instantiate(popupPrefab, anchor);
+        Debug.Log("Status UI created)");
+        yield return popup.Play(data.icon, anchor);
     }
 }

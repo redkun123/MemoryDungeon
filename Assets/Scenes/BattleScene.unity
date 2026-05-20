@@ -2354,6 +2354,7 @@ MonoBehaviour:
   enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}
   isPlayerTurn: 0
   battleEnded: 0
+  inputLocked: 0
 --- !u!1 &1649295830
 GameObject:
   m_ObjectHideFlags: 0

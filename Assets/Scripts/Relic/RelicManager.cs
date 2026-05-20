@@ -81,7 +81,6 @@ public class RelicManager
     private IEnumerator TriggerRelic(Relic relic)
     {
         relic.OnTrigger(ctx);
-
         yield return null;
     }
     //Them animation relic

@@ -14,6 +14,7 @@ public class PlayerView : MonoBehaviour
     [SerializeField] public Transform statusArea;
     [SerializeField] private RectTransform avatar;
     [SerializeField] private DamageText damageTextPrefab;
+    [SerializeField] public Transform statusPopupAnchor;
 
     [Header("Attack Animation")]
     [SerializeField] private float attackMoveDistance = 100f;
