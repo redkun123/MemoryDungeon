@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class DrawExecute : IEffectExecute
 {
-    private int cardAmount;
+    private int drawAmount;
 
     public DrawExecute(int cardAmount)
     {
-        this.cardAmount = cardAmount;
+        this.drawAmount = cardAmount;
     }
 
-    public int GetValue() => cardAmount;
+    public int GetValue() => drawAmount;
 
-    public EffectType GetEffectType() => EffectType.Discard;
+    public EffectType GetEffectType() => EffectType.Draw;
 
     public void Resolve(EffectContext ctx)
     {
-        //ctx.target.(ctx.value);
-        //for (int i = 0; i < discardAmount; i++)
-        //{
-        //    RunManager.Instance.player.Discard(targetCard[i]);
-        //}
+        var player = (Player)ctx.source;
+        for (int i = 0; i < drawAmount; i++)
+        {
+            player.DrawOne();
+        }
     }
 }

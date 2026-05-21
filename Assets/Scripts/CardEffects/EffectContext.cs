@@ -22,5 +22,6 @@ public enum EffectType
     LoseHP,
     ApplyStatus,
     Heal,
-    Discard
+    Discard,
+    Draw
 }

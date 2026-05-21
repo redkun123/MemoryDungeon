@@ -15,5 +15,5 @@ MonoBehaviour:
   effectName: Draw 2
   effectDescription: Draw 2 cards
   effectTarget: 1
-  effectTargetType: 0
+  effectTargetType: 1
   drawAmount: 2
