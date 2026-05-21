@@ -46,6 +46,7 @@ public class BattleManager : MonoBehaviour
         enemyConfig = RunManager.Instance.currentEnemy;
         this.player = RunManager.Instance.player;
         this.relicManager = RunManager.Instance.relicManager;
+        inputLocked = false;
     }
     private void Start()
     {
@@ -224,8 +225,8 @@ public class BattleManager : MonoBehaviour
     }
     public void Lose()
     {
-        WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
-        popup.result.text = "GAME OVER";
+        //WinLosePopup popup = Instantiate(winLosePopup, new Vector3(0, 0, 0), Quaternion.identity);
+        //popup.result.text = "GAME OVER";
         Debug.Log("You lost.");
         RunManager.Instance.EndRun();
     }

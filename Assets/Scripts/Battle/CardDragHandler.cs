@@ -36,6 +36,8 @@ public class CardDragHandler : MonoBehaviour,
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (isDragging) return;
+        if (battleManager == null)
+            return;
         if (battleManager.inputLocked) return;
         CardInputRouter.Instance.OnCardHover(cardUI);
     }
@@ -43,6 +45,8 @@ public class CardDragHandler : MonoBehaviour,
     public void OnPointerExit(PointerEventData eventData)
     {
         if (isDragging) return;
+        if (battleManager == null)
+            return;
         if (battleManager.inputLocked) return;
         CardInputRouter.Instance.OnCardUnhover(cardUI);
     }

@@ -20,7 +20,10 @@ public class EnergyBar : MonoBehaviour
         {
             energyBar.value = 0;
         }
-        else return;
+        else
+        {
+            energyBar.value = maxEnergy;
+        }
     }
     //public void Set(int currentEnergy, int maxEnergy)
     //{

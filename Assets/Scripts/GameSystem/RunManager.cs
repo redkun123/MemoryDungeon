@@ -16,7 +16,7 @@ public class RunManager : MonoBehaviour
     public EnemyConfig currentEnemy;
     public RoomManager roomManager { get; private set; }
     public FloorManager floorManager { get; private set; }
-    [SerializeField] RoomDB roomDB;
+    [SerializeField] public RoomDB roomDB;
     [SerializeField] RoomRest roomRest;
     [SerializeField] CardDB cardDB;
     [SerializeField] private RelicLibrary relicLibrary;
@@ -32,6 +32,7 @@ public class RunManager : MonoBehaviour
     public RelicManager relicManager { get; private set; }
     public Room currentRoom;
     public int currentFloor;
+    [SerializeField] GameOverPopup gameOverPopupPrefab;
     public void Awake()
     {
         if (Instance != null)
@@ -91,6 +92,7 @@ public class RunManager : MonoBehaviour
             relicList = relicManager.GetRelicData(),
         };
         SaveManager.Instance.SaveRun();
+        SaveManager.Instance.SaveGame();
     }
     public void UpdateRunSave()
     {
@@ -120,7 +122,7 @@ public class RunManager : MonoBehaviour
         }
         // rebuild player state
         var deck = LoadDeckFromSave(run);
-        if(player == null)
+        if (player == null)
         {
             CreatePLayer();
         }
@@ -304,23 +306,22 @@ public class RunManager : MonoBehaviour
     }
     public void EndRun()
     {
-        SaveRunData();
+        SaveData();
+        Instantiate(gameOverPopupPrefab);
+        gameOverPopupPrefab.Init();
         ResetRun();
-        SceneManager.LoadScene("MainScreen");
     }
     public void LoadPrologue()
     {
         SceneManager.LoadScene("EndScene");
-    }    
+    }
     private void ResetRun()
     {
+        SaveManager.Instance.ClearRun();
         player = null;
         enemy = null;
         roomManager = null;
         floorManager = null;
-        battleSceneController = null;
-        battleManager = null;
-        runManager = null;
         statusBar = null;
         storyManager = null;
         currentStory = null;
@@ -328,21 +329,41 @@ public class RunManager : MonoBehaviour
         rewardGenerator = null;
         relicManager.OnDestroy();
         statusBar.gameObject.SetActive(false);
+        GameManager.Instance.StartOrResume();
     }
-    public void SaveRunData()
+    public void SaveData()
     {
         var save = SaveManager.Instance;
-        var gameSet = save.CurrentGame.ToHashSet();
+
+        HashSet<string> completedSet = save.CurrentGame.ToHashSet();
+
+        int killCount = 0;
+        int newRooms = 0;
+
         foreach (var roomId in save.CurrentRun.visitedRoomIds)
         {
-            gameSet.Add(roomId.ToString());
+            Room room = roomDB.GetRoom(roomId);
+
+            if (room.roomType == Room.RoomType.Battle)
+            {
+                killCount++;
+            }
+
+            if (completedSet.Add(roomId))
+            {
+                newRooms++;
+            }
         }
-        foreach(var relic in save.CurrentRun.relicList)
-        {
-            gameSet.Add(relic.ToString());
-        }
-        save.CurrentGame.FromHashSet(gameSet);
+
+        save.CurrentRun.killThisRun = killCount;
+        save.CurrentRun.roomDiscoverThisRun = newRooms;
+
+        save.CurrentGame.killTotal += killCount;
+        save.CurrentGame.roomDiscoverTotal += newRooms;
+
+        save.CurrentGame.FromHashSet(completedSet);
+
         save.SaveGame();
-        save.ClearRun();
+
     }
 }

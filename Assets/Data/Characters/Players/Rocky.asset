@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rocky
   m_EditorClassIdentifier: 
   charName: Rocky Balboa
-  maxHP: 100
+  maxHP: 30
   startGold: 20
   startingDeck:
   - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}

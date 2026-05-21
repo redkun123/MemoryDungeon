@@ -10,18 +10,11 @@ public class StatusManager
     private Character owner;
     private List<Status> statuses;
     private Dictionary<string, string> statusByName;
-    private StatusDB statusDB;
     public event Action OnStatusListChange;
-    private StatusUIManager suManager;
     public StatusManager(Character owner)
     {
         this.owner = owner;
         statuses = new();
-    }
-    public void RegisterStatusUI(StatusUIManager suManager)
-    {
-        this.suManager = suManager;
-        this.statusDB = suManager.statusDB;
     }
     public IEnumerator TriggerPhase(BattlePhase phase)
     {
@@ -38,8 +31,12 @@ public class StatusManager
     }
     public IEnumerator PlayAnim(Status status)
     {
-        var data = statusDB.GetStatus(status.name);
-        yield return suManager.PlayStatusPopup(owner, data);
+        Debug.Log(status);
+        Debug.Log(StatusUIManager.Instance.statusDB);
+        Debug.Log(StatusUIManager.Instance);
+        var data = StatusUIManager.Instance.statusDB.GetStatus(status.name);
+        Debug.Log(data);
+        yield return StatusUIManager.Instance.PlayStatusPopup(owner, data);
     }
     private IEnumerator TriggerStatus(Status status, BattlePhase phase)
     {

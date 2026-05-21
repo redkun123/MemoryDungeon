@@ -14,5 +14,12 @@ public class RunSaveData
     public List<string> deckCardIds;
     public List<string> visitedRoomIds;
     public List<string> relicList;
+    public int killThisRun;
+    public int roomDiscoverThisRun;
     //public int seed; // optional
+
+    public HashSet<string> ToHashSet()
+    {
+        return new HashSet<string>(visitedRoomIds);
+    }
 }

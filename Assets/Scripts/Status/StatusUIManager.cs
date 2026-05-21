@@ -36,7 +36,6 @@ public class StatusUIManager : MonoBehaviour
         this.player = controller.Player;
         this.playerView = controller.playerView;
         playerSM = player.statusManager;
-        playerSM.RegisterStatusUI(this);
         playerSM.OnStatusListChange += RefreshPlayerStatusList;
         this.enemy = controller.Enemy;
         this.enemyView = controller.enemyView;

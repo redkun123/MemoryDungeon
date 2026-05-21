@@ -19,20 +19,7 @@ public class RoomDB : ScriptableObject
 
     public void Init()
     {
-        roomDatabase.Clear();
-        for (int i = 0; i < normalRoom.Count; i++)
-        {
-            roomDatabase.Add(normalRoom[i]);
-        }
-        roomDatabase.Add(startRoom);
-        roomDatabase.Add(shopRoom);
-        roomDatabase.Add(restRoom);
-        roomDatabase.Add(bossRoom);
-        roomDatabase.Add(finalBossRoom);
-        foreach (var room in roomDatabase)
-        {
-            Debug.Log($"ID: {room.roomID} - Room Name: {room.name}");
-        }
+        SetupDatabase();
         if (_lookup != null)
         {
             _lookup.Clear();
@@ -60,5 +47,27 @@ public class RoomDB : ScriptableObject
         roomDatabase.Clear();
         Debug.LogError($"Room not found: {id}");
         return null;
+    }
+    private void SetupDatabase()
+    {
+        roomDatabase.Clear();
+        for (int i = 0; i < normalRoom.Count; i++)
+        {
+            roomDatabase.Add(normalRoom[i]);
+        }
+        roomDatabase.Add(startRoom);
+        roomDatabase.Add(shopRoom);
+        roomDatabase.Add(restRoom);
+        roomDatabase.Add(bossRoom);
+        roomDatabase.Add(finalBossRoom);
+        foreach (var room in roomDatabase)
+        {
+            Debug.Log($"ID: {room.roomID} - Room Name: {room.name}");
+        }
+    }
+    public int TotalRoomCount()
+    {
+        SetupDatabase();
+        return roomDatabase.Count;
     }
 }
