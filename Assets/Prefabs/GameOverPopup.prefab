@@ -169,7 +169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 0%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -627,7 +627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -761,7 +761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -1431,7 +1431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553959265106637830, guid: 253656a3a47368947bc3a8fc7f5ac0c9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7625742745459024716, guid: 253656a3a47368947bc3a8fc7f5ac0c9, type: 3}
       propertyPath: m_Pivot.x

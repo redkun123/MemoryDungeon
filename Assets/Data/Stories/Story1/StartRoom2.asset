@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeName: Start Room 2
   nodeID: StartRoom2
-  nodeImage: {fileID: 21300000, guid: b8b158fa3be02684d8181d2ba28a3ebd, type: 3}
-  nodeDescription: 'A gentle voice whisper to your ears: "How are you feeling today?"'
+  nodeImage: {fileID: 21300000, guid: aea0d4a3ecdac6c49bf70b31ab62aece, type: 3}
+  nodeDescription: 'A gentle voice whisper to your ears: "Prepare yourself, my love.
+    Take this."'
   options:
   - {fileID: 11400000, guid: cf980e246d8502045917b902c42e2325, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
   m_Name: Option1
   m_EditorClassIdentifier: 
-  optionDescription: Get up from the bed.
+  optionDescription: Run towards the door
   results:
   - {fileID: 11400000, guid: 7e360722337a5f94d95ad536007b4403, type: 2}

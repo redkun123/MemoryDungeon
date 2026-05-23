@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
-  m_Name: Option2
+  m_Script: {fileID: 11500000, guid: ad7f49a9ea201154991e53a97769f49d, type: 3}
+  m_Name: New Card
   m_EditorClassIdentifier: 
-  optionDescription: Talk to the person that is walking up to you
-  results:
-  - {fileID: 11400000, guid: 271174e9c9874a749b91434345ed04f2, type: 2}
+  cardID: 999
+  cardName: New Card
+  energyCost: 0
+  cardSprite: {fileID: 0}
+  cardEffect: []
+  cardType: 0

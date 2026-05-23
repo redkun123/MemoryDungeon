@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeName: StartRoom
   nodeID: Start Room 1
-  nodeImage: {fileID: 21300000, guid: 9fc5b441412fa934899d3b235fc9fef6, type: 3}
-  nodeDescription: You wake up in a hospital. Everything is white.
+  nodeImage: {fileID: 21300000, guid: aea0d4a3ecdac6c49bf70b31ab62aece, type: 3}
+  nodeDescription: You wake up in a dungeon. Everything is dark. Suddenly everything
+    was lighten up.
   options:
   - {fileID: 11400000, guid: 03a256084b2752c4f8c5f56f175ca288, type: 2}
   - {fileID: 11400000, guid: 220cfebf3132c8b47b4482a93f9ff19a, type: 2}
