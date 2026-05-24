@@ -21,11 +21,16 @@ public class CardDisplay : MonoBehaviour
     [SerializeField] private CardDragHandler cardDragHandler;
     private Vector3 defaultScale;
     private Vector3 defaultPos;
-    //[SerializeField] TextMeshProUGUI cardType;
     public event Action ReturnCardToHand;
     public bool droppedOnConfirmArea;
-    //public BattleManager battleManager;
+    public bool isViewing;
+    public bool isShopping;
 
+
+    public bool CanInteract => !isViewing;
+    public bool CanHover => !isViewing && !isShopping;
+    public bool CanDrag => !isViewing && !isShopping;
+    public bool CanClick => !isViewing;
     public void SetupCard(Card card)
     {
         cardData = card;
@@ -68,6 +73,7 @@ public class CardDisplay : MonoBehaviour
     }
     public void HoverVisual(bool active)
     {
+        if (!CanHover) return;
         if (canvasGroup == null) return;
         canvasGroup.blocksRaycasts = true;
         visual.DOKill();
@@ -86,6 +92,7 @@ public class CardDisplay : MonoBehaviour
 
     public void BeginDragVisual()
     {
+        if (!CanDrag) return;
         visual.DOKill();
 
         transform.SetAsLastSibling();
@@ -93,11 +100,11 @@ public class CardDisplay : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
 
         visual.DOScale(defaultScale * 1.2f, 0.1f);
-        //visual.DOLocalMoveY(defaultPos.y + 60f, 0.1f);
     }
 
     public void EndDragVisual()
     {
+        if (!CanDrag) return;
         visual.DOKill();
 
         canvasGroup.blocksRaycasts = true;
@@ -109,7 +116,6 @@ public class CardDisplay : MonoBehaviour
     public void ReturnToHand()
     {
         canvasGroup.blocksRaycasts = true;
-        //visual.anchoredPosition = Vector2.zero;
         visual.localScale = Vector3.one;
         ReturnCardToHand?.Invoke();
     }

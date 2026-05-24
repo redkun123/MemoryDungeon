@@ -8,6 +8,7 @@ public class CardClickHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] private CardDisplay cardUI;
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!cardUI.CanClick) return;
         CardInputRouter.Instance.OnCardClick(cardUI, eventData);
     }
 }

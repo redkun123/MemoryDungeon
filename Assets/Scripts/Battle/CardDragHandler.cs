@@ -35,6 +35,7 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!cardUI.CanHover) return;
         if (isDragging) return;
         if (battleManager == null)
             return;
@@ -44,6 +45,7 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!cardUI.CanHover) return;
         if (isDragging) return;
         if (battleManager == null)
             return;
@@ -53,6 +55,7 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!cardUI.CanDrag) return;
         if (battleManager.inputLocked) return;
         dragOffset = transform.position - Input.mousePosition;
         isDragging = true;
@@ -66,12 +69,14 @@ public class CardDragHandler : MonoBehaviour,
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!cardUI.CanDrag) return;
         if (battleManager.inputLocked) return;
         transform.position = Input.mousePosition + dragOffset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!cardUI.CanDrag) return;
         if (battleManager.inputLocked) return;
         isDragging = false;
         cardUI.EndDragVisual();
