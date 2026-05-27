@@ -12,6 +12,7 @@ public class LobbyOptionButton : MonoBehaviour
     [SerializeField] private Image roomIcon;
     [SerializeField] private Image roomIconBG;
     [SerializeField] private Image roomBG;
+    [SerializeField] private PreviewEnemy preview;
 
     public LobbyManager lobbyManager;
     private int optionID;
@@ -29,6 +30,11 @@ public class LobbyOptionButton : MonoBehaviour
         roomIcon.sprite = room.roomIcon;
         roomBG.sprite = room.roomBG;
         roomIconBG.sprite = room.roomIconBG;
+    }
+    public void SetupPreviewImage(EnemyConfig enemy)
+    {
+        preview.Init(enemy);
+        preview.gameObject.SetActive(true);
     }
     public void OnClickNextRoom()
     {

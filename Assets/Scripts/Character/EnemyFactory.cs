@@ -14,6 +14,7 @@ public static class EnemyFactory
         enemy.turnCount = 0;
         enemy.name = config.charName;
         enemy.statusManager = new StatusManager(enemy);
+        enemy.avatar.sprite = config.enemyAvatar;
         return enemy;
     }
 }

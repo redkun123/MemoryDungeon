@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class EnemyView : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EnemyView : MonoBehaviour
     [SerializeField] private DamageText damageTextPrefab;
     [SerializeField] private GameObject intentionPanel;
     [SerializeField] public Transform statusArea;
+    [SerializeField] public Image enemyAvatar;
 
     [Header("Attack Animation")]
     [SerializeField] private float attackMoveDistance = 100f;
@@ -43,6 +45,7 @@ public class EnemyView : MonoBehaviour
     void RegisterUI()
     {
         //intention.ShowIntention(enemy);
+        enemyAvatar = enemy.avatar;
         enemy.OnHPChange += hpBar.Set;
         enemy.OnAttacked += PlayHitEffect;
         enemy.OnAttacking += PlayAttackEffect;
