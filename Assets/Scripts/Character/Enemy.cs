@@ -8,7 +8,7 @@ public class Enemy : Character
 {
     public List<Card> moveSet;
     public int turnCount;
-    public Image avatar;
+    public Sprite avatar;
     //public void Attack(Player player)
     //{
     //    player.TakeDamage(10);

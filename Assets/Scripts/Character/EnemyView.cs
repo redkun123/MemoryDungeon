@@ -45,7 +45,7 @@ public class EnemyView : MonoBehaviour
     void RegisterUI()
     {
         //intention.ShowIntention(enemy);
-        enemyAvatar = enemy.avatar;
+        enemyAvatar.sprite = enemy.avatar;
         enemy.OnHPChange += hpBar.Set;
         enemy.OnAttacked += PlayHitEffect;
         enemy.OnAttacking += PlayAttackEffect;

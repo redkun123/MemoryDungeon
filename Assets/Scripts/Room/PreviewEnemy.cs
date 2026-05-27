@@ -7,7 +7,8 @@ public class PreviewEnemy : MonoBehaviour
 {
     [SerializeField] public Image monsterIcon;
     [SerializeField] public Image starPrefab;
-    [SerializeField] Transform starParent;
+    [SerializeField] Transform enemyStarParent;
+    [SerializeField] Transform rewardStarParent;
     public int starCount;
 
     public void Init(EnemyConfig enemy)
@@ -18,7 +19,7 @@ public class PreviewEnemy : MonoBehaviour
     }
     private void SpawnStar()
     {
-        foreach (Transform child in starParent)
+        foreach (Transform child in enemyStarParent)
         {
             Destroy(child.gameObject);
         }
@@ -26,7 +27,17 @@ public class PreviewEnemy : MonoBehaviour
         // Spawn new stars
         for (int i = 0; i < starCount; i++)
         {
-            Instantiate(starPrefab, starParent);
+            Instantiate(starPrefab, enemyStarParent);
+        }
+        var rewardStar = Random.Range(starCount - 1, starCount + 1);
+        foreach (Transform child in rewardStarParent)
+        {
+            Destroy(child.gameObject);
+        }
+        // Spawn new stars
+        for (int j = 0; j < rewardStar; j++)
+        {
+            Instantiate(starPrefab, rewardStarParent);
         }
     }
 }
