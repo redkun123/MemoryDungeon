@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 [DefaultExecutionOrder(1)]
 public class GameManager : MonoBehaviour
@@ -54,11 +55,6 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(statusBar);
         }
     }
-    //public void CreateStartButton()
-    //{
-    //    Vector2 buttonSpawn = new Vector2(0, 0);
-    //    var button = Instantiate(startButtonPrefab, buttonSpawn,Quaternion.identity);
-    //}
     public void StartOrResume()
     {
         if (_continueButton == null)
@@ -72,5 +68,9 @@ public class GameManager : MonoBehaviour
             return;
         }
         else return;
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

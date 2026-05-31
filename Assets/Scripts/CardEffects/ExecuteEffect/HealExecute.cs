@@ -15,8 +15,10 @@ public class HealExecute : IEffectExecute
 
     public EffectType GetEffectType() => EffectType.Heal;
 
-    public void Resolve(EffectContext ctx)
+    public IEnumerator Resolve(EffectContext ctx)
     {
         ctx.target.RestoreHP(ctx.value);
+        yield return null;
+        yield return new WaitForSeconds(0.3f);
     }
 }

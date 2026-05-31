@@ -31,6 +31,7 @@ public class ShopSlot : MonoBehaviour
         var cardSlot = Instantiate(cardPrefab, itemImage.gameObject.transform);
         cardSlot.transform.localScale = Vector3.one * 0.6f;
         cardSlot.SetupCard(cardForSell);
+        cardSlot.isViewing = true;
         priceText.text = price.ToString();
         itemType = "Card";
         id = slotID;

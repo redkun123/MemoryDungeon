@@ -46,29 +46,25 @@ public class BattleLogic
         return true;
     }
 
-    public void PlayCard(Card card, Enemy enemy)
+    public IEnumerator PlayCard(Card card, Enemy enemy)
     {
         player.SpendEnergy(card.energyCost);
         Debug.Log("Energy spent");
         cardManager = new CardManager(player, enemy, card);
         cardManager.battleExecutor = battleExecutor;
-        cardManager.UseCard(card);
+        yield return cardManager.UseCard(card);
         player.Discard(card);
-        //if (battleManager.battleEnded)
-        //{
-        //    battleManager.CheckGameResult();
-        //}
         cardManager = null;
     }
 
 
-    public void EnemyActionPerTurn(Enemy enemy, Player player)
+    public IEnumerator EnemyActionPerTurn(Enemy enemy, Player player)
     {
         Card card = enemy.moveSet[enemy.turnCount];
         Debug.Log($"Enemy used {enemy.moveSet[enemy.turnCount]}");
         cardManager = new CardManager(enemy, player, card);
         cardManager.battleExecutor = battleExecutor;
-        cardManager.UseCard(card);
+        yield return cardManager.UseCard(card);
         cardManager = null;
         enemy.turnCount = EnemyConfigTurnCount(enemy);
     }

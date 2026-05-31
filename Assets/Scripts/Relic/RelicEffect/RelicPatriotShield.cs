@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RelicPatriotShield : Relic
 {
-    public override void OnTrigger(RelicContext ctx)
+    public override IEnumerator OnTrigger(RelicContext ctx)
     {
         //var status = data.Effect.Clone();
         //ctx.player.statusManager.AddStatus(status, data.value);
+        yield return null;
     }
 }

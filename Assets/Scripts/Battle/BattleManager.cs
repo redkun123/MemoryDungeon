@@ -183,7 +183,7 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator EnemyActionCoroutine()
     {
-        battleLogic.EnemyActionPerTurn(enemy, player);
+        StartCoroutine(battleLogic.EnemyActionPerTurn(enemy, player));
 
         yield return new WaitForSeconds(1f);
     }

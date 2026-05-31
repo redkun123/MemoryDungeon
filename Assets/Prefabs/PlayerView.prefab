@@ -306,6 +306,7 @@ MonoBehaviour:
   guardCount: {fileID: 1612779003473653636}
   statusArea: {fileID: 749456159176386957}
   avatar: {fileID: 8670822741528717813}
+  dieAvatar: {fileID: 6512329137104989357}
   damageTextPrefab: {fileID: 200887398789919665, guid: b6854ed4cb057714c91add48e828c4c0, type: 3}
   statusPopupAnchor: {fileID: 2562912404882920361}
   attackMoveDistance: 100

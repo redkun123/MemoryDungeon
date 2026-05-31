@@ -51,7 +51,7 @@ public class PlayerView : MonoBehaviour
         var dmgText = Instantiate(damageTextPrefab, avatar);
         dmgText.Setup(damage);
     }
-    public void PlayAttackEffect(int damage)
+    public IEnumerator PlayAttackEffect(int damage)
     {
         //tam thoi danh manh nhe dung chung anim
         avatar.DOKill();
@@ -68,6 +68,7 @@ public class PlayerView : MonoBehaviour
                 attackDuration
             ).SetEase(Ease.InQuad)
         );
+        yield return seq.WaitForCompletion();
     }
     public void PlayDefendEffect()
     {

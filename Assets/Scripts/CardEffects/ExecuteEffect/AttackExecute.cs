@@ -15,9 +15,11 @@ public class AttackExecute : IEffectExecute
 
     public EffectType GetEffectType() => EffectType.Damage;
 
-    public void Resolve(EffectContext ctx)
+    public IEnumerator Resolve(EffectContext ctx)
     {
-        ctx.source.Attack(damage);
+        yield return ctx.source.Attack(ctx.value);
         ctx.target.TakeDamage(ctx.value);
+        Debug.Log($"{ctx.source.name} attacked {ctx.target.name} for {ctx.value} damage!");
+        yield return new WaitForSeconds(0.3f);
     }
 }

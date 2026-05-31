@@ -267,7 +267,14 @@ public class RunManager : MonoBehaviour
     {
         //roomManager.RoomComplete();
         roomManager.SpawnRandomRoom();
-        SceneManager.LoadScene("LobbyScene");
+        if(currentFloor < 10)
+        {
+            SceneManager.LoadScene("LobbyScene");
+        }
+        else
+        {
+            roomManager.ShowEpilogue();
+        }
     }
     public void InitNextRoom()
     {
@@ -307,17 +314,18 @@ public class RunManager : MonoBehaviour
     public void EndRun()
     {
         SaveData();
-        Instantiate(gameOverPopupPrefab);
-        gameOverPopupPrefab.Init();
-        ResetRun();
+        var restartButton = Instantiate(gameOverPopupPrefab);
+        StartCoroutine(restartButton.Init());
     }
-    public void LoadPrologue()
+    public void LoadEpilogue()
     {
         SceneManager.LoadScene("EndScene");
     }
-    private void ResetRun()
+    public void ResetRun()
     {
         SaveManager.Instance.ClearRun();
+        Destroy(statusBar.gameObject);
+        relicManager.OnDestroy();
         player = null;
         enemy = null;
         roomManager = null;
@@ -327,9 +335,6 @@ public class RunManager : MonoBehaviour
         currentStory = null;
         lobbyManager = null;
         rewardGenerator = null;
-        relicManager.OnDestroy();
-        statusBar.gameObject.SetActive(false);
-        GameManager.Instance.StartOrResume();
     }
     public void SaveData()
     {

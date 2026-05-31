@@ -12,5 +12,8 @@ public abstract class Relic
         this.data = data;
     }
     public virtual void OnEquip(Player player) { }
-    public virtual void OnTrigger(RelicContext ctx) { }
+    public virtual IEnumerator OnTrigger(RelicContext ctx) 
+    {
+        yield return null;
+    }
 }

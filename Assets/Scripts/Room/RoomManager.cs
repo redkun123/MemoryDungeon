@@ -49,9 +49,9 @@ public class RoomManager
         currentRoom = roomDB.finalBossRoom;
         return currentRoom;
     }
-    public void ShowPrologue()
+    public void ShowEpilogue()
     {
-        RunManager.Instance.LoadPrologue();
+        RunManager.Instance.LoadEpilogue();
     }
     public void SetSelectedRoom(int index)
     {

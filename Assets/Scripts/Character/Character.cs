@@ -15,7 +15,7 @@ public class Character
     public event Action Dies;
     public event Action<int, int> OnHPChange;
     public event Action<int> OnAttacked;
-    public event Action<int> OnAttacking;
+    public event Func<int, IEnumerator> OnAttacking;
     public event Action<int> OnModifyGuard;
     public event Action OnLostGuard;
     public int currentGuard;
@@ -109,8 +109,17 @@ public class Character
             Debug.Log($"{name}'s HP is full!");
         }
     }
-    public void Attack(int damage)
+    public IEnumerator Attack(int damage)
     {
-        OnAttacking?.Invoke(damage);
+        if (OnAttacking == null)
+            yield break;
+
+        foreach (
+            Func<int, IEnumerator> action
+            in OnAttacking.GetInvocationList()
+        )
+        {
+            yield return action(damage);
+        }
     }
 }

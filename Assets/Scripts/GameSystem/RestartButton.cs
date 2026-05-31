@@ -14,6 +14,7 @@ public class RestartButton : MonoBehaviour
     public void BackToLoading()
     {
         SceneManager.LoadScene("LoadingScene");
+        RunManager.Instance.ResetRun();
     }
     private void OnDestroy()
     {

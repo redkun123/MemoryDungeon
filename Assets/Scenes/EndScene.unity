@@ -1120,6 +1120,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1468290507}
   dialogueSpeaker: {fileID: 771723791}
   startRunButton: {fileID: 0}
+  gameOverPopupPrefab: {fileID: 7778272586224807274, guid: 4d61ec69c3b6b54479304ebe7b9fc65d, type: 3}
+  storyType: 1
 --- !u!1 &1957083146
 GameObject:
   m_ObjectHideFlags: 0

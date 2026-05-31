@@ -12,8 +12,9 @@ public class GameOverPopup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI completionRate;
     [SerializeField] private RestartButton restartButton;
 
-    public void Init()
+    public IEnumerator Init()
     {
+        restartButton.gameObject.SetActive(false);
         var save = SaveManager.Instance;
         if (save.CurrentGame == null)
         {
@@ -39,7 +40,8 @@ public class GameOverPopup : MonoBehaviour
         {
             ShowStats();
         }
-        ShowRestartButton();
+        yield return new WaitForSeconds(3f);
+        yield return ShowRestartButton();
     }
     private void ShowStats()
     {
@@ -52,9 +54,10 @@ public class GameOverPopup : MonoBehaviour
         float completionRates = int.Parse(roomDiscoverTotal.text) / totalRoomCount;
         completionRate.text = $"{completionRates.ToString()}%";
     }
-    public void ShowRestartButton()
+    public IEnumerator ShowRestartButton()
     {
         restartButton.gameObject.SetActive(true);
+        yield return null;
     }
     private void OnDestroy()
     {

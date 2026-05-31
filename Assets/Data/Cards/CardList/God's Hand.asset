@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7f49a9ea201154991e53a97769f49d, type: 3}
+  m_Name: God's Hand
+  m_EditorClassIdentifier: 
+  cardID: 7
+  cardName: God's Hand
+  energyCost: 0
+  cardSprite: {fileID: 21300000, guid: 5cab7cfe5eb4e1c46a02b72096a06c72, type: 3}
+  cardEffect:
+  - {fileID: 11400000, guid: bd2c5c22313a3764fbfac7aef587df1b, type: 2}
+  cardType: 0

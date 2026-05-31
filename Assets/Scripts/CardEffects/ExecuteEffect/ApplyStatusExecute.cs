@@ -17,10 +17,10 @@ public class ApplyStatusExecute : IEffectExecute
 
     public EffectType GetEffectType() => EffectType.ApplyStatus;
 
-    public void Resolve(EffectContext ctx)
+    public IEnumerator Resolve(EffectContext ctx)
     {
         var status = (Status)System.Activator.CreateInstance(statusType);
-        ctx.target.statusManager.AddStatus(status, stack);
         Debug.Log($"Added {stack} {status.name} to {ctx.target}");
+        yield return ctx.target.statusManager.AddStatus(status, stack);
     }
 }

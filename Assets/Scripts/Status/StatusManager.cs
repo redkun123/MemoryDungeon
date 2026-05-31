@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class StatusManager
 {
@@ -18,7 +17,8 @@ public class StatusManager
     }
     public IEnumerator TriggerPhase(BattlePhase phase)
     {
-        foreach (var status in statuses)
+        List<Status> snapshot = new(statuses);
+        foreach (var status in snapshot)
         {
             bool triggered = Trigger(status,phase);
             if (triggered)
@@ -76,7 +76,7 @@ public class StatusManager
 
         return false;
     }
-    public void AddStatus(Status newStatus, int stack)
+    public IEnumerator AddStatus(Status newStatus, int stack)
     {
         var existing = statuses.FirstOrDefault(s => s.GetType() == newStatus.GetType());
         if (existing == null)
@@ -90,7 +90,7 @@ public class StatusManager
         }
         Debug.Log($"{owner} get {stack} {newStatus.name}");
 
-        //yield return PlayAnim(newStatus);
+        yield return PlayAnim(newStatus);
 
         CleanUp();
     }

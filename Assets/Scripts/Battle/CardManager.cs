@@ -18,7 +18,7 @@ public class CardManager
         this.opponent = opponent;
         this.card = card;
     }
-    public void UseCard(Card card)
+    public IEnumerator UseCard(Card card)
     {
         foreach (var cardEffect in card.cardEffect)
         {
@@ -26,7 +26,7 @@ public class CardManager
             Character source = user;
             Character target = targetChar;
             IEffectExecute effect = cardEffect.CreateEffect(source, target);
-            battleExecutor.ExecuteEffect(effect, source, target);
+            yield return battleExecutor.ExecuteEffect(effect, source, target);
             Debug.Log($"Card {card.name} played");
         }
     }

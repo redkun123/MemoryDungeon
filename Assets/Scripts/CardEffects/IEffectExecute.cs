@@ -7,5 +7,5 @@ public interface IEffectExecute
 {
     int GetValue();
     EffectType GetEffectType();
-    void Resolve(EffectContext ctx);
+    IEnumerator Resolve(EffectContext ctx);
 }

@@ -15,12 +15,13 @@ public class DiscardExecute : IEffectExecute
 
     public EffectType GetEffectType() => EffectType.Discard;
 
-    public void Resolve(EffectContext ctx)
+    public IEnumerator Resolve(EffectContext ctx)
     {
         //ctx.target.(ctx.value);
         //for (int i = 0; i < discardAmount; i++)
         //{
         //    RunManager.Instance.player.Discard(targetCard[i]);
         //}
+        yield return null;
     }
 }

@@ -16,7 +16,7 @@ public class FloorManager
     public void DefineCurrentRoom()
     {
         Debug.Log($"Current Floor: {floor}");
-        if (floor < 0 || floor > 10)
+        if (floor < 0 || floor > 11)
         {
             Debug.Log("Floor count invalid");
         }
@@ -34,7 +34,6 @@ public class FloorManager
                 Debug.Log("Final room located");
                 break;
             case 11:
-                roomManager.ShowPrologue();
                 break;
             default:
                 currentRoom = roomManager.ShowRandomRoom();
@@ -53,9 +52,11 @@ public class FloorManager
         {
             case 1:
                 roomManager.RemoveSpecialRoom();
+                Debug.Log("Removed Shop and Rest");
                 break;
             case 5:
                 roomManager.AddSpecialRoom();
+                Debug.Log("Added Shop and Rest");
                 break;
             default:
                 break;

@@ -91,8 +91,8 @@ public class HandManager : MonoBehaviour
     {
         RectTransform rect = card.GetComponent<RectTransform>();
         DG.Tweening.Sequence seq = DOTween.Sequence();
-        seq.Join(rect.DOMove(discardPosition.position, 1f).SetEase(Ease.OutCubic));
-        seq.Join(card.transform.DOScale(Vector3.zero, 3f).SetEase(Ease.OutBack));
+        seq.Join(rect.DOMove(discardPosition.position, 0.5f).SetEase(Ease.OutCubic));
+        seq.Join(card.transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.OutBack));
         seq.OnComplete(() =>
         {
             card.ReturnCardToHand -= UpdateHandVisual;

@@ -15,8 +15,9 @@ public class GuardExecute : IEffectExecute
 
     public EffectType GetEffectType() => EffectType.Block;
 
-    public void Resolve(EffectContext ctx)
+    public IEnumerator Resolve(EffectContext ctx)
     {
         ctx.target.GainGuard(ctx.value);
+        yield return new WaitForSeconds(0.3f);
     }
 }

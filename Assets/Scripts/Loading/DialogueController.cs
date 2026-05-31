@@ -9,7 +9,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] TextMeshProUGUI dialogueSpeaker;
     [SerializeField] StartRunButton startRunButton;
-    [SerializeField] GameOverPopup gameOverPopupPrefab;
+    [SerializeField] StoryType storyType;
     private List<DialogueLine> currentStory;
     private string currentText;
     private string currentSpeaker;
@@ -18,6 +18,11 @@ public class DialogueController : MonoBehaviour
     int lineNumber;
     private bool isClicking;
     private bool convoEnded;
+    private enum StoryType
+    {
+        Prologue,
+        Epilogue
+    }
     void Awake()
     {
         if (currentStory == null)
@@ -50,7 +55,19 @@ public class DialogueController : MonoBehaviour
         else
         {
             convoEnded = true;
-            startRunButton.gameObject.SetActive(true);
+            switch (storyType)
+            {
+                case StoryType.Prologue:
+                    startRunButton.gameObject.SetActive(true);
+                    break;
+                case StoryType.Epilogue:
+                    GameOver();
+                    break;
+                default:
+                    Debug.Log("Invalid story type!");
+                    break;
+            }
+
         }
     }
 
@@ -71,7 +88,7 @@ public class DialogueController : MonoBehaviour
     {
         if (convoEnded)
         {
-            return; 
+            return;
         }
         if (isClicking)
         {
@@ -94,6 +111,6 @@ public class DialogueController : MonoBehaviour
     }
     private void GameOver()
     {
-        Instantiate(gameOverPopupPrefab);
+        RunManager.Instance.EndRun();
     }
 }

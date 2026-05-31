@@ -16,8 +16,4 @@ public class ContinueButton : MonoBehaviour
     {
         RunManager.Instance.ResumeRun();
     }
-    public void OnDestroy()
-    {
-        
-    }
 }

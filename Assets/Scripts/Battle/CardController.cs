@@ -41,7 +41,7 @@ public class CardController : MonoBehaviour
         CardDisplay ui = selectedCardUI;
         Card data = selectedCardData;
         ClearSelection();
-        battleLogic.PlayCard(data, battleManager.enemy);
+        StartCoroutine(battleLogic.PlayCard(data, battleManager.enemy));
         handManager.RemoveCardFromHand(ui);
     }
 
