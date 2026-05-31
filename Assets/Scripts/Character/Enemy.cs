@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
     public List<Card> moveSet;
     public int turnCount;
-
+    public Sprite avatar;
     //public void Attack(Player player)
     //{
     //    player.TakeDamage(10);

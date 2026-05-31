@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomID: 2
   roomName: ClubberLang
-  enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}
+  puzzlePiece: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: b3c6301b9b593b54391e63847467a0a1, type: 2}

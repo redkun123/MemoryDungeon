@@ -41,6 +41,11 @@ public class LobbyManager : MonoBehaviour
             var roomPreset = lobbyPreset._lookup(roomType);
             Debug.Log($"{room.roomName}");
             btn.Init(i, roomPreset);
+            if (room.roomType == Room.RoomType.Battle || room.roomType == Room.RoomType.Boss)
+            {
+                var battleRoom = (RoomBattle)room;
+                btn.SetupPreviewImage(battleRoom.enemyConfig);
+            }
             btn.lobbyManager = this;
             spawnedOptions.Add(btn.gameObject);
         }
