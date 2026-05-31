@@ -54,6 +54,7 @@ public class RandomReward : MonoBehaviour
         Debug.Log("Setupping card...");
         Card card = rewardGenerator.GenerateCard(reward);
         cardIcon.SetupCard(card);
+        cardIcon.isViewing = true;
         cardIcon.gameObject.SetActive(true);
     }
     public void SetRelicUI()

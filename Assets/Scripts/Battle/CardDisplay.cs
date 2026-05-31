@@ -27,10 +27,10 @@ public class CardDisplay : MonoBehaviour
     public bool isShopping;
 
 
-    public bool CanInteract => !isViewing;
+    public bool CanInteract => !isViewing && !isShopping;
     public bool CanHover => !isViewing && !isShopping;
     public bool CanDrag => !isViewing && !isShopping;
-    public bool CanClick => !isViewing;
+    public bool CanClick => !isViewing && !isShopping;
     public void SetupCard(Card card)
     {
         cardData = card;

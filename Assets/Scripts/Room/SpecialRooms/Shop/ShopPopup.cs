@@ -20,13 +20,20 @@ public class ShopPopup : MonoBehaviour
             Card item = card[i];
             int price = cardPrice[item];
             ShopSlot cardSlot = Instantiate(cardSlotPrefab, cardSlotPos[i]);
-            cardSlot.Init(item, price, i);
+            cardSlot.Init(item, price);
             activeSlots.Add(cardSlot);
         }
     }
     public void Init()
     {
         activeSlots = new List<ShopSlot>();
+    }
+    public void SetSlotID()
+    {
+        for (int i = 0; i < activeSlots.Count; i++)
+        {
+            activeSlots[i].id = i;
+        }
     }
     public void LoadRelic(List<RelicData> relic, Dictionary<RelicData,int> relicPrice)
     {
@@ -35,7 +42,7 @@ public class ShopPopup : MonoBehaviour
             RelicData item = relic[i];
             int price = relicPrice[item];
             ShopSlot relicSlot = Instantiate(relicSlotPrefab, relicSlotPos[i]);
-            relicSlot.Init(item, price, i);
+            relicSlot.Init(item, price);
             activeSlots.Add(relicSlot);
         }
     }
@@ -44,12 +51,11 @@ public class ShopPopup : MonoBehaviour
         if (slotID < 0 || slotID >= activeSlots.Count)
             return;
 
-        Destroy(activeSlots[slotID].gameObject);
+        activeSlots[slotID].gameObject.SetActive(false);
         Debug.Log("Bought item.");
     }
     public List<ShopSlot> GetSlots()
     {
         return activeSlots;
     }
-
 }

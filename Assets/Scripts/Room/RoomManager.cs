@@ -39,6 +39,11 @@ public class RoomManager
         currentRoom = roomDB.restRoom;
         return currentRoom;
     }
+    public Room ShowShopRoom()
+    {
+        currentRoom = roomDB.shopRoom;
+        return currentRoom;
+    }
     public Room ShowBossRoom()
     {
         currentRoom = roomDB.bossRoom;

@@ -26,6 +26,10 @@ public class FloorManager
                 currentRoom = roomManager.ShowStartRoom();
                 Debug.Log("Start room located");
                 break;
+            case 4:
+                currentRoom = roomManager.ShowShopRoom();
+                Debug.Log("Shop room located");
+                break;
             case 9:
                 currentRoom = roomManager.ShowRestRoom();
                 break;

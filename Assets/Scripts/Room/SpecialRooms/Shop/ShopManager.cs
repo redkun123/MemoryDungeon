@@ -28,6 +28,8 @@ public class ShopManager : MonoBehaviour
     {
         SetupCard();
         SetupRelic();
+        var spawnPos = new Vector3(0, 0, 0);
+        shopPopup = Instantiate(shopPopupPrefab, spawnPos, Quaternion.identity);
         popup = shopPopup.gameObject;
         shopPopup.Init();
         SetupShop();
@@ -43,8 +45,6 @@ public class ShopManager : MonoBehaviour
         shopInventory = new();
         Debug.Log("Shop Inventory created.");
         this.cardForSale = shopInventory.GetCardForSale(5, allCard);
-        var spawnPos = new Vector3(0, 0, 0);
-        shopPopup = Instantiate(shopPopupPrefab, spawnPos, Quaternion.identity);
     }
     public void SetupRelic()
     {
@@ -57,23 +57,18 @@ public class ShopManager : MonoBehaviour
         shopInventory = new();
         Debug.Log("Shop Inventory created.");
         this.relicForSale = shopInventory.GetRelicForSale(3, allRelic);
-        var spawnPos = new Vector3(0, 0, 0);
-        shopPopup = Instantiate(shopPopupPrefab, spawnPos, Quaternion.identity);
     }
     public void SetupShop()
     {
         shopPopup.LoadCard(cardForSale, allCardPrice);
-        foreach (var slot in shopPopup.GetSlots())
-        {
-            slot.OnBuyClicked += HandleBuy;
-        }
         Debug.Log("Bind card slots to shop manager");
         shopPopup.LoadRelic(relicForSale, allRelicPrice);
+        Debug.Log("Bind relic slots to shop manager");
+        shopPopup.SetSlotID();
         foreach (var slot in shopPopup.GetSlots())
         {
             slot.OnBuyClicked += HandleBuy;
         }
-        Debug.Log("Bind relic slots to shop manager");
     }
     public void SetPopupActive()
     {
@@ -146,10 +141,10 @@ public class ShopManager : MonoBehaviour
             return;
         }
     }
-    public void BindSlot(ShopSlot slot)
-    {
-        slot.OnBuyClicked += HandleBuy;
-    }
+    //public void BindSlot(ShopSlot slot)
+    //{
+    //    slot.OnBuyClicked += HandleBuy;
+    //}
     private void OnDestroy()
     {
         Destroy(popup);
