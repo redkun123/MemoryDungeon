@@ -21,6 +21,7 @@ public class RewardPopup : MonoBehaviour
         for (int i = 0; i < rewardCount; i++)
         {
             var btn = Instantiate(randomRewardPrefab, rewardParent);
+            Debug.Log($"Initiating reward button {currentReward[i]}");
             btn.Init(currentReward[i], RunManager.Instance.rewardGenerator);
             spawnedReward.Add(btn.gameObject);
         }

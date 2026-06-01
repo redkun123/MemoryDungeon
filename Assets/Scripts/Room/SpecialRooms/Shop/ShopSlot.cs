@@ -29,6 +29,8 @@ public class ShopSlot : MonoBehaviour
         cardForSell = card;
         this.price = price;
         var cardSlot = Instantiate(cardPrefab, itemImage.gameObject.transform);
+        var canvasGroup = cardSlot.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = false;
         cardSlot.isShopping = true;
         cardSlot.transform.localScale = Vector3.one * 0.6f;
         cardSlot.SetupCard(cardForSell);

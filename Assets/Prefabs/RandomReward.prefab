@@ -393,6 +393,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7795012361131805865, guid: 88e88264adf2e0949b4d3ad04103423f, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7795012361131805865, guid: 88e88264adf2e0949b4d3ad04103423f, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8537092411745507830, guid: 88e88264adf2e0949b4d3ad04103423f, type: 3}
       propertyPath: m_SortingLayer
       value: 0

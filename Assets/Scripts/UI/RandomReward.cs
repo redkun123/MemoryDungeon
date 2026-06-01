@@ -29,6 +29,7 @@ public class RandomReward : MonoBehaviour
     }
     public void Execute()
     {
+        Debug.Log($"Getting Reward: {reward.rewardName}");
         rewardGenerator.AddSpecificReward(reward);
         RunManager.Instance.RoomComplete();
     }
@@ -55,6 +56,8 @@ public class RandomReward : MonoBehaviour
         Card card = rewardGenerator.GenerateCard(reward);
         cardIcon.SetupCard(card);
         cardIcon.isViewing = true;
+        var canvasGroup = cardIcon.GetComponent<CanvasGroup>();
+        canvasGroup.blocksRaycasts = false;
         cardIcon.gameObject.SetActive(true);
     }
     public void SetRelicUI()

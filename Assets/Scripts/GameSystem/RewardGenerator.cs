@@ -48,6 +48,7 @@ public class RewardGenerator
                 break;
             case RewardType.Card:
                 AddCard(reward.rewardName);
+                Debug.Log("Getting card");
                 break;
             case RewardType.Relic:
                 AddRelic(reward.rewardName);
