@@ -14,13 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public StatusBar statusBarPrefab;
     [SerializeField] private RunManager runManagerPrefab;
     [SerializeField] public PlayerConfig playerConfig;
-    [SerializeField] public Enemy enemy; //Tạm để test
     [SerializeField] public Button _continueButton;
-    //[SerializeField] public StartRunButton startButtonPrefab;
-    //private RunManager _runManager;
-    //public RunManager RunManager => _runManager;
-    //[SerializeField] private BattleManager battleManager;
-    //public event 
+
     public void Awake()
     {
         if (Instance != null)
@@ -32,7 +27,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         StartOrResume();
     }
-
     public void NewGame()
     {
         SceneManager.LoadScene("IntroScene");

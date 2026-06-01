@@ -9,6 +9,15 @@ public class ContinueButton : MonoBehaviour
 
     private void Awake()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance._continueButton = this._continueButton;
+            GameManager.Instance.StartOrResume();
+        }
+        else
+        {
+            Debug.Log("Continue Button awake first");
+        }
         _continueButton.onClick.RemoveAllListeners();
         _continueButton.onClick.AddListener(OnClickContinue);
     }
