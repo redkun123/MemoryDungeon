@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 176852810}
   - component: {fileID: 176852809}
   - component: {fileID: 176852808}
+  - component: {fileID: 176852811}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -490,6 +491,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176852806}
   m_CullTransparentMesh: 1
+--- !u!114 &176852811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176852806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bf2b6950f8380419cd5a4cd86c509e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingButton: {fileID: 176852808}
+  popupPrefab: {fileID: 6902049211763911867, guid: 2d4fcdc355bebb54f9b1a9214b1eadda, type: 3}
 --- !u!1 &214263384
 GameObject:
   m_ObjectHideFlags: 0

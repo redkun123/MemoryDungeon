@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.61960787}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 4710959248743311078}
   - component: {fileID: 5673171267680106586}
   - component: {fileID: 1450688221961317812}
+  - component: {fileID: 1465919434791840160}
   m_Layer: 3
   m_Name: Settings
   m_TagString: Untagged
@@ -826,6 +827,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1465919434791840160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967690270081252524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bf2b6950f8380419cd5a4cd86c509e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingButton: {fileID: 1450688221961317812}
+  popupPrefab: {fileID: 6902049211763911867, guid: 2d4fcdc355bebb54f9b1a9214b1eadda, type: 3}
 --- !u!1 &4468553391256722002
 GameObject:
   m_ObjectHideFlags: 0

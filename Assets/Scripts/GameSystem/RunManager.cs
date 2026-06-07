@@ -96,21 +96,28 @@ public class RunManager : MonoBehaviour
     }
     public void UpdateRunSave()
     {
-        currentFloor = floorManager.floor;
-        if (currentFloor <= 1)
+        if (SaveManager.Instance.CurrentRun != null)
         {
-            return;
+            currentFloor = floorManager.floor;
+            if (currentFloor <= 1)
+            {
+                return;
+            }
+            //currentRoom = roomManager.currentRoom;
+            var run = SaveManager.Instance.CurrentRun;
+            run.currentHP = player.currentHP;
+            run.gold = player.gold;
+            run.floor = currentFloor;
+            run.deckCardIds = player.GetDeckIDs();
+            run.currentRoomID = currentRoom.roomID;
+            run.visitedRoomIds.Add(currentRoom.roomID);
+            run.relicList = relicManager.GetRelicData();
+            SaveManager.Instance.SaveRun();
         }
-        //currentRoom = roomManager.currentRoom;
-        var run = SaveManager.Instance.CurrentRun;
-        run.currentHP = player.currentHP;
-        run.gold = player.gold;
-        run.floor = currentFloor;
-        run.deckCardIds = player.GetDeckIDs();
-        run.currentRoomID = currentRoom.roomID;
-        run.visitedRoomIds.Add(currentRoom.roomID);
-        run.relicList = relicManager.GetRelicData();
-        SaveManager.Instance.SaveRun();
+        else
+        {
+            CreateNewSave();
+        }
     }
     public void ResumeRun()
     {
@@ -314,8 +321,14 @@ public class RunManager : MonoBehaviour
     public void EndRun()
     {
         SaveData();
-        var restartButton = Instantiate(gameOverPopupPrefab);
-        StartCoroutine(restartButton.Init());
+        var gameOverPopup = Instantiate(gameOverPopupPrefab);
+        StartCoroutine(gameOverPopup.Init());
+    }
+    public void AbandonRun()
+    {
+        SaveData();
+        ResetRun();
+        GameManager.Instance.StartOrResume();
     }
     public void LoadEpilogue()
     {
@@ -324,8 +337,14 @@ public class RunManager : MonoBehaviour
     public void ResetRun()
     {
         SaveManager.Instance.ClearRun();
-        Destroy(statusBar.gameObject);
-        relicManager.OnDestroy();
+        if (statusBar != null)
+        {
+            Destroy(statusBar.gameObject);
+        }
+        if (relicManager != null)
+        {
+            relicManager.OnDestroy();
+        }
         player = null;
         enemy = null;
         roomManager = null;
@@ -369,6 +388,5 @@ public class RunManager : MonoBehaviour
         save.CurrentGame.FromHashSet(completedSet);
 
         save.SaveGame();
-
     }
 }
