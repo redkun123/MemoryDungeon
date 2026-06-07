@@ -16,5 +16,10 @@ public class RestButton : MonoBehaviour
     public void Rest()
     {
         RunManager.Instance.Rest();
+        _restButton.gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        _restButton.onClick.RemoveAllListeners();
     }
 }

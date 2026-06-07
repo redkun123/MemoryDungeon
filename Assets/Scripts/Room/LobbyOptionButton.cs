@@ -12,7 +12,7 @@ public class LobbyOptionButton : MonoBehaviour
     [SerializeField] private Image roomIcon;
     [SerializeField] private Image roomIconBG;
     [SerializeField] private Image roomBG;
-    [SerializeField] private PreviewEnemy preview;
+    [SerializeField] public PreviewEnemy preview;
 
     public LobbyManager lobbyManager;
     private int optionID;

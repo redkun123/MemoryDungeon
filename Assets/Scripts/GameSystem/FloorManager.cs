@@ -26,19 +26,6 @@ public class FloorManager
                 currentRoom = roomManager.ShowStartRoom();
                 Debug.Log("Start room located");
                 break;
-            case 4:
-                currentRoom = roomManager.ShowShopRoom();
-                Debug.Log("Shop room located");
-                break;
-            case 9:
-                currentRoom = roomManager.ShowRestRoom();
-                break;
-            case 10:
-                currentRoom = roomManager.ShowBossRoom();
-                Debug.Log("Final room located");
-                break;
-            case 11:
-                break;
             default:
                 currentRoom = roomManager.ShowRandomRoom();
                 Debug.Log("Start room located");

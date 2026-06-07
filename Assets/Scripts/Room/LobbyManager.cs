@@ -46,6 +46,10 @@ public class LobbyManager : MonoBehaviour
                 var battleRoom = (RoomBattle)room;
                 btn.SetupPreviewImage(battleRoom.enemyConfig);
             }
+            else
+            {
+                btn.preview.gameObject.SetActive(false);
+            }
             btn.lobbyManager = this;
             spawnedOptions.Add(btn.gameObject);
         }

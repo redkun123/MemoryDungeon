@@ -16,4 +16,4 @@ MonoBehaviour:
   roomName: Rest Room
   puzzlePiece: {fileID: 0}
   healCost: 10
-  healAmount: 0
+  healAmount: 0.3

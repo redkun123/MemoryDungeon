@@ -67,6 +67,28 @@ public class RoomManager
         currentRoom = randRoom[selectedRoomIndex];
         return currentRoom;
     }
+    public void SpawnSpecificRoom(Room.RoomType type)
+    {
+        if (randRoom != null)
+        {
+            randRoom.Clear();
+        }
+        Debug.Log("Spawning room");
+        switch (type)
+        {
+            case Room.RoomType.Rest:
+                randRoom.Add(roomDB.restRoom);
+                break;
+            case Room.RoomType.Shop:
+                randRoom.Add(roomDB.shopRoom);
+                break;
+            case Room.RoomType.Boss:
+                randRoom.Add(roomDB.bossRoom);
+                break;
+            default:
+                break;
+        }
+    }
     public void SpawnRandomRoom()
     {
         if (randRoom != null)

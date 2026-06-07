@@ -272,9 +272,25 @@ public class RunManager : MonoBehaviour
     }
     public void RoomComplete()
     {
-        //roomManager.RoomComplete();
-        roomManager.SpawnRandomRoom();
-        if(currentFloor < 10)
+        switch(currentFloor)
+        {
+            case 4:
+                roomManager.SpawnSpecificRoom(Room.RoomType.Shop);
+                break;
+            case 9:
+                roomManager.SpawnSpecificRoom(Room.RoomType.Rest);
+                break;
+            case 10:
+                roomManager.SpawnSpecificRoom(Room.RoomType.Boss);
+                break;
+            case 11:
+                break;
+            default:
+                roomManager.SpawnRandomRoom();
+                break;
+        }
+        Debug.Log($"Current floor: {currentFloor}");
+        if(currentFloor <= 10)
         {
             SceneManager.LoadScene("LobbyScene");
         }
@@ -290,11 +306,9 @@ public class RunManager : MonoBehaviour
     }
     public void Rest()
     {
-        Extensions.PayGold(player.gold, roomRest.healCost);
+        //Extensions.PayGold(player.gold, roomRest.healCost);
         int healHP = Convert.ToInt32(Math.Round((player.currentHP * roomRest.healAmount)));
         player.RestoreHP(healHP);
-        //RoomCompleted?.Invoke(this);
-        RoomComplete();
     }
     public void BindRandomRoom(int roomTempID)
     {
