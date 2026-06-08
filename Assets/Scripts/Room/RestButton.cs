@@ -11,6 +11,7 @@ public class RestButton : MonoBehaviour
     public RoomRest roomRest;
     public void Awake()
     {
+        _restButton.onClick.RemoveAllListeners();
         _restButton.onClick.AddListener(Rest);
     }
     public void Rest()

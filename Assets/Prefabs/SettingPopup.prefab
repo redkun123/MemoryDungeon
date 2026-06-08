@@ -544,7 +544,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 5x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
   m_sharedMaterial: {fileID: 8789938032486425721, guid: 1995d16a498d1934aa3ee624694a9fc3, type: 2}
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -212.14389, y: 0, z: 285.87726, w: -43.09188}
+  m_margin: {x: -212.14389, y: 0, z: 234.46938, w: -43.09188}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1781,6 +1781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3896599553848967875}
+  - component: {fileID: 4794447583122829747}
   m_Layer: 0
   m_Name: GameSpeed
   m_TagString: Untagged
@@ -1806,6 +1807,20 @@ Transform:
   - {fileID: 7034938873820315490}
   m_Father: {fileID: 4584109723761693494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4794447583122829747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350427443432339808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867c4855556b3e24a92d16142af7e479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedSlider: {fileID: 1633889082944370512}
+  speedText: {fileID: 3383061805928849395}
 --- !u!1 &6423744397051846381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,6 +1905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4866405662193314442}
+  - component: {fileID: 1469111217203122693}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -1915,6 +1931,20 @@ Transform:
   - {fileID: 2939771547697107514}
   m_Father: {fileID: 4584109723761693494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1469111217203122693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425520550894457444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cbf183825d39e4db5047ece9a523db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSlider: {fileID: 8020320868103466378}
+  musicVolumeText: {fileID: 5702509469043706837}
 --- !u!1 &7895019043817488989
 GameObject:
   m_ObjectHideFlags: 0
