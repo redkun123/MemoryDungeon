@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   statusName: Weak
-  description: Puny god.
+  description: Attack for 50% less damage
   icon: {fileID: 21300000, guid: bffefa227f0d36546a4b1187a4fba7b3, type: 3}

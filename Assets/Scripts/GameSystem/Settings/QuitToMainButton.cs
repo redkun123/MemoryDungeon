@@ -16,6 +16,7 @@ public class QuitToMainButton : MonoBehaviour
     {
         RunManager.Instance.UpdateRunSave();
         SceneManager.LoadScene("LoadingScene");
+        GameManager.Instance.statusBar.gameObject.SetActive(false);
     }
     private void OnDestroy()
     {

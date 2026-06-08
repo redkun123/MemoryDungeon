@@ -33,6 +33,14 @@ public class FloorManager
         RunManager.Instance.currentRoom = currentRoom;
         roomManager.EnterChosenRoom(currentRoom);
     }
+    public void LoadStartRoom()
+    {
+        currentRoom = roomManager.ShowStartRoom();
+        AdjustSpecialRoom();
+        RunManager.Instance.UpdateStatusBar();
+        RunManager.Instance.currentRoom = currentRoom;
+        roomManager.EnterChosenRoom(currentRoom);
+    }
     public void AdjustSpecialRoom()
     {
         switch (floor)

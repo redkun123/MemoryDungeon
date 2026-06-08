@@ -75,7 +75,7 @@ public class RunManager : MonoBehaviour
         DeckUIManager.Instance.RegisterPlayer(player);
         RelicUIManager.Instance.RegisterRelic(relicManager);
         floorManager.Init(roomManager, currentFloor);
-        floorManager.DefineCurrentRoom();
+        floorManager.LoadStartRoom();
         CreateNewSave();
     }
     public void CreateNewSave()
