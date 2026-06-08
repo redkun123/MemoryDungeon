@@ -22,10 +22,6 @@ public class FloorManager
         }
         switch (floor)
         {
-            case 0:
-                currentRoom = roomManager.ShowStartRoom();
-                Debug.Log("Start room located");
-                break;
             default:
                 currentRoom = roomManager.ShowRandomRoom();
                 Debug.Log("Start room located");

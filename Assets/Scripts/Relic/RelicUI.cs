@@ -18,8 +18,4 @@ public class RelicUI : MonoBehaviour
         relicImage.sprite = relic.icon;
         relicDescription.text = relicData.description;
     }
-    public void ShowTooltip()
-    {
-        //show tooltip khi click/hover
-    }
 }
