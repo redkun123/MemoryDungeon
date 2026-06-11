@@ -27,6 +27,7 @@ public class ShopPopup : MonoBehaviour
     public void Init()
     {
         activeSlots = new List<ShopSlot>();
+        RunManager.Instance.player.OnTrueDeckRemove += RemoveRemoveButton;
     }
     public void SetSlotID()
     {
@@ -57,5 +58,13 @@ public class ShopPopup : MonoBehaviour
     public List<ShopSlot> GetSlots()
     {
         return activeSlots;
+    }
+    public void RemoveRemoveButton()
+    {
+        removeCardButton.gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        RunManager.Instance.player.OnTrueDeckRemove -= RemoveRemoveButton;
     }
 }

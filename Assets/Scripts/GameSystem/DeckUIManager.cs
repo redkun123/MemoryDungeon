@@ -45,10 +45,15 @@ public class DeckUIManager : MonoBehaviour
     {
         popup.SetActive(true);
     }
+    public void CloseDeckOnRemove()
+    {
+        RunManager.Instance.player.OnTrueDeckRemove += CloseDeck;
+    }
 
     public void CloseDeck()
     {
         popup.SetActive(false);
+        RunManager.Instance.player.OnTrueDeckRemove -= CloseDeck;
     }
     public void RefreshDeck(List<Card> deck)
     {
@@ -65,5 +70,5 @@ public class DeckUIManager : MonoBehaviour
             var uiCard = Instantiate(cardPrefab, content);
             uiCard.SetupCard(card);
         }
-    }    
+    }
 }

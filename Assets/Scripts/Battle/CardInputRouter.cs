@@ -51,6 +51,7 @@ public class CardInputRouter : MonoBehaviour
                 break;
             case CardInputMode.Remove:
                 OnRemoveSelect(cardUI);
+                DeckUIManager.Instance.CloseDeckOnRemove();
                 break;
             case CardInputMode.View:
                 OnViewSelect(cardUI);

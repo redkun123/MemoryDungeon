@@ -23,6 +23,7 @@ public class Player : Character
     public event Action<int> OnDiscardChanged;
     public event Action<int> OnGoldChange;
     public event Action<Card> OnDraw;
+    public event Action OnTrueDeckRemove;
     public void SpendEnergy(int amount)
     {
         int oldEn = currentEnergy;
@@ -81,6 +82,7 @@ public class Player : Character
     {
         trueDeck.Remove(card);
         OnTrueDeckChange?.Invoke(trueDeck);
+        OnTrueDeckRemove?.Invoke();
     }
     private void RefillDeck()
     {
