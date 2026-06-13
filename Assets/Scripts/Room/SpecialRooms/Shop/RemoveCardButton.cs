@@ -8,11 +8,16 @@ public class RemoveCardButton : MonoBehaviour
     [SerializeField] Button _removeButton;
     private void Awake()
     {
+        _removeButton.onClick.RemoveAllListeners();
         _removeButton.onClick.AddListener(ShowPopupRemove);
     }
     void ShowPopupRemove()
     {
         CardInputRouter.Instance.SetMode(CardInputRouter.CardInputMode.Remove);
         DeckUIManager.Instance.ShowTrueDeck();
+    }
+    private void OnDestroy()
+    {
+        _removeButton.onClick.RemoveListener(ShowPopupRemove);
     }
 }

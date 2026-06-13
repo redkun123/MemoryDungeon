@@ -113,7 +113,8 @@ public class ShopManager : MonoBehaviour
         {
             player.ModifyDeck(card);
             shopPopup.BuySuccess(slotID);
-            player.gold -= price;
+            var p = price * -1;
+            player.ModifyGold(p);
             Debug.Log("Buy card success");
         }
         else
@@ -132,7 +133,8 @@ public class ShopManager : MonoBehaviour
         {
             relicManager.AddRelicByID(relic.relicName);
             shopPopup.BuySuccess(slotID);
-            player.gold -= price;
+            var p = price * -1;
+            player.ModifyGold(p);
             Debug.Log("Buy relic success");
         }
         else
