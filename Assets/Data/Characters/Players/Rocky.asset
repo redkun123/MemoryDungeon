@@ -16,13 +16,7 @@ MonoBehaviour:
   maxHP: 100
   startGold: 20
   startingDeck:
-  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
-  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
-  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
-  - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
   - {fileID: 11400000, guid: 55b846d218560ef4c97be963cceccf14, type: 2}
-  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
-  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
   - {fileID: 11400000, guid: 1aac206dca6995b4593f1e925230cc69, type: 2}
   - {fileID: 11400000, guid: 7bb6f9d26ca14ac40be75e11a818a692, type: 2}
   - {fileID: 11400000, guid: 1c23efeaeebb88a498ada48d606b65a3, type: 2}
@@ -32,3 +26,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c7cca336e0bccd74892ec69f93413699, type: 2}
   - {fileID: 11400000, guid: 59643625ec9959643b142f257675cd6a, type: 2}
   - {fileID: 11400000, guid: f359574a091f7234ea85939fd529a268, type: 2}
+  - {fileID: 11400000, guid: 72f8679d5470e194a9d2162a74e64b21, type: 2}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Apollo
   m_EditorClassIdentifier: 
   roomID: 7
-  roomName: Drago
+  roomName: Apollo
   puzzlePiece: {fileID: 0}
   enemyConfig: {fileID: 11400000, guid: aa4d2e4705666dc418493cda3498b7e3, type: 2}

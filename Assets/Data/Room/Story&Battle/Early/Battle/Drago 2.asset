@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac03f19f38e22e247b90525fd96d3cf3, type: 3}
   m_Name: Drago 2
   m_EditorClassIdentifier: 
-  roomID: 6
-  roomName: Drago
+  roomID: 13
+  roomName: Drago 2
   puzzlePiece: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}
+  enemyConfig: {fileID: 11400000, guid: 20b9950c97b3d0640b29eea2d02b6192, type: 2}

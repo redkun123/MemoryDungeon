@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac03f19f38e22e247b90525fd96d3cf3, type: 3}
+  m_Name: ClubberLang 2
+  m_EditorClassIdentifier: 
+  roomID: 11
+  roomName: ClubberLang 2
+  puzzlePiece: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: 6576e6a7de5dad54ab732de566ddfede, type: 2}

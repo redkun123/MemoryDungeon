@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
+  m_Name: Option3
+  m_EditorClassIdentifier: 
+  optionDescription: Leave
+  results:
+  - {fileID: 11400000, guid: 94396ed1a8b0c2343af5462fb933a8d5, type: 2}
+  - {fileID: 11400000, guid: 7f40282064fbc56418649aef4374cb1e, type: 2}

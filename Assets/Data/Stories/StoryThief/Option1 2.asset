@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d2e750c2c63bf4e9091f2a5717d61a, type: 3}
+  m_Name: Option1 2
+  m_EditorClassIdentifier: 
+  optionDescription: Kill him
+  results:
+  - {fileID: 11400000, guid: d1520d8486f4c6b4385233616f0710ae, type: 2}

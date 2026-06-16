@@ -15,9 +15,9 @@ MonoBehaviour:
   charName: Drago
   maxHP: 200
   moveSet:
-  - {fileID: 11400000, guid: 3382ef29ed54072478b9fae7934974f3, type: 2}
-  - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
-  - {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
-  - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
+  - {fileID: 11400000, guid: 24ac8a1dc090f1649accd77a991effd0, type: 2}
+  - {fileID: 11400000, guid: 2ace011097b0e6347a2bbb1e9f22581e, type: 2}
+  - {fileID: 11400000, guid: 20a10abcc46e16d438ed4169887c7128, type: 2}
+  - {fileID: 11400000, guid: 7bb6f9d26ca14ac40be75e11a818a692, type: 2}
   starCount: 3
   enemyAvatar: {fileID: 21300000, guid: 115d9974b0146e841bdcb725fe86ef37, type: 3}

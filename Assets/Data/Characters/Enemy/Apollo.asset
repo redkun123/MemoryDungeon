@@ -15,7 +15,7 @@ MonoBehaviour:
   charName: Apollo
   maxHP: 120
   moveSet:
-  - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
+  - {fileID: 11400000, guid: 1aac206dca6995b4593f1e925230cc69, type: 2}
   - {fileID: 11400000, guid: 20a10abcc46e16d438ed4169887c7128, type: 2}
   - {fileID: 11400000, guid: 1c23efeaeebb88a498ada48d606b65a3, type: 2}
   starCount: 4

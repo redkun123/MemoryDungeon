@@ -30,6 +30,10 @@ public class PreviewEnemy : MonoBehaviour
             Instantiate(starPrefab, enemyStarParent);
         }
         var rewardStar = Random.Range(starCount - 1, starCount + 1);
+        if (rewardStar < 1)
+        {
+            rewardStar = 1;
+        }
         foreach (Transform child in rewardStarParent)
         {
             Destroy(child.gameObject);

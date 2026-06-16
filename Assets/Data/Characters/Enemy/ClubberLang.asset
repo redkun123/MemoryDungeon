@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHP: 80
   moveSet:
   - {fileID: 11400000, guid: 1aac206dca6995b4593f1e925230cc69, type: 2}
-  - {fileID: 11400000, guid: d2a7d2fe796cb9e42b875473f9ffee28, type: 2}
+  - {fileID: 11400000, guid: 72f8679d5470e194a9d2162a74e64b21, type: 2}
   - {fileID: 11400000, guid: 1c23efeaeebb88a498ada48d606b65a3, type: 2}
   starCount: 2
   enemyAvatar: {fileID: 21300000, guid: 6e784c7fb41ae4e4097313c47b8a48e3, type: 3}

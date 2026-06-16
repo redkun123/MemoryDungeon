@@ -13,23 +13,34 @@ MonoBehaviour:
   m_Name: ShopItem
   m_EditorClassIdentifier: 
   allCard:
-  - {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
-  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
   - {fileID: 11400000, guid: d2a7d2fe796cb9e42b875473f9ffee28, type: 2}
   - {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
   - {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
+  - {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
+  - {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
   cardItem:
-  - card: {fileID: 11400000, guid: aa192966065a9cd42bbe6056dd28412a, type: 2}
+  - card: {fileID: 11400000, guid: 1aac206dca6995b4593f1e925230cc69, type: 2}
+    price: 20
+  - card: {fileID: 11400000, guid: 55b846d218560ef4c97be963cceccf14, type: 2}
+    price: 20
+  - card: {fileID: 11400000, guid: 7bb6f9d26ca14ac40be75e11a818a692, type: 2}
+    price: 5
+  - card: {fileID: 11400000, guid: 1c23efeaeebb88a498ada48d606b65a3, type: 2}
     price: 10
-  - card: {fileID: 11400000, guid: 1164538a33154ac4880f5fc7329dad39, type: 2}
+  - card: {fileID: 11400000, guid: 24ac8a1dc090f1649accd77a991effd0, type: 2}
     price: 10
-  - card: {fileID: 11400000, guid: d2a7d2fe796cb9e42b875473f9ffee28, type: 2}
+  - card: {fileID: 11400000, guid: c7cca336e0bccd74892ec69f93413699, type: 2}
     price: 10
-  - card: {fileID: 11400000, guid: f077dc47f8b6fc044bb031e20c37ad9f, type: 2}
+  - card: {fileID: 11400000, guid: 72f8679d5470e194a9d2162a74e64b21, type: 2}
+    price: 15
+  - card: {fileID: 11400000, guid: 2ace011097b0e6347a2bbb1e9f22581e, type: 2}
+    price: 5
+  - card: {fileID: 11400000, guid: 20a10abcc46e16d438ed4169887c7128, type: 2}
     price: 10
-  - card: {fileID: 11400000, guid: 3adee85a920b31a4e8f7ff4dbbd8829e, type: 2}
-    price: 10
-  allRelic: []
+  allRelic:
+  - {fileID: 11400000, guid: 11ccc9ba345afad4a9163bbd11a3f525, type: 2}
+  - {fileID: 11400000, guid: a1b3634705a14ce4383d4020ab2c4f37, type: 2}
+  - {fileID: 11400000, guid: 5729243ebe40a5941ada696431e55262, type: 2}
   relicItem:
   - relic: {fileID: 11400000, guid: a1b3634705a14ce4383d4020ab2c4f37, type: 2}
     price: 10

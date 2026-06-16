@@ -15,4 +15,4 @@ MonoBehaviour:
   roomID: 99
   roomName: FinalBoss
   puzzlePiece: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: d88b866d75ed11d468b01e7dfaa3f200, type: 2}
+  enemyConfig: {fileID: 11400000, guid: 6c6e8af311114354aae605cdb0eb5edf, type: 2}

@@ -140,7 +140,7 @@ public class StoryManager : MonoBehaviour
         }
         else if (tempH < 0)
         {
-            RunManager.Instance.player.TakeDamage(tempH);
+            RunManager.Instance.player.TakeDamage(-tempH);
         }
     }
     public void ModifyCard()
